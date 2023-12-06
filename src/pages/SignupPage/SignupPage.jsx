@@ -40,8 +40,7 @@ function SignupPage() {
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
+        console.log(error)
       });
   };
 

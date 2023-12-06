@@ -1,16 +1,24 @@
+import { AuthContext } from "../../context/auth.context";
+import { useContext } from "react";
 import "./ProfilePage.css";
 
 function ProfilePage() {
-  const handleDeletion = (e) => { 
-    e.preventDefault();
-  }
-  return (
-    <div>
+  const { user } = useContext(AuthContext)
+  console.log(user)
+      return (
+        <>
+  <div>
       <h1>Profile page</h1>
-      
-      <button onClick={handleDeletion}>Delete Account</button>
-    </div>
+      <h2>
+        {user.userName}
+        </h2>
+      <p>
+        {user.email}
+        </p>
+  </div>
+  <button>Edit profile</button>
+        </>
   );
 }
-
-export default ProfilePage;
+  
+  export default ProfilePage;
