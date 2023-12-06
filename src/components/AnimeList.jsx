@@ -16,7 +16,7 @@ function AnimeList() {
             hi
         {animeList.map((anime)=> {
             return <>
-            <h1>Hi</h1>
+            <h1>inside the map</h1>
             <h1>{anime.name}</h1>
             <p>{anime.imageURL}</p>
             <p>{anime.genre}</p>
