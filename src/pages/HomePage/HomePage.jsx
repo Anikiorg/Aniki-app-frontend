@@ -1,5 +1,5 @@
-import AnimeList from "../../components/AnimeList";
 import "./HomePage.css";
+import {Link} from "react-router-dom"
 
 function HomePage() {
   return (
@@ -7,7 +7,9 @@ function HomePage() {
     <div>
       <h1>Home page</h1>
     </div>
-    <AnimeList/>
+    <Link to="/animes" >
+      <button>All Anime</button>
+      </Link>
     </>
   );
 }

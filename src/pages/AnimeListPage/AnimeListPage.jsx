@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import {Link} from "react-router-dom"
 
-function AnimeList() {
+function AnimeListPage() {
     const [animeList, setAnimeList] = useState([])
     
     useEffect(() => {
@@ -23,10 +24,11 @@ function AnimeList() {
             <p>{anime.imageURL}</p>
             <p>{anime.genre}</p>
             <p>{anime.rating}</p>
+            <Link to={`/animes/${anime._id}`}> <button>See more</button> </Link>
             </div>
         })}
     </>
         )
     }
 
-    export default AnimeList
+    export default AnimeListPage
