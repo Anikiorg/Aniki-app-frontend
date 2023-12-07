@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import {Link} from "react-router-dom"
+import CreateAnime from "../../components/CreateAnime/CreateAnime"
 
 function AnimeListPage() {
     const [animeList, setAnimeList] = useState([])
-    
-    useEffect(() => {
+    const [toggle, setToggle] = useState(false)
+    const handleToggle = () => {
+        setToggle(!toggle)
+    }
+    useEffect(() => { 
         axios.get("http://localhost:5005/api/animes")
             .then((response) => {
                 setAnimeList(response.data)
@@ -14,9 +18,10 @@ function AnimeListPage() {
             .catch((error) => console.log(error))
             console.log("hello")
     }, [])
-    
-        return (
+    return (
             <>
+            <button onClick={handleToggle}>Add anime</button>
+            {toggle &&  <CreateAnime/>}
         {animeList.map((anime)=> {
             return <div key={anime._id}>
             <h1>Anime</h1>
