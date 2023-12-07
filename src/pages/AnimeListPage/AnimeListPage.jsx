@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import {Link} from "react-router-dom"
 import CreateAnime from "../../components/CreateAnime/CreateAnime"
+import AddToList from "../../components/Lists/AddToList"
 
 function AnimeListPage() {
     const [animeList, setAnimeList] = useState([])
@@ -30,6 +31,7 @@ function AnimeListPage() {
             <p>{anime.genre}</p>
             <p>{anime.rating}</p>
             <Link to={`/animes/${anime._id}`}> <button>See more</button> </Link>
+            <AddToList id={anime._id}/>
             </div>
         })}
     </>

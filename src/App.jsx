@@ -24,6 +24,7 @@ function App() {
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
         <Route path="/animes" element={<AnimeListPage/>}/>
         <Route path="/animes/:animeId" element={<AnimeDetailsPage/>}/>
+        <Route path="/users/:userName"/>
       </Routes>
     </div>
   );
