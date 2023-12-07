@@ -13,39 +13,28 @@ function ProfilePage() {
   const [toggleCurrentlyWatchingList, setToggleCurrentlyWatchingList] = useState(false)
   const [toggleCompletedList, setToggleCompletedList] = useState(false)
   
-function handleToggleFavoritesList() { 
-  if (toggleFavoritesList === false) {
-    setToggleFavoritesList(true)
-    setTogglePlanToWatchList(false) 
-    setToggleCurrentlyWatchingList(false) 
-    setToggleCompletedList(false)
-  }
-}
-function handleTogglePlanToWatchList() { 
-  if (togglePlanToWatchList === false) {
-    setTogglePlanToWatchList(true)
+  function handleToggle(optionType) {
+    setTogglePlanToWatchList(false)
     setToggleFavoritesList(false)
     setToggleCurrentlyWatchingList(false) 
     setToggleCompletedList(false)
-  }
-}
-function handleToggleCurrentlyWatchingList() { 
-  if (toggleCurrentlyWatchingList === false) {
-    setToggleCurrentlyWatchingList(true)
-    setTogglePlanToWatchList(false)
-    setToggleCompletedList(false)
-    setToggleFavoritesList(false)
-  }
-}
-function handleToggleCompletedList() {
-  if (toggleCompletedList === false) {
-    setToggleCompletedList(true)
-    setToggleFavoritesList(false)
-    setToggleCurrentlyWatchingList(false)
-    setTogglePlanToWatchList(false)
-  } 
-}
 
+    switch (optionType) {
+      case "FavoriteList":
+        setToggleFavoritesList(true)
+        break;
+      case "PlanToWatchList":
+      setTogglePlanToWatchList(true)
+        break;
+      case "CurrentlyWatchingList":
+        setToggleCurrentlyWatchingList(true)
+        break
+      case "CompletedList":
+        setToggleCompletedList(true)
+      default:
+        break;
+    }
+  }
 
       return (
         <>
@@ -61,10 +50,11 @@ function handleToggleCompletedList() {
   <button>Edit profile</button>
 
 
-  <button onClick={handleToggleFavoritesList}>Favorites</button>
-  <button onClick={handleToggleCompletedList}>Completed</button>
-  <button onClick={handleToggleCurrentlyWatchingList}>Currently watching</button>
-  <button onClick={handleTogglePlanToWatchList}>Plan to watch</button>
+  <button onClick={()=> {handleToggle("FavoriteList")}}>Favorites</button>
+  <button onClick={() => {handleToggle("CompletedList")}}>Completed</button>
+  <button onClick={() => {handleToggle("CurrentlyWatchingList")}}>Currently watching</button>
+  <button onClick={()=>{handleToggle("PlanToWatchList")}}>Plan to watch</button>
+  
   {toggleFavoritesList && <FavoritesList/>}
   {toggleCompletedList && <CompletedList/>}
   {toggleCurrentlyWatchingList && <CurrentlyWatchingList/>}

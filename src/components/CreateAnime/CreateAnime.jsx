@@ -13,20 +13,19 @@ function CreateAnime () {
     const [episodes, setEpisodes] = useState("")
     const [genre, setGenre] = useState("")
     const [status, setStatus] = useState("")
-    const [premiere, setPremiere] = useState("")
+    const [premiered, setPremiered] = useState("")
     const [studios, setStudios] = useState("")
     const [rating, setRating] = useState("")
     const [ageRating, setAgeRating] = useState("")
-    
+    const name = {nameJP, nameEN}
     const requestBody = {
-        nameJP,
-        nameEN,
+        name,
         description,
         imageURL,
         episodes,
         genre,
         status,
-        premiere,
+        premiered,
         studios,
         rating,
         ageRating
@@ -47,13 +46,13 @@ function CreateAnime () {
 return (
     <form onSubmit={handleSubmit}>
         <label>NameJP:</label>
-        <input type="text" placeholder="Enter japanese title"   name="nameJP" value={nameJP} onChange={(e) => {setNameJP(e.target.value)}}/><br/>
+        <input type="text" placeholder="Enter japanese title" name="nameJP" value={nameJP} onChange={(e) => {setNameJP(e.target.value)}}/><br/>
         <label>NameEn:</label>
-        <input type="text" placeholder="Enter english title"   name="nameEN" value={nameEN} onChange={(e) => {setNameEN(e.target.value)}}/><br/>
+        <input type="text" placeholder="Enter english title" name="nameEN" value={nameEN} onChange={(e) => {setNameEN(e.target.value)}}/><br/>
         <label>Description:</label>
         <textarea placeholder="Enter description" name="description" value={description} onChange={(e)=> {setDescription(e.target.value)}}/><br/>
         <label>ImageURL:</label>
-        <input type="text" placeholder="Add imageURGL"   name="imageURL" value={imageURL} onChange={(e) => { setImageURL(e.target.value)}}/><br/>
+        <input type="text" placeholder="Add imageURGL" name="imageURL" value={imageURL} onChange={(e) => { setImageURL(e.target.value)}}/><br/>
         <label>Episodes:</label>
         <input type="number" placeholder="Enter number of episodes" mame="episodes" value={episodes} onChange={(e) => {setEpisodes(e.target.value)}}/><br/>
         <label>Genre:</label>
@@ -71,7 +70,7 @@ return (
             <option>Upcoming</option>
         </select><br/>
         <label>Premiered:</label>
-        <input type="date" name="premiere" value={premiere} onChange={(e)=> {setPremiere(e.target.value)}} /><br/>
+        <input type="date" name="premiered" value={premiered} onChange={(e)=> {setPremiered(e.target.value)}} /><br/>
         <label>Studios:</label> 
         <input type="text" placeholder="Add producing studios" name="studios" value={studios} onChange={(e)=> {setStudios(e.target.value)}}/><br/>
         <label>Rating:</label>
