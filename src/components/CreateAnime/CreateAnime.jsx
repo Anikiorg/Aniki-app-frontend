@@ -1,10 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
-import {useNavigate} from "react-router-dom"
-
 
 function CreateAnime () {
-    const navigate = useNavigate()
 
     const [nameJP, setNameJP] = useState("")
     const [nameEN, setNameEN] = useState("")
@@ -33,14 +30,12 @@ function CreateAnime () {
         ageRating
     }
         
-    const handleSubmit = (e) => {
-        /* e.preventDefault() */
+    const handleSubmit = () => {
 
         axios.post("http://localhost:5005/api/animes", createdAnime)
         .then(() => {
             console.log(createdAnime)
             console.log("Anime created")
-            /* navigate("/animes") */
         })
         .catch((err) => console.log(err))
     }

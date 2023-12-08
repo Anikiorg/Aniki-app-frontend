@@ -9,6 +9,7 @@ function AnimeDetailsPage() {
     const [animeDetails, setAnimeDetails] = useState([])
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)
+    
     const {animeId} = useParams()
     
     useEffect(()=> {

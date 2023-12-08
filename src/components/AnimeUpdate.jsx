@@ -43,7 +43,7 @@ function AnimeUpdate (props) {
 
 return(
 
-    /* add placeholders */
+    /* retain original info */
     <form onSubmit={handleSubmit}>
         <label>Japanese name: </label>
         <input type="text" name="nameJP" value={nameJP} onChange={(e) => setNameJP(e.target.value)} />
@@ -57,27 +57,27 @@ return(
         <label>Image URL: </label>
         <input type="text" name="imgURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
 
-        <label>Genre</label>
+        <label>Genre: </label>
         <input type="text" name="genre" value={genre} onChange={(e) => setGenre(e.target.value)} />
 
         {/* should retain rating */}
-        <label>Rating</label>
+        <label>Rating: </label>
         <input type="number" name="rating" value={rating} onChange={(e) => setRating(e.target.value)} />
 
-        <label>Episodes</label>
+        <label>Episodes: </label>
         <input type="number" name="episodes" value={episodes} onChange={(e) => setEpisodes(e.target.value)} />
 
-        <label>Status</label>
+        <label>Status: </label>
         <input type="list" name="status" value={status} onChange={(e) => setStatus(e.target.value)} />
 
         {/* maybe 2 (type: list) >> season + year */}
-        <label>Premiered</label>
+        <label>Premiered: </label>
         <input type="text" name="premiered" value={premiered} onChange={(e) => setPremiered(e.target.value)} />
 
-        <label>Age rating</label>
+        <label>Age rating: </label>
         <input type="list" name="age rating" value={ageRating} onChange={(e) => setAgeRating(e.target.value)} />
 
-        <label>Studios</label>
+        <label>Studios: </label>
         <input type="text" name="studios" value={studios} onChange={(e) => setStudios(e.target.value)} />
 
         <button type="submit">Save</button>
