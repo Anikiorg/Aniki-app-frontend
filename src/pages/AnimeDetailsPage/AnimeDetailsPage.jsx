@@ -3,6 +3,7 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 
 import AnimeUpdate from "../../components/AnimeUpdate"
+import AnimeDelete from "../../components/AnimeDelete"
 
 function AnimeDetailsPage() {
     const [animeDetails, setAnimeDetails] = useState([])
@@ -21,7 +22,7 @@ function AnimeDetailsPage() {
         .catch((err) => console.log(err))
     }, [])
 
-    const handleUpdate = () => {
+    const handleForm = () => {
         setShowForm(!showForm)
     }
 
@@ -48,10 +49,12 @@ function AnimeDetailsPage() {
             </>
         }
 
-            {/* toggle state variable to show form */}
-            <button onClick={handleUpdate}>Update</button>
-        
-            {showForm && <AnimeUpdate animeId={animeId}/>}
+        {/* toggle state variable to show form */}
+        <button onClick={handleForm}>Update</button>
+
+        <AnimeDelete animeId={animeId}/>
+
+        {showForm && <AnimeUpdate animeId={animeId}/>}
 
        </>
     )
