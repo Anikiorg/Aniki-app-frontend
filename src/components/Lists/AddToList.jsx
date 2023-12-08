@@ -5,7 +5,9 @@ function AddToList(props) {
   const { user } = useContext(AuthContext);
 
   function handleAdd(optionType) {
+    
     switch (optionType) {
+      
       case "FavoritesList":
         axios
           .put(`http://localhost:5005/api/users/${user.userName}`, {id: props.id, listType: "favorites"})
@@ -13,7 +15,8 @@ function AddToList(props) {
               console.log("added")
             })
           .catch((err) => err);
-        break;
+      break;
+
       case "CompletedList":
         axios
           .put(`http://localhost:5005/api/users/${user.userName}`, {id: props.id, listType: "completed"})
@@ -21,7 +24,8 @@ function AddToList(props) {
             console.log("added")
           })
           .catch((err) => err);
-        break;
+      break;
+
       case "CurrentlyWatchingList":
         axios
           .put(
@@ -32,7 +36,8 @@ function AddToList(props) {
             console.log("added")
           })
           .catch((err) => err);
-        break;
+      break;
+
       case "PlanToWatchList":
         axios
           .put(
@@ -43,10 +48,10 @@ function AddToList(props) {
             console.log("added")
           })
           .catch((err) => err);
-        break;
+      break;
 
       default:
-        break;
+      break;
     }
   }
 
