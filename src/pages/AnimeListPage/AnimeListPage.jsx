@@ -43,6 +43,7 @@ function AnimeListPage() {
                         <Link to={`/animes/${anime._id}`}> <button>See more</button> </Link>
                         
                         <AddToList id={anime._id} />
+                        <hr/>
                     </div>
             )})}
         </>
