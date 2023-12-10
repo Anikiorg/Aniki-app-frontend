@@ -21,7 +21,6 @@ function PlanToWatchList() {
 
   return (
     <>
-      <p>
         {planToWatchAnime.map((elm) => {
            return(
             <div key={elm._id}>
@@ -34,7 +33,6 @@ function PlanToWatchList() {
             </div>
                ) 
         })}
-        </p>
     </>
   );
 }

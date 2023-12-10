@@ -21,7 +21,6 @@ function FavoritesList () {
 
   return (
     <>
-      <p>
         {favoriteAnime.map((elm) => {
            return(
             <div key={elm._id}>
@@ -34,7 +33,6 @@ function FavoritesList () {
             </div>
                ) 
         })}
-        </p>
     </>
   );
 }

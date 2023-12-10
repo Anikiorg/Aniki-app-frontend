@@ -22,20 +22,20 @@ function CurrentlyWatchingList() {
     
   return (
     <>
-      <p>
         {currentlyWatchingAnime.map((elm) => {
-           return(
+          return(
+             <>
             <div key={elm._id}>
                <p>{elm.name.nameJP}</p>
                <p>{elm.name.nameEN}</p>
                <p>{elm.imageURL}</p>
                <p>{elm.genre}</p>
                <p>{elm.rating}</p>
-               <hr/>
             </div>
-               ) 
+               <hr/>
+           </>
+           ) 
         })}
-        </p>
     </>
   );
 
