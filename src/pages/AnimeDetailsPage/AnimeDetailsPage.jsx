@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { useParams } from "react-router-dom"
+import axios from "axios"
 
-import AnimeUpdate from "../../components/AnimeUpdate"
-import AnimeDelete from "../../components/AnimeDelete"
+import AnimeUpdate from "../../components/Anime/AnimeUpdate"
+import AnimeDelete from "../../components/Anime/AnimeDelete"
 
 function AnimeDetailsPage() {
     const [animeDetails, setAnimeDetails] = useState([])
@@ -26,7 +26,6 @@ function AnimeDetailsPage() {
     const handleForm = () => {
         setShowForm(!showForm)
     }
-
 
 
     return (

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 
-function CreateAnime () {
+function AnimeCreate () {
 
     const [nameJP, setNameJP] = useState("")
     const [nameEN, setNameEN] = useState("")
@@ -43,19 +43,29 @@ function CreateAnime () {
 return (
     <form onSubmit={handleSubmit}>
         <label>Japanese name: </label>
-        <input type="text" placeholder="Enter japanese title" name="nameJP" value={nameJP} onChange={(e) => setNameJP(e.target.value)}/><br/>
+        <input type="text" placeholder="Enter japanese title" name="nameJP" value={nameJP} onChange={(e) => setNameJP(e.target.value)}/>
+        
+        <br/>
         
         <label>English name: </label>
-        <input type="text" placeholder="Enter english title" name="nameEN" value={nameEN} onChange={(e) => setNameEN(e.target.value)}/><br/>
+        <input type="text" placeholder="Enter english title" name="nameEN" value={nameEN} onChange={(e) => setNameEN(e.target.value)}/>
+        
+        <br/>
         
         <label>Description: </label>
-        <textarea placeholder="Enter description" name="description" value={description} onChange={(e)=> setDescription(e.target.value)}/><br/>
+        <textarea placeholder="Enter description" name="description" value={description} onChange={(e)=> setDescription(e.target.value)}/>
+        
+        <br/>
         
         <label>ImageURL: </label>
-        <input type="text" placeholder="Add imageURGL" name="imageURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)}/><br/>
+        <input type="text" placeholder="Add imageURGL" name="imageURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)}/>
+        
+        <br/>
         
         <label>Episodes: </label>
-        <input type="number" placeholder="Enter number of episodes" mame="episodes" value={episodes} onChange={(e) => setEpisodes(e.target.value)}/><br/>
+        <input type="number" placeholder="Enter number of episodes" mame="episodes" value={episodes} onChange={(e) => setEpisodes(e.target.value)}/>
+        
+        <br/>
         
         <label>Genre: </label>
         <select name="genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
@@ -78,13 +88,16 @@ return (
         <br/>
         
         <label>Premiered: </label>
-        <input type="text" name="premiered" value={premiered} onChange={(e)=> setPremiered(e.target.value)} /><br/>
+        <input type="text" name="premiered" value={premiered} onChange={(e)=> setPremiered(e.target.value)} />
+        
+        <br/>
         
         <label>Studios: </label> 
-        <input type="text" placeholder="Add producing studios" name="studios" value={studios} onChange={(e)=> setStudios(e.target.value)}/><br/>
+        <input type="text" placeholder="Add producing studios" name="studios" value={studios} onChange={(e)=> setStudios(e.target.value)}/>
         
-        <label>Rating: </label>
-        <input type="number" placeholder="Add rating" name="rating" value={rating}onChange={(e) => setRating(e.target.value)}/><br/>
+        <br/>
+        
+        <label>Age rating: </label>
         <select name="ageRating" value={ageRating} onChange={(e)=> setAgeRating(e.target.value)}>
         <option>-- Add age rating --</option>
         <option>E - Everyone / A - All Ages</option>
@@ -101,4 +114,4 @@ return (
 
 }
 
-export default CreateAnime
+export default AnimeCreate

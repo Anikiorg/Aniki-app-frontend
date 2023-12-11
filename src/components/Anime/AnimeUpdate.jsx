@@ -48,37 +48,64 @@ return(
         <label>Japanese name: </label>
         <input type="text" name="nameJP" value={nameJP} onChange={(e) => setNameJP(e.target.value)} />
 
+        <br/>
+
         <label>English name: </label>
         <input type="text" name="nameEN" value={nameEN} onChange={(e) => setNameEN(e.target.value)} />
+
+        <br/>
         
         <label>Description: </label>
         <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
 
+        <br/>
+
         <label>Image URL: </label>
         <input type="text" name="imgURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
+
+        <br/>
 
         <label>Genre: </label>
         <input type="text" name="genre" value={genre} onChange={(e) => setGenre(e.target.value)} />
 
-        {/* should retain rating */}
-        <label>Rating: </label>
-        <input type="number" name="rating" value={rating} onChange={(e) => setRating(e.target.value)} />
+        <br/>
 
         <label>Episodes: </label>
         <input type="number" name="episodes" value={episodes} onChange={(e) => setEpisodes(e.target.value)} />
 
+        <br/>
+
         <label>Status: </label>
-        <input type="list" name="status" value={status} onChange={(e) => setStatus(e.target.value)} />
+        <select name="status" value={status} onChange={(e)=> setStatus(e.target.value)}>
+            <option>-- Select status --</option>
+            <option>Airing Now</option>
+            <option>Finished Airing</option>
+            <option>Upcoming</option>
+        </select>
+
+        <br/>
 
         {/* maybe 2 (type: list) >> season + year */}
         <label>Premiered: </label>
         <input type="text" name="premiered" value={premiered} onChange={(e) => setPremiered(e.target.value)} />
 
+        <br/>
+
         <label>Age rating: </label>
-        <input type="list" name="age rating" value={ageRating} onChange={(e) => setAgeRating(e.target.value)} />
+        <select name="ageRating" value={ageRating} onChange={(e)=> setAgeRating(e.target.value)}>
+        <option>-- Add age rating --</option>
+        <option>E - Everyone / A - All Ages</option>
+        <option>T - Teens, Age 13+</option>
+        <option>OT - Older Teens, Age 16+</option>
+        <option>M - Mature, Age 18+</option>
+        </select>
+
+        <br/>
 
         <label>Studios: </label>
         <input type="text" name="studios" value={studios} onChange={(e) => setStudios(e.target.value)} />
+
+        <br/>
 
         <button type="submit">Save</button>
     </form>

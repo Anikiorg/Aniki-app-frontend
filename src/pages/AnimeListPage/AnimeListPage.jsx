@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import {Link} from "react-router-dom"
 
-import CreateAnime from "../../components/CreateAnime/CreateAnime"
+import AnimeCreate from "../../components/Anime/AnimeCreate"
 import AddToList from "../../components/Lists/AddToList"
 
 function AnimeListPage() {
@@ -27,7 +27,7 @@ function AnimeListPage() {
         <>
             <button onClick={handleToggle}>Add anime</button>
             
-            {toggle &&  <CreateAnime />}
+            {toggle &&  <AnimeCreate />}
             
             {animeList.map((anime)=> {
                 return (
@@ -50,4 +50,4 @@ function AnimeListPage() {
     )
 }
 
-    export default AnimeListPage
+export default AnimeListPage
