@@ -4,6 +4,8 @@ import {Link} from "react-router-dom"
 
 import AnimeCreate from "../../components/Anime/AnimeCreate"
 import AddToList from "../../components/Lists/AddToList"
+import Reviews from "../../components/Reviews"
+import AddReviews from "../../components/AddReviews"
 
 function AnimeListPage() {
     
@@ -43,6 +45,8 @@ function AnimeListPage() {
                         <Link to={`/animes/${anime._id}`}> <button>See more</button> </Link>
                         
                         <AddToList id={anime._id} />
+                        {/*<AddReviews id={anime._id}>*/}
+                        <Reviews id={anime._id}/>
                         <hr/>
                     </div>
             )})}
