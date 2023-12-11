@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-import AnimeUpdate from "../../components/AnimeUpdate";
-import AnimeDelete from "../../components/AnimeDelete";
+import AnimeUpdate from "../../components/Anime/AnimeUpdate";
+import AnimeDelete from "../../components/Anime/AnimeDelete";
 import Reviews from "../../components/Reviews"
 import AddReviews from "../../components/AddReviews"
 
