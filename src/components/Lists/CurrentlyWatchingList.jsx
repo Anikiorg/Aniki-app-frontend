@@ -1,23 +1,27 @@
 import { useContext, useEffect, useState } from "react"
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
+import DeleteFromList from "./DeleteFromList";
 
 function CurrentlyWatchingList() {  
     const [currentlyWatchingAnime, setCurrentlyWatchingAnime] = useState([]);
     const { user } = useContext(AuthContext)
     const userName = user.userName
     console.log(user.userName)
+  function showList() {
 
+    axios
+    .get(`http://localhost:5005/api/users/${userName}`)
+    .then((response) => {
+      console.log("got completed list");
+      setCurrentlyWatchingAnime(response.data[0].currentlyWatchingList);
+    })
+    .catch((err) => err);
+  }
     
   useEffect(() => {
-    axios
-      .get(`http://localhost:5005/api/users/${userName}`)
-      .then((response) => {
-        console.log("got completed list");
-        setCurrentlyWatchingAnime(response.data[0].currentlyWatchingList);
-      })
-      .catch((err) => err);
-    }, []);
+  showList() 
+  }, []);
     console.log(currentlyWatchingAnime)
     
   return (
@@ -32,6 +36,7 @@ function CurrentlyWatchingList() {
                <p>{elm.genre}</p>
                <p>{elm.rating}</p>
             </div>
+           <DeleteFromList id={elm._id} case="currentlyWatching" showList={showList}/>
                <hr/>
            </>
            ) 

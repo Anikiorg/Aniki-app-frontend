@@ -1,17 +1,18 @@
 import axios from "axios"
 import { useState } from "react"
+import { useParams } from "react-router-dom"
 
 
-function AddReviews (props) { 
+function AddReviews () { 
     const [content, setContent] = useState("")
     const author = "anonymous"
-    const animeId = props.id
+    const {animeId} = useParams()
     const reviewObject = {author, content}
 
+    
     const handleSubmit = (e) => {
-        e.preventDefault()
         axios.put(`http://localhost:5005/api/animes/${animeId}`, { id: animeId, reviewObject: reviewObject})
-        .then((response) => {
+        .then(() => {
             console.log("handled submit")
             setContent("")
         })
