@@ -7,9 +7,14 @@ function HomePage() {
     <div>
       <h1>Home page</h1>
     </div>
+    
     <Link to="/animes" >
       <button>All Anime</button>
-      </Link>
+    </Link>
+    
+    <Link to="/manga" >
+      <button>All Manga</button>
+    </Link>
     </>
   );
 }
