@@ -34,7 +34,6 @@ function AnimeListPage() {
 
     useEffect(() => {
         const filtered = [...animeBackup].filter((current) => input ? current.name.nameEN.toLowerCase().includes(input.toLowerCase() ) ||  current.name.nameJP.toLowerCase().includes(input.toLowerCase() ) : current)
-      
         setAnimeList(filtered)     
     }, [ input   ])
     return (
