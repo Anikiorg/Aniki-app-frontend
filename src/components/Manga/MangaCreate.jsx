@@ -1,40 +1,40 @@
 import { useState } from "react"
 import axios from "axios"
 
-function CreateAnime () {
+function MangaCreate () {
 
     const [nameJP, setNameJP] = useState("")
     const [nameEN, setNameEN] = useState("")
     const [description, setDescription] = useState("")
     const [imageURL, setImageURL] = useState("")
-    const [episodes, setEpisodes] = useState("")
+    const [volumes, setVolumes] = useState("")
     const [genre, setGenre] = useState("")
     const [status, setStatus] = useState("")
-    const [premiered, setPremiered] = useState("")
-    const [studios, setStudios] = useState("")
+    const [published, setPublished] = useState("")
+    const [authors, setAuthors] = useState("")
     const [rating, setRating] = useState("")
     const [ageRating, setAgeRating] = useState("")
     
     const name = {nameJP, nameEN}
     
-    const createdAnime = {
+    const createdManga = {
         name,
         description,
         imageURL,
-        episodes,
+        volumes,
         genre,
         status,
-        premiered,
-        studios,
+        published,
+        authors,
         rating,
         ageRating
     }
         
     const handleSubmit = () => {
 
-        axios.post("http://localhost:5005/api/animes", createdAnime)
+        axios.post("http://localhost:5005/api/manga", createdManga)
         .then(() => {
-            console.log(createdAnime)
+            console.log(createdManga)
             console.log("Anime created")
         })
         .catch((err) => console.log(err))
@@ -54,8 +54,8 @@ return (
         <label>ImageURL: </label>
         <input type="text" placeholder="Add imageURGL" name="imageURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)}/><br/>
         
-        <label>Episodes: </label>
-        <input type="number" placeholder="Enter number of episodes" mame="episodes" value={episodes} onChange={(e) => setEpisodes(e.target.value)}/><br/>
+        <label>Volumes: </label>
+        <input type="number" placeholder="Enter number of volumes" mame="volumes" value={volumes} onChange={(e) => setVolumes(e.target.value)}/><br/>
         
         <label>Genre: </label>
         <select name="genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
@@ -77,12 +77,15 @@ return (
         
         <br/>
         
-        <label>Premiered: </label>
-        <input type="text" name="premiered" value={premiered} onChange={(e)=> setPremiered(e.target.value)} /><br/>
+        <label>Published: </label>
+        <input type="text" name="published" value={published} onChange={(e)=> setPublished(e.target.value)} /><br/>
         
-        <label>Studios: </label> 
-        <input type="text" placeholder="Add producing studios" name="studios" value={studios} onChange={(e)=> setStudios(e.target.value)}/><br/>
+        <label>Authors: </label> 
+        <input type="text" placeholder="Add authors" name="authors" value={authors} onChange={(e)=> setAuthors(e.target.value)}/><br/>
         
+
+        {/* CHANGE RATING BRUH */}
+
         <label>Rating: </label>
         <input type="number" placeholder="Add rating" name="rating" value={rating}onChange={(e) => setRating(e.target.value)}/><br/>
         <select name="ageRating" value={ageRating} onChange={(e)=> setAgeRating(e.target.value)}>
@@ -101,4 +104,4 @@ return (
 
 }
 
-export default CreateAnime
+export default MangaCreate
