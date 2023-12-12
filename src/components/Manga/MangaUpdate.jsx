@@ -37,7 +37,7 @@ function MangaUpdate () {
 
     const handleSubmit = () => {
 
-        axios.put(`http://localhost:5005/api/manga/${mangaId}`, updatedManga)
+        axios.put(`${process.env.REACT_APP_API_URL}/api/manga/${mangaId}`, updatedManga)
         .then(() => {
             console.log("manga updated");
         })

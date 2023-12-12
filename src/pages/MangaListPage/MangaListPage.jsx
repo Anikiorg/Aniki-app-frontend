@@ -15,7 +15,7 @@ function MangaListPage() {
     }
    
     useEffect(() => { 
-        axios.get("http://localhost:5005/api/manga")
+        axios.get(`${process.env.REACT_APP_API_URL}/api/manga`)
             .then((response) => {
                 setMangaList(response.data)
                 console.log(mangaList);

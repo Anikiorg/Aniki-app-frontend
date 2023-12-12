@@ -10,7 +10,7 @@ function AddToList(props) {
       
       case "FavoritesList":
         axios
-          .put(`http://localhost:5005/api/users/${user.userName}`, {id: props.id, listType: "favorites"})
+          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "favorites"})
           .then((response) => {
               console.log("added")
             })
@@ -19,7 +19,7 @@ function AddToList(props) {
 
       case "CompletedList":
         axios
-          .put(`http://localhost:5005/api/users/${user.userName}`, {id: props.id, listType: "completed"})
+          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "completed"})
           .then((response) => {
             console.log("added")
           })
@@ -29,7 +29,7 @@ function AddToList(props) {
       case "CurrentlyWatchingList":
         axios
           .put(
-            `http://localhost:5005/api/users/${user.userName}`, {id: props.id, listType: "currently watching"},
+            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "currently watching"},
             user.currentlyWatchingList
           )
           .then((response) => {
@@ -41,7 +41,7 @@ function AddToList(props) {
       case "PlanToWatchList":
         axios
           .put(
-            `http://localhost:5005/api/users/${user.userName}`, {id: props.id, listType: "plan to watch"},
+            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "plan to watch"},
             user.planToWatchList
           )
           .then((response) => {

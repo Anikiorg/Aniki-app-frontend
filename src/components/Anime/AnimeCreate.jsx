@@ -32,7 +32,7 @@ function AnimeCreate () {
         
     const handleSubmit = () => {
 
-        axios.post("http://localhost:5005/api/animes", createdAnime)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime)
         .then(() => {
             console.log(createdAnime)
             console.log("Anime created")

@@ -17,7 +17,7 @@ function AnimeListPage() {
     }
     
     useEffect(() => { 
-    axios.get("http://localhost:5005/api/animes")
+    axios.get(`${process.env.REACT_APP_API_URL}/api/animes`)
     .then((response) => {
         setAnimeList(response.data)
         setAnimeBackup(response.data)   

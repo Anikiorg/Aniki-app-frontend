@@ -32,7 +32,7 @@ function MangaCreate () {
         
     const handleSubmit = () => {
 
-        axios.post("http://localhost:5005/api/manga", createdManga)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/manga`, createdManga)
         .then(() => {
             console.log(createdManga)
             console.log("Anime created")

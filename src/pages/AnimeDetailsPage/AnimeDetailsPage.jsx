@@ -16,7 +16,7 @@ function AnimeDetailsPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/api/animes/${animeId}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/animes/${animeId}`)
       .then((res) => {
         setAnimeDetails(res.data);
       })

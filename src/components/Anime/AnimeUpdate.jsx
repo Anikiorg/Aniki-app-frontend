@@ -34,7 +34,7 @@ function AnimeUpdate (props) {
 
     const handleSubmit = () => {
 
-        axios.put(`http://localhost:5005/api/animes/${props.animeId}`, updatedAnime)
+        axios.put(`${process.env.REACT_APP_API_URL}/api/animes/${props.animeId}`, updatedAnime)
         .then(() => {
             console.log("anime updated");
         })
