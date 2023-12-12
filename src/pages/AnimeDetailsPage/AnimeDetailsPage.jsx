@@ -6,6 +6,7 @@ import AnimeUpdate from "../../components/Anime/AnimeUpdate";
 import AnimeDelete from "../../components/Anime/AnimeDelete";
 import Reviews from "../../components/Reviews"
 import AddReviews from "../../components/AddReviews"
+import AddToList from "../../components/Lists/AddToList";
 
 function AnimeDetailsPage() {
   const [animeDetails, setAnimeDetails] = useState([]);
@@ -54,7 +55,7 @@ function AnimeDetailsPage() {
 
       {/* toggle state variable to show form */}
       <button onClick={handleForm}>Update</button>
-
+        <AddToList id={animeDetails._id}/>
       <AnimeDelete animeId={animeId} />
       <AddReviews />
       <Reviews />
