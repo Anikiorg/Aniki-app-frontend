@@ -13,9 +13,8 @@ function AnimeCreate () {
     const [premiered, setPremiered] = useState("")
     const [studios, setStudios] = useState("")
     const [ageRating, setAgeRating] = useState("")
-    const storedToken = localStorage.getItem("authToken");
-    
     const name = {nameJP, nameEN}
+    const storedToken = localStorage.getItem("authToken");
     
     const createdAnime = {
         name,
@@ -31,8 +30,7 @@ function AnimeCreate () {
         
     const handleSubmit = () => {
 
-        axios.post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime, { headers: { Authorization: `Bearer ${storedToken}` }
-    })
+        axios.post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
             console.log(createdAnime)
             console.log("Anime created")

@@ -16,8 +16,8 @@ function AnimeUpdate (props) {
     const [studios, setStudios] = useState("")
     const [rating, setRating] = useState("")
     const [ageRating, setAgeRating] = useState("")
-
     const name = {nameEN, nameJP}
+    const storedToken = localStorage.getItem("authToken");
 
     const updatedAnime = {
         name,
@@ -34,7 +34,7 @@ function AnimeUpdate (props) {
 
     const handleSubmit = () => {
 
-        axios.put(`${process.env.REACT_APP_API_URL}/api/animes/${props.animeId}`, updatedAnime)
+        axios.put(`${process.env.REACT_APP_API_URL}/api/animes/${props.animeId}`, updatedAnime, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
             console.log("anime updated");
         })
