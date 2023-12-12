@@ -11,7 +11,7 @@ function FavoritesList () {
 
   function showList() {
     axios
-    .get(`http://localhost:5005/api/users/${userName}`)
+    .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
       console.log("got completed list");
       setFavoriteAnime(response.data[0].favoritesList);

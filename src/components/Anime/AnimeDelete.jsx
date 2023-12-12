@@ -9,7 +9,7 @@ function AnimeDelete (props) {
     const handleDelete = (e) => {
         e.preventDefault()
 
-        axios.delete(`http://localhost:5005/api/animes/${props.animeId}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/animes/${props.animeId}`)
         .then(() => {
             console.log("anime deleted");
             navigate("/animes")

@@ -13,7 +13,7 @@ function MangaDetailsPage() {
     const {mangaId} = useParams()
     
     useEffect(()=> {
-        axios.get(`http://localhost:5005/api/manga/${mangaId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/manga/${mangaId}`)
         .then((res) => {
             setMangaDetails(res.data)
         })

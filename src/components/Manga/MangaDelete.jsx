@@ -10,7 +10,7 @@ function MangaDelete () {
     const handleDelete = (e) => {
         e.preventDefault()
 
-        axios.delete(`http://localhost:5005/api/manga/${mangaId}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/manga/${mangaId}`)
         .then(() => {
             console.log("manga deleted");
             navigate("/manga")

@@ -12,7 +12,6 @@ function AnimeCreate () {
     const [status, setStatus] = useState("")
     const [premiered, setPremiered] = useState("")
     const [studios, setStudios] = useState("")
-    const [rating, setRating] = useState("")
     const [ageRating, setAgeRating] = useState("")
     
     const name = {nameJP, nameEN}
@@ -26,13 +25,12 @@ function AnimeCreate () {
         status,
         premiered,
         studios,
-        rating,
         ageRating
     }
         
     const handleSubmit = () => {
 
-        axios.post("http://localhost:5005/api/animes", createdAnime)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime)
         .then(() => {
             console.log(createdAnime)
             console.log("Anime created")

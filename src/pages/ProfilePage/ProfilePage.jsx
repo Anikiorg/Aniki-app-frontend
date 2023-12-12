@@ -1,6 +1,8 @@
 import { AuthContext } from "../../context/auth.context";
 import { useContext, useState } from "react";
+
 import "./ProfilePage.css";
+
 import CompletedList from "../../components/Lists/CompletedList";
 import PlanToWatchList from "../../components/Lists/PlanToWatchList";
 import CurrentlyWatchingList from "../../components/Lists/CurrentlyWatchingList";

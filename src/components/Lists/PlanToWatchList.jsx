@@ -1,47 +1,52 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 
 function PlanToWatchList() {
-    const [planToWatchAnime, setPlanToWatchAnime] = useState([]);
-  const { user } = useContext(AuthContext)
-  const userName = user.userName
-  console.log(user.userName)
-function showList() {
+  const [planToWatchAnime, setPlanToWatchAnime] = useState([]);
+  const { user } = useContext(AuthContext);
+  const userName = user.userName;
+  console.log(user.userName);
 
-  axios
-  .get(`http://localhost:5005/api/users/${userName}`)
-  .then((response) => {
-    console.log("got completed list");
-    setPlanToWatchAnime(response.data[0].planToWatchList);
-  })
-  .catch((err) => err);
-}
+  function showList() {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
+      .then((response) => {
+        console.log("got completed list");
+        setPlanToWatchAnime(response.data[0].planToWatchList);
+      })
+      .catch((err) => err);
+  }
+
   useEffect(() => {
-    showList()
+    showList();
   }, []);
-    console.log(planToWatchAnime)
+  console.log(planToWatchAnime);
 
   return (
     <>
-        {planToWatchAnime.map((elm) => {
-           return(
-            <>
+      {planToWatchAnime.map((elm) => {
+        return (
+          <>
             <div key={elm._id}>
-               <p>{elm.name.nameJP}</p>
-               <p>{elm.name.nameEN}</p>
-               <p>{elm.imageURL}</p>
-               <p>{elm.genre}</p>
-               <p>{elm.rating}</p>
-            </div>            
-            <DeleteFromList id={elm._id} case="planToWatch" showList= {showList}/>
-               <hr/>
-            </>   
-            ) 
-        })}
+              <p>{elm.name.nameJP}</p>
+              <p>{elm.name.nameEN}</p>
+              <p>{elm.imageURL}</p>
+              <p>{elm.genre}</p>
+              <p>{elm.rating}</p>
+            </div>
+            <DeleteFromList
+              id={elm._id}
+              case="planToWatch"
+              showList={showList}
+            />
+            <hr />
+          </>
+        );
+      })}
     </>
   );
 }
 
-export default PlanToWatchList
+export default PlanToWatchList;

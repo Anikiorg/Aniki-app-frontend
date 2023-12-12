@@ -11,7 +11,7 @@ function AddReviews () {
 
     
     const handleSubmit = (e) => {
-        axios.put(`http://localhost:5005/api/animes/${animeId}`, { id: animeId, reviewObject: reviewObject})
+        axios.put(`${process.env.REACT_APP_API_URL}/api/animes/${animeId}`, { id: animeId, reviewObject: reviewObject})
         .then(() => {
             console.log("handled submit")
             setContent("")

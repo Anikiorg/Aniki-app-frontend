@@ -8,7 +8,7 @@ function Reviews () {
     const {animeId} = useParams()
 
     useEffect(()=> {
-        axios.get(`http://localhost:5005/api/animes/${animeId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/animes/${animeId}`)
         .then((response)=> {
            setReviews(response.data.reviews) 
            console.log(reviews)

@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/auth.context";
 function DeleteFromList(props) {
     const {user} = useContext(AuthContext)
     const handleDelete = () => {
-            axios.put(`http://localhost:5005/api/users/${user.userName}/reviews`, {animeId: props.id, case: props.case})
+            axios.put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/reviews`, {animeId: props.id, case: props.case})
             .then(()=> {
                 console.log("anime id and list case sent")
                 props.showList()
