@@ -9,7 +9,6 @@ function AnimeListPage() {
   const [animeBackup, setAnimeBackup] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [input, setInput] = useState("");
-  const storedToken = localStorage.getItem("authToken");
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -17,8 +16,7 @@ function AnimeListPage() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/animes`, { headers: { Authorization: `Bearer ${storedToken}` }
-      })
+      .get(`${process.env.REACT_APP_API_URL}/api/animes`)
       .then((response) => {
         setAnimeList(response.data);
         setAnimeBackup(response.data);
