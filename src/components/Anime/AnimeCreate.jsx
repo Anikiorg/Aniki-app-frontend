@@ -12,7 +12,6 @@ function AnimeCreate () {
     const [status, setStatus] = useState("")
     const [premiered, setPremiered] = useState("")
     const [studios, setStudios] = useState("")
-    const [rating, setRating] = useState("")
     const [ageRating, setAgeRating] = useState("")
     
     const name = {nameJP, nameEN}
@@ -26,7 +25,6 @@ function AnimeCreate () {
         status,
         premiered,
         studios,
-        rating,
         ageRating
     }
         
