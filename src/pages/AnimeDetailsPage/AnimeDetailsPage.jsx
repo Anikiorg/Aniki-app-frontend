@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 
 import AnimeUpdate from "../../components/Anime/AnimeUpdate";
 import AnimeDelete from "../../components/Anime/AnimeDelete";
-import Reviews from "../../components/Reviews/Reviews";
-import AddReviews from "../../components/Reviews/AddReviews";
+import Reviews from "../../components/Reviews";
+import AddReviews from "../../components/AddReviews";
 import AddToList from "../../components/Lists/AddToList";
 import { AuthContext } from "../../context/auth.context";
 
