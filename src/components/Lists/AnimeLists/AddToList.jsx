@@ -30,7 +30,7 @@ function AddToList(props) {
       case "CurrentlyWatchingList":
         axios
           .put(
-            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`, {id: props.id, listType: "currently watching"}, { headers: { Authorization: `Bearer ${storedToken}` }})
+            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`, {id: props.id, listType: "currentlyWatching"}, { headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
             console.log("added")
           })
