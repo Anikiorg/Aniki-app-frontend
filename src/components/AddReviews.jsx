@@ -1,17 +1,21 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useParams } from "react-router-dom"
+import { AuthContext } from "../context/auth.context"
 
 
 function AddReviews () { 
-    const [content, setContent] = useState("")
-    const author = "anonymous"
-    const {animeId} = useParams()
-    const reviewObject = {author, content}
+    
+    const {user} = useContext(AuthContext)
+    console.log(user);
 
+    const storedToken = localStorage.getItem("authToken");
+
+    const [content, setContent] = useState("")    
+    const {animeId} = useParams()
     
     const handleSubmit = (e) => {
-        axios.put(`${process.env.REACT_APP_API_URL}/api/animes/${animeId}`, { id: animeId, reviewObject: reviewObject})
+        axios.put(`${process.env.REACT_APP_API_URL}/api/animes/${animeId}`, {content}, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
             console.log("handled submit")
             setContent("")
