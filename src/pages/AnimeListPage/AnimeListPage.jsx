@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AnimeCreate from "../../components/Anime/AnimeCreate";
-import AddToList from "../../components/Lists/AddToList";
+import AddToList from "../../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../../context/auth.context";
 function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
@@ -28,11 +28,12 @@ function AnimeListPage() {
       .catch((error) => console.log(error));
   }, []);
 
+
   const handleChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
   };
-
+  
   useEffect(() => {
     const filtered = [...animeBackup].filter((current) =>
       input
@@ -42,6 +43,7 @@ function AnimeListPage() {
     );
     setAnimeList(filtered);
   }, [input]);
+
 
   const handleSelect = (e) => {
     console.log(e.target.value);

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { AuthContext } from "../../context/auth.context";
+import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 
-function PlanToWatchList() {
-  const [planToWatchAnime, setPlanToWatchAnime] = useState([]);
+function PlanToReadList() {
+  const [planToRead, setPlanToRead] = useState([]);
   const { user } = useContext(AuthContext);
   const userName = user.userName;
   console.log(user.userName);
@@ -13,8 +13,8 @@ function PlanToWatchList() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
       .then((response) => {
-        console.log("sent request to get plan to watch list");
-        setPlanToWatchAnime(response.data.animeLists.planToWatch);
+        console.log("sent request to get plan to read list");
+        setPlanToRead(response.data.mangaLists.planToRead);
       })
       .catch((err) => err);
   }
@@ -22,7 +22,7 @@ function PlanToWatchList() {
   useEffect(() => {
     showList();
   }, []);
-  console.log(planToWatchAnime);
+  console.log(planToRead);
 
   return (
     <>
@@ -38,7 +38,7 @@ function PlanToWatchList() {
             </div>
             <DeleteFromList
               id={elm._id}
-              case="planToWatch"
+              case="planToRead"
               showList={showList}
             />
             <hr />
@@ -49,4 +49,4 @@ function PlanToWatchList() {
   );
 }
 
-export default PlanToWatchList;
+export default PlanToReadList;

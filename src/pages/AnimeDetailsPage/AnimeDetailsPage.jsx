@@ -6,7 +6,7 @@ import AnimeUpdate from "../../components/Anime/AnimeUpdate";
 import AnimeDelete from "../../components/Anime/AnimeDelete";
 import Reviews from "../../components/Reviews";
 import AddReviews from "../../components/AddReviews";
-import AddToList from "../../components/Lists/AddToList";
+import AddToList from "../../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../../context/auth.context";
 
 function AnimeDetailsPage() {

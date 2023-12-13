@@ -3,20 +3,21 @@ import { useContext, useState } from "react";
 
 import "./ProfilePage.css";
 
-import CompletedList from "../../components/Lists/CompletedList";
-import PlanToWatchList from "../../components/Lists/PlanToWatchList";
-import CurrentlyWatchingList from "../../components/Lists/CurrentlyWatchingList";
-import FavoritesList from "../../components/Lists/FavoritesList";
+import CompletedList from "../../components/Lists/AnimeLists/CompletedList";
+import PlanToWatchList from "../../components/Lists/AnimeLists/PlanToWatchList";
+import CurrentlyWatchingList from "../../components/Lists/AnimeLists/CurrentlyWatchingList";
+import FavoritesList from "../../components/Lists/AnimeLists/FavoritesList";
 
 function ProfilePage() {
   const { user } = useContext(AuthContext);
-  const [toggleFavoritesList, setToggleFavoritesList] = useState(false);
+  const [toggleFavoritesList, setToggleFavoritesList] = useState(true);
   const [toggleCompletedList, setToggleCompletedList] = useState(false);
   const [toggleCurrentlyWatchingList, setToggleCurrentlyWatchingList] =
     useState(false);
   const [togglePlanToWatchList, setTogglePlanToWatchList] = useState(false);
 
   function handleToggle(optionType) {
+    
     setToggleFavoritesList(false);
     setToggleCompletedList(false);
     setToggleCurrentlyWatchingList(false);
@@ -47,41 +48,48 @@ function ProfilePage() {
         <h2>{user.userName}</h2>
         <p>{user.email}</p>
       </div>
-      <button>Edit profile</button>
+      <>
+        <button
+          onClick={() => {
+            handleToggle("FavoriteList");
+          }}
+        >
+          Favorites
+        </button>
 
-      <button
-        onClick={() => {
-          handleToggle("FavoriteList");
-        }}
-      >
-        Favorites
-      </button>
-      <button
-        onClick={() => {
-          handleToggle("CompletedList");
-        }}
-      >
-        Completed
-      </button>
-      <button
-        onClick={() => {
-          handleToggle("CurrentlyWatchingList");
-        }}
-      >
-        Currently watching
-      </button>
-      <button
-        onClick={() => {
-          handleToggle("PlanToWatchList");
-        }}
-      >
-        Plan to watch
-      </button>
+        <button
+          onClick={() => {
+            handleToggle("CompletedList");
+          }}
+        >
+          Completed
+        </button>
+        <button
+          onClick={() => {
+            handleToggle("CurrentlyWatchingList");
+          }}
+        >
+          Currently watching
+        </button>
+        <button
+          onClick={() => {
+            handleToggle("PlanToWatchList");
+          }}
+        >
+          Plan to watch
+        </button>
 
-      {toggleFavoritesList && <FavoritesList />}
-      {toggleCompletedList && <CompletedList />}
-      {toggleCurrentlyWatchingList && <CurrentlyWatchingList />}
-      {togglePlanToWatchList && <PlanToWatchList />}
+        {toggleFavoritesList && <FavoritesList />}
+        {toggleCompletedList && <CompletedList />}
+        {toggleCurrentlyWatchingList && <CurrentlyWatchingList />}
+        {togglePlanToWatchList && <PlanToWatchList />}
+      
+     
+      </>
+      <>
+      </>
+
+
     </>
   );
 }

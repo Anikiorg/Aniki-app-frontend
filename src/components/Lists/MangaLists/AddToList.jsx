@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
+import { AuthContext } from "../../../context/auth.context";
 import axios from "axios";
 function AddToList(props) {
   const { user } = useContext(AuthContext);
@@ -11,7 +11,7 @@ function AddToList(props) {
       
       case "FavoritesList":
         axios
-          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "favorites"}, { headers: { Authorization: `Bearer ${storedToken}` }})
+          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/mangaadd`, {id: props.id, listType: "favorites"}, { headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
               console.log("added")
             })
@@ -20,7 +20,7 @@ function AddToList(props) {
 
       case "CompletedList":
         axios
-          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "completed"}, { headers: { Authorization: `Bearer ${storedToken}` }})
+          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/mangaadd`, {id: props.id, listType: "completed"}, { headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
             console.log("added")
           })
@@ -30,7 +30,7 @@ function AddToList(props) {
       case "CurrentlyWatchingList":
         axios
           .put(
-            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "currently watching"}, { headers: { Authorization: `Bearer ${storedToken}` }})
+            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/mangaadd`, {id: props.id, listType: "currently reading"}, { headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
             console.log("added")
           })
@@ -40,7 +40,7 @@ function AddToList(props) {
       case "PlanToWatchList":
         axios
           .put(
-            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "plan to watch"},{ headers: { Authorization: `Bearer ${storedToken}` }})
+            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/mangaadd`, {id: props.id, listType: "plan to read"},{ headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
             console.log("added")
           })
@@ -70,14 +70,14 @@ function AddToList(props) {
       </button>
       <button
         onClick={() => {
-          handleAdd("CurrentlyWatchingList");
+          handleAdd("CurrentlyReadingList");
         }}
       >
         Add to Currently Watching
       </button>
       <button
         onClick={() => {
-          handleAdd("PlanToWatchList");
+          handleAdd("PlanToReadList");
         }}
       >
         Add to Plan To Watch
