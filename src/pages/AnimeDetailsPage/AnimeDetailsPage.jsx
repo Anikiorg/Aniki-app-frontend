@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 import AnimeUpdate from "../../components/Anime/AnimeUpdate";
 import AnimeDelete from "../../components/Anime/AnimeDelete";
-import Reviews from "../../components/Reviews"
-import AddReviews from "../../components/AddReviews"
+import Reviews from "../../components/Reviews/Reviews";
+import AddReviews from "../../components/Reviews/AddReviews";
 import AddToList from "../../components/Lists/AddToList";
+import { AuthContext } from "../../context/auth.context";
 
 function AnimeDetailsPage() {
   const [animeDetails, setAnimeDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-
   const { animeId } = useParams();
-
+  const { user } = useContext(AuthContext);
+  
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/animes/${animeId}`)
@@ -26,6 +27,7 @@ function AnimeDetailsPage() {
       })
       .catch((err) => console.log(err));
   }, []);
+
 
   const handleForm = () => {
     setShowForm(!showForm);
@@ -51,15 +53,18 @@ function AnimeDetailsPage() {
           <p>{animeDetails.reviews.content}</p>
         </>
       )}
-      
 
       {/* toggle state variable to show form */}
-      <button onClick={handleForm}>Update</button>
-        <AddToList id={animeDetails._id}/>
-      <AnimeDelete animeId={animeId} />
-      <AddReviews />
+      {(user && user.typeOfUser === "admin") && <button onClick={handleForm}>Update</button>}
+
+      {(user && user.typeOfUser === "admin") && <AnimeDelete animeId={animeId} />}
+
+
+      {showForm && <AnimeUpdate animeDetails={animeDetails} />}
+      <AddToList id={animeDetails._id} />
+      {user && <AddReviews />}
+
       <Reviews />
-      {showForm && <AnimeUpdate animeId={animeId} />}
     </>
   );
 }

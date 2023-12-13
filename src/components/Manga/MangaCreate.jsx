@@ -14,9 +14,9 @@ function MangaCreate () {
     const [authors, setAuthors] = useState("")
     const [rating, setRating] = useState("")
     const [ageRating, setAgeRating] = useState("")
-    
     const name = {nameJP, nameEN}
-    
+    const storedToken = localStorage.getItem("authToken");
+
     const createdManga = {
         name,
         description,
@@ -32,10 +32,10 @@ function MangaCreate () {
         
     const handleSubmit = () => {
 
-        axios.post(`${process.env.REACT_APP_API_URL}/api/manga`, createdManga)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/manga`, createdManga, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
             console.log(createdManga)
-            console.log("Anime created")
+            console.log("Manga created")
         })
         .catch((err) => console.log(err))
     }
@@ -70,8 +70,8 @@ return (
         <label>Status: </label>
         <select name="status" value={status} onChange={(e)=> setStatus(e.target.value)}>
             <option>-- Select status --</option>
-            <option>Airing Now</option>
-            <option>Finished Airing</option>
+            <option>Publishing</option>
+            <option>Finished publishing</option>
             <option>Upcoming</option>
         </select>
         

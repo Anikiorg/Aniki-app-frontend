@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 
 import MangaDelete from "../../components/Manga/MangaDelete"
 import MangaUpdate from "../../components/Manga/MangaUpdate"
+import { AuthContext } from "../../context/auth.context";
 
 function MangaDetailsPage() {
     const [mangaDetails, setMangaDetails] = useState([])
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)
-    
+    const { user } = useContext(AuthContext);
     const {mangaId} = useParams()
     
     useEffect(()=> {
@@ -50,9 +51,8 @@ function MangaDetailsPage() {
         }
 
         {/* toggle state variable to show form */}
-        <button onClick={handleForm}>Update</button>
-
-        <MangaDelete mangaId={mangaId}/>
+        {(user && user.typeOfUser === "admin") && <button onClick={handleForm}>Update</button>}
+        {(user && user.typeOfUser === "admin") && <MangaDelete mangaId={mangaId}/>}
 
         {showForm && <MangaUpdate mangaId={mangaId}/>}
 

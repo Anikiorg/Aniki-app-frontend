@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AnimeCreate from "../../components/Anime/AnimeCreate";
 import AddToList from "../../components/Lists/AddToList";
-
+import { AuthContext } from "../../context/auth.context";
 function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
   const [animeBackup, setAnimeBackup] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [input, setInput] = useState("");
+  const { user } = useContext(AuthContext);
 
+
+  
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -72,7 +75,7 @@ function AnimeListPage() {
 
   return (
     <>
-      <button onClick={handleToggle}>Add anime</button>
+      {(user && user.typeOfUser === "admin") && <button onClick={handleToggle}>Add anime</button>}
       {toggle && <AnimeCreate />}
       <br />
       <input

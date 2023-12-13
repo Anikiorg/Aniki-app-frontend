@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import {Link} from "react-router-dom"
 
 import MangaCreate from "../../components/Manga/MangaCreate"
-import AddToList from "../../components/Lists/AddToList"
+import { AuthContext } from "../../context/auth.context";
 
 function MangaListPage() {
     
     const [mangaList, setMangaList] = useState([])
     const [toggle, setToggle] = useState(false)
-    
+    const { user } = useContext(AuthContext);
+
+
+
     const handleToggle = () => {
         setToggle(!toggle)
     }
@@ -25,7 +28,7 @@ function MangaListPage() {
     
     return (
         <>
-            <button onClick={handleToggle}>Add manga</button>
+            {(user && user.typeOfUser === "admin" )&& <button onClick={handleToggle}>Add manga</button>}
             
             {toggle &&  <MangaCreate />}
             
@@ -41,8 +44,6 @@ function MangaListPage() {
                         <p>{manga.rating}</p>
                         
                         <Link to={`/manga/${manga._id}`}> <button>See more</button> </Link>
-
-                        <AddToList id={manga._id} />
                         <hr/>
                     </div>
             )})}
