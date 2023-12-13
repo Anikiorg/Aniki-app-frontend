@@ -7,8 +7,9 @@ import { AuthContext } from "../../../context/auth.context";
 function DeleteFromList(props) {
     const storedToken = localStorage.getItem("authToken");
     const {user} = useContext(AuthContext)
+    console.log("I AM HERE:", props.animeId)
     const handleDelete = () => {
-            axios.put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeremove`, {Id: props.id, case: props.case}, { headers: { Authorization: `Bearer ${storedToken}` }})
+            axios.put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeremove`, {animeId: props.animeId, case: props.case}, { headers: { Authorization: `Bearer ${storedToken}` }})
             .then(()=> {
                 console.log("sent request to delete anime from list")
                 props.showList()

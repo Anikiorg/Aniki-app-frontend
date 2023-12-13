@@ -36,7 +36,7 @@ function PlanToWatchAnimeList() {
               <p>{elm.genre}</p>
               <p>{elm.rating}</p>
             </div>
-            <DeleteFromList id={elm._id} case="planToWatch" showList={showList}/>
+            <DeleteFromList animeId={elm._id} case="planToWatch" showList={showList}/>
             <hr />
           </div>
         );

@@ -169,7 +169,7 @@ let filteredArray;
           <option value="Romance">Romance</option>
           <option value="Sci-Fi">Sci-Fi</option>
           <option value="Sports">Sports</option>
-          <option value="Supernatural">Shounen</option>
+          <option value="Supernatural">Supernatural</option>
           <option value="Suspense">Suspense</option>
           <option value="Gore">Gore</option>
         </select>

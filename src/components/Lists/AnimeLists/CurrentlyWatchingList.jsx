@@ -37,7 +37,7 @@ function CurrentlyWatchingAnimeList() {
                <p>{elm.genre}</p>
                <p>{elm.rating}</p>
             </div>
-           <DeleteFromList case="currentlyWatching" showList={showList}/>
+           <DeleteFromList animeId={elm._id} case="currentlyWatching" showList={showList}/>
                <hr/>
            </div>
            ) 
