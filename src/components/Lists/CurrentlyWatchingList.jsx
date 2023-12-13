@@ -13,8 +13,8 @@ function CurrentlyWatchingList() {
     axios
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
-      console.log("got completed list");
-      setCurrentlyWatchingAnime(response.data[0].currentlyWatchingList);
+      console.log("sent request to get currently watching list");
+      setCurrentlyWatchingAnime(response.data.animeLists.watching);
     })
     .catch((err) => err);
   }

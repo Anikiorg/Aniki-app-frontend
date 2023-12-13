@@ -12,8 +12,8 @@ function CompletedList() {
     axios
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
-      console.log("got completed list");
-      setCompletedAnime(response.data[0].completedList);
+      console.log("sent request to get completed list");
+      setCompletedAnime(response.data.animeLists.completed);
     })
     .catch((err) => err);
   }

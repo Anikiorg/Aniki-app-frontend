@@ -10,7 +10,7 @@ function DeleteFromList(props) {
     const handleDelete = () => {
             axios.put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/pull`, {animeId: props.id, case: props.case}, { headers: { Authorization: `Bearer ${storedToken}` }})
             .then(()=> {
-                console.log("anime id and list case sent")
+                console.log("sent request to delete anime from list")
                 props.showList()
             })
             .catch((err)=> err)

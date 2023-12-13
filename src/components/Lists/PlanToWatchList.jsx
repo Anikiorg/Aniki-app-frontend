@@ -13,8 +13,8 @@ function PlanToWatchList() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
       .then((response) => {
-        console.log("got completed list");
-        setPlanToWatchAnime(response.data[0].planToWatchList);
+        console.log("sent request to get plan to watch list");
+        setPlanToWatchAnime(response.data.animeLists.planToWatch);
       })
       .catch((err) => err);
   }

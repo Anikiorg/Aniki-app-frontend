@@ -4,13 +4,14 @@ import axios from "axios";
 function AddToList(props) {
   const { user } = useContext(AuthContext);
 
+  const storedToken = localStorage.getItem("authToken");
   function handleAdd(optionType) {
     
     switch (optionType) {
       
       case "FavoritesList":
         axios
-          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "favorites"})
+          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "favorites"}, { headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
               console.log("added")
             })
@@ -19,7 +20,7 @@ function AddToList(props) {
 
       case "CompletedList":
         axios
-          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "completed"})
+          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "completed"}, { headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
             console.log("added")
           })
@@ -29,9 +30,7 @@ function AddToList(props) {
       case "CurrentlyWatchingList":
         axios
           .put(
-            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "currently watching"},
-            user.currentlyWatchingList
-          )
+            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "currently watching"}, { headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
             console.log("added")
           })
@@ -41,9 +40,7 @@ function AddToList(props) {
       case "PlanToWatchList":
         axios
           .put(
-            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}`, {id: props.id, listType: "plan to watch"},
-            user.planToWatchList
-          )
+            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/push`, {id: props.id, listType: "plan to watch"},{ headers: { Authorization: `Bearer ${storedToken}` }})
           .then((response) => {
             console.log("added")
           })

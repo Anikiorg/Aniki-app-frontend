@@ -13,8 +13,8 @@ function FavoritesList () {
     axios
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
-      console.log("got completed list");
-      setFavoriteAnime(response.data[0].favoritesList);
+      console.log("sent request to get favorites list");
+      setFavoriteAnime(response.data.animeLists.favorites);
     })
     .catch((err) => err);
   }
