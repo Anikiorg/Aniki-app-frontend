@@ -52,15 +52,74 @@ let filteredArray;
         });
         setAnimeList(filteredArray);
         break;
-      case "Slice of life":
+      case "Adventure":
         filteredArray = animeBackup.filter((anime) => {
-          return anime.genre.includes("Slice of life");
+          return anime.genre.includes("Adventure");
         });
         setAnimeList(filteredArray);
         break;
-    }
+      case "Drama":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Drama");
+        });
+        setAnimeList(filteredArray);
+        break;
+        case "Horror":
+          filteredArray = animeBackup.filter((anime) => {
+            return anime.genre.includes("Horror");
+          });
+          setAnimeList(filteredArray);
+          break;
+          case "Fantasy":
+            filteredArray = animeBackup.filter((anime) => {
+              return anime.genre.includes("Fantasy");
+            });
+            setAnimeList(filteredArray);
+            break;
+          case "Mystery":
+            filteredArray = animeBackup.filter((anime) => {
+              return anime.genre.includes("Mystery");
+            });
+            setAnimeList(filteredArray);
+            break;
+          case "Romance":
+            filteredArray = animeBackup.filter((anime) => {
+              return anime.genre.includes("Romance");
+            });
+            setAnimeList(filteredArray);
+            break;
+          case "Sci-Fi":
+            filteredArray = animeBackup.filter((anime) => {
+              return anime.genre.includes("Sci-Fi");
+            });
+            setAnimeList(filteredArray);
+            break;
+          case "Sports":
+            filteredArray = animeBackup.filter((anime) => {
+              return anime.genre.includes("Sports");
+            });
+            setAnimeList(filteredArray);
+            break;
+          case "Supernatural":
+            filteredArray = animeBackup.filter((anime) => {
+              return anime.genre.includes("Supernatural");
+            });
+            setAnimeList(filteredArray);
+            break;
+            case "Suspense":
+              filteredArray = animeBackup.filter((anime) => {
+                return anime.genre.includes("Suspense");
+              });
+              setAnimeList(filteredArray);
+              break;
+            case "Gore":
+              filteredArray = animeBackup.filter((anime) => {
+                return anime.genre.includes("Gore");
+              });
+              setAnimeList(filteredArray);
+              break;
+          }
   };
-
 
 
 //SET SEARCH BAR INPUT AND PREVENT DEFAULT
@@ -100,9 +159,19 @@ let filteredArray;
         <label>Filter by genre:</label>
         <select onChange={handleSelect}>
           <option value="All Anime">All Anime</option>
+          <option value="Action">Action</option>
           <option value="Comedy">Comedy</option>
-          <option value="Slice of life">Slice of life</option>
-          <option value="Action">Shounen</option>
+          <option value="Adventure">Comedy</option>
+          <option value="Drama">Drama</option>
+          <option value="Horror">Horror</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Romance">Romance</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Sports">Sports</option>
+          <option value="Supernatural">Shounen</option>
+          <option value="Suspense">Suspense</option>
+          <option value="Gore">Gore</option>
         </select>
       <br />
 
