@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 
-function PlanToReadList() {
+function PlanToReadMangaList() {
   const [planToRead, setPlanToRead] = useState([]);
   const { user } = useContext(AuthContext);
   const userName = user.userName;
@@ -26,27 +26,23 @@ function PlanToReadList() {
 
   return (
     <>
-      {planToWatchAnime.map((elm) => {
+      {planToRead.map((elm) => {
         return (
-          <>
-            <div key={elm._id}>
+          <div key={elm._id}>
+            <div>
               <p>{elm.name.nameJP}</p>
               <p>{elm.name.nameEN}</p>
               <p>{elm.imageURL}</p>
               <p>{elm.genre}</p>
               <p>{elm.rating}</p>
             </div>
-            <DeleteFromList
-              id={elm._id}
-              case="planToRead"
-              showList={showList}
-            />
+            <DeleteFromList case="planToRead" showList={showList}/>
             <hr />
-          </>
+          </div>
         );
       })}
     </>
   );
 }
 
-export default PlanToReadList;
+export default PlanToReadMangaList;

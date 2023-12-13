@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AnimeCreate from "../../components/Anime/AnimeCreate";
 import AddToList from "../../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../../context/auth.context";
+
 function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
   const [animeBackup, setAnimeBackup] = useState([]);

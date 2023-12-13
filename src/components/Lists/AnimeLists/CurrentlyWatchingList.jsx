@@ -3,12 +3,13 @@ import axios from "axios";
 import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 
-function CurrentlyWatchingList() {  
+function CurrentlyWatchingAnimeList() {  
     const [currentlyWatchingAnime, setCurrentlyWatchingAnime] = useState([]);
     const { user } = useContext(AuthContext)
     const userName = user.userName
     console.log(user.userName)
-  function showList() {
+  
+    function showList() {
 
     axios
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
@@ -28,21 +29,21 @@ function CurrentlyWatchingList() {
     <>
         {currentlyWatchingAnime.map((elm) => {
           return(
-             <>
             <div key={elm._id}>
+            <div>
                <p>{elm.name.nameJP}</p>
                <p>{elm.name.nameEN}</p>
                <p>{elm.imageURL}</p>
                <p>{elm.genre}</p>
                <p>{elm.rating}</p>
             </div>
-           <DeleteFromList id={elm._id} case="currentlyWatching" showList={showList}/>
+           <DeleteFromList case="currentlyWatching" showList={showList}/>
                <hr/>
-           </>
+           </div>
            ) 
         })}
     </>
   );
 
 }
-export default CurrentlyWatchingList
+export default CurrentlyWatchingAnimeList

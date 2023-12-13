@@ -3,18 +3,30 @@ import { useContext, useState } from "react";
 
 import "./ProfilePage.css";
 
-import CompletedList from "../../components/Lists/AnimeLists/CompletedList";
-import PlanToWatchList from "../../components/Lists/AnimeLists/PlanToWatchList";
-import CurrentlyWatchingList from "../../components/Lists/AnimeLists/CurrentlyWatchingList";
-import FavoritesList from "../../components/Lists/AnimeLists/FavoritesList";
+import FavoriteAnimeList from "../../components/Lists/AnimeLists/FavoritesList";
+import FavoriteMangaList from "../../components/Lists/MangaLists/FavoritesList";
+import CompletedAnimeList from "../../components/Lists/AnimeLists/CompletedList";
+import CompletedMangaList from "../../components/Lists/MangaLists/CompletedList";
+import CurrentlyWatchingAnimeList from "../../components/Lists/AnimeLists/CurrentlyWatchingList";
+import CurrentlyReadingMangaList from "../../components/Lists/MangaLists/CurrentlyReadingList";
+import PlanToWatchAnimeList from "../../components/Lists/AnimeLists/PlanToWatchList";
+import PlanToReadMangaList from "../../components/Lists/MangaLists/PlanToReadList";
 
 function ProfilePage() {
+  
   const { user } = useContext(AuthContext);
+  
+  const [isAnime, setIsAnime] = useState(true)
+
   const [toggleFavoritesList, setToggleFavoritesList] = useState(true);
   const [toggleCompletedList, setToggleCompletedList] = useState(false);
-  const [toggleCurrentlyWatchingList, setToggleCurrentlyWatchingList] =
-    useState(false);
+  const [toggleCurrentlyWatchingList, setToggleCurrentlyWatchingList] = useState(false);
   const [togglePlanToWatchList, setTogglePlanToWatchList] = useState(false);
+
+  const handleContentType = () => {
+    console.log("clicked");
+    setIsAnime(!isAnime)
+  }
 
   function handleToggle(optionType) {
     
@@ -48,47 +60,41 @@ function ProfilePage() {
         <h2>{user.userName}</h2>
         <p>{user.email}</p>
       </div>
+      
+      <button onClick={() => {handleContentType()}}>{isAnime ? <p>Anime</p> : <p>Manga</p>}</button>
+      <br />
+      
+      {isAnime ? <p>anime</p> : <p>manga</p>}
       <>
-        <button
-          onClick={() => {
-            handleToggle("FavoriteList");
-          }}
-        >
+        <button onClick={() => {handleToggle("FavoriteList")}}>
           Favorites
         </button>
 
-        <button
-          onClick={() => {
-            handleToggle("CompletedList");
-          }}
-        >
+        <button onClick={() => {handleToggle("CompletedList")}}>
           Completed
         </button>
-        <button
-          onClick={() => {
-            handleToggle("CurrentlyWatchingList");
-          }}
-        >
-          Currently watching
+        
+        <button onClick={() => {handleToggle("CurrentlyWatchingList")}}>
+        {isAnime ? <p>Currently watching</p> : <p>Currently reading</p>}
         </button>
-        <button
-          onClick={() => {
-            handleToggle("PlanToWatchList");
-          }}
-        >
-          Plan to watch
+        
+        <button onClick={() => {handleToggle("PlanToWatchList")}}>
+        {isAnime ? <p>Plan to watch</p> : <p>Plan to read</p>}
         </button>
 
-        {toggleFavoritesList && <FavoritesList />}
-        {toggleCompletedList && <CompletedList />}
-        {toggleCurrentlyWatchingList && <CurrentlyWatchingList />}
-        {togglePlanToWatchList && <PlanToWatchList />}
-      
-     
-      </>
-      <>
-      </>
+        {(isAnime && toggleFavoritesList) && <FavoriteAnimeList /> ||
+        (!isAnime && toggleFavoritesList) && <FavoriteMangaList />}
 
+        {(isAnime && toggleCompletedList) && <CompletedAnimeList /> ||
+        (!isAnime && toggleCompletedList) && <CompletedMangaList />}
+
+        {(isAnime && toggleCurrentlyWatchingList) && <CurrentlyWatchingAnimeList /> ||
+        (!isAnime && toggleCurrentlyWatchingList) && <CurrentlyReadingMangaList />}
+
+        {(isAnime && togglePlanToWatchList) && <PlanToWatchAnimeList /> ||
+        (!isAnime && togglePlanToWatchList) && <PlanToReadMangaList />}
+      </>
+  
 
     </>
   );

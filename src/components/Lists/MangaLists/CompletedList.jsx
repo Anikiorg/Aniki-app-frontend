@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 
-function CompletedList() {
+function CompletedMangaList() {
   const [completedManga, setCompletedManga] = useState([]);
   const { user } = useContext(AuthContext)
   const userName = user.userName
@@ -27,21 +27,21 @@ function CompletedList() {
     <>
         {completedManga.map((elm) => {
            return(
-               <>
             <div key={elm._id}>
+            <div>
                <p>{elm.name.nameJP}</p>
                <p>{elm.name.nameEN}</p>
                <p>{elm.imageURL}</p>
                <p>{elm.genre}</p>
                <p>{elm.rating}</p>
             </div>
-             <DeleteFromList id={elm._id} case="completed" showList={showList}/>
+             <DeleteFromList case="completed" showList={showList}/>
                <hr/>
-              </>
+            </div>
                ) 
         })}
     </>
   );
 }
 
-export default CompletedList;
+export default CompletedMangaList;
