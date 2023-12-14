@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 
 import AnimeUpdate from "../../components/Anime/AnimeUpdate";
 import AnimeDelete from "../../components/Anime/AnimeDelete";
-import Reviews from "../../components/Reviews";
-import AddReviews from "../../components/AddReviews";
+import AnimeReviews from "../../components/AnimeReviews";
+import AddAnimeReviews from "../../components/AddAnimeReviews";
 import AddToList from "../../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../../context/auth.context";
 
@@ -25,7 +25,7 @@ function AnimeDetailsPage() {
       .then(() => {
         setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("heeeeeeeeeeeeeeeelp", err));
   }, []);
 
 
@@ -64,7 +64,7 @@ function AnimeDetailsPage() {
       {user && <AddToList id={animeDetails._id} />}
       {user && <AddReviews />}
 
-      <Reviews />
+      <AnimeReviews />
     </>
   );
 }

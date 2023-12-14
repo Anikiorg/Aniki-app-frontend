@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 
-function Reviews () { 
+function AnimeReviews () { 
     const [reviews, setReviews] = useState([])
     const {animeId} = useParams()
 
@@ -25,9 +25,11 @@ function Reviews () {
     return (
     <>
     {array.map((elm)=> {
+        console.log("this is the elm", elm);
+        console.log(elm.user);
         return (
         <div key={elm._id}>
-        <p>{elm.author} says: "{elm.content}"</p>
+        <p>{elm.user} says: "{elm.content}"</p>
         </div>
         )
     })}
@@ -36,4 +38,4 @@ function Reviews () {
 )
 }
 
-export default Reviews
+export default AnimeReviews

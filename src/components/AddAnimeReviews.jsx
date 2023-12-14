@@ -4,10 +4,7 @@ import { useParams } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 
 
-function AddReviews () { 
-    
-    const {user} = useContext(AuthContext)
-    console.log(user);
+function AddAnimeReviews () { 
 
     const storedToken = localStorage.getItem("authToken");
 
@@ -33,4 +30,4 @@ function AddReviews () {
 )
 }
 
-export default AddReviews
+export default AddAnimeReviews

@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/auth.context";
 function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
   const [animeBackup, setAnimeBackup] = useState([]);
-  const [searchedList, setSearchedList] = useState([])
+  const [searchedList, setSearchedList] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [input, setInput] = useState("");
   const { user } = useContext(AuthContext);
@@ -17,7 +17,6 @@ function AnimeListPage() {
   const handleToggle = () => {
     setToggle(!toggle);
   };
-
 
   //SET ANIME LIST AND BACKUP WITH .GET
   useEffect(() => {
@@ -31,9 +30,8 @@ function AnimeListPage() {
       .catch((error) => console.log(error));
   }, []);
 
-
-// SETS ANIMELIST TO FILTERED ANIME (BY GENRE) AND RENDERS IT
-let filteredArray;
+  // SETS ANIMELIST TO FILTERED ANIME (BY GENRE) AND RENDERS IT
+  let filteredArray;
   const handleSelect = (e) => {
     e.preventDefault();
     switch (e.target.value) {
@@ -64,96 +62,89 @@ let filteredArray;
         });
         setAnimeList(filteredArray);
         break;
-        case "Horror":
-          filteredArray = animeBackup.filter((anime) => {
-            return anime.genre.includes("Horror");
-          });
-          setAnimeList(filteredArray);
-          break;
-          case "Fantasy":
-            filteredArray = animeBackup.filter((anime) => {
-              return anime.genre.includes("Fantasy");
-            });
-            setAnimeList(filteredArray);
-            break;
-          case "Mystery":
-            filteredArray = animeBackup.filter((anime) => {
-              return anime.genre.includes("Mystery");
-            });
-            setAnimeList(filteredArray);
-            break;
-          case "Romance":
-            filteredArray = animeBackup.filter((anime) => {
-              return anime.genre.includes("Romance");
-            });
-            setAnimeList(filteredArray);
-            break;
-          case "Sci-Fi":
-            filteredArray = animeBackup.filter((anime) => {
-              return anime.genre.includes("Sci-Fi");
-            });
-            setAnimeList(filteredArray);
-            break;
-          case "Sports":
-            filteredArray = animeBackup.filter((anime) => {
-              return anime.genre.includes("Sports");
-            });
-            setAnimeList(filteredArray);
-            break;
-          case "Supernatural":
-            filteredArray = animeBackup.filter((anime) => {
-              return anime.genre.includes("Supernatural");
-            });
-            setAnimeList(filteredArray);
-            break;
-            case "Suspense":
-              filteredArray = animeBackup.filter((anime) => {
-                return anime.genre.includes("Suspense");
-              });
-              setAnimeList(filteredArray);
-              break;
-            case "Gore":
-              filteredArray = animeBackup.filter((anime) => {
-                return anime.genre.includes("Gore");
-              });
-              setAnimeList(filteredArray);
-              break;
-          }
+      case "Horror":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Horror");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Fantasy":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Fantasy");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Mystery":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Mystery");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Romance":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Romance");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Sci-Fi":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Sci-Fi");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Sports":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Sports");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Supernatural":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Supernatural");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Suspense":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Suspense");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Gore":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Gore");
+        });
+        setAnimeList(filteredArray);
+        break;
+    }
   };
 
-
-//SET SEARCH BAR INPUT AND PREVENT DEFAULT
+  //SET SEARCH BAR INPUT AND PREVENT DEFAULT
   const handleChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
   };
-  
+
   // IN CASE OF INPUT SEARCH INSIDE FILTERED ANIMELIST, SET SEARCHED LIST TO MATCHING ANIME
-    useEffect(() => {
-      const filtered = [...animeList].filter((current) =>
-        input
-          ? current.name.nameEN.toLowerCase().includes(input.toLowerCase()) ||
-            current.name.nameJP.toLowerCase().includes(input.toLowerCase())
-          : current
-      );
-      setSearchedList(filtered);
-    }, [input, animeList]);
-    
-
-
-
+  useEffect(() => {
+    const filtered = [...animeList].filter((current) =>
+      input
+        ? current.name.nameEN.toLowerCase().includes(input.toLowerCase()) ||
+          current.name.nameJP.toLowerCase().includes(input.toLowerCase())
+        : current
+    );
+    setSearchedList(filtered);
+  }, [input, animeList]);
 
   return (
     <>
-
       {/*TOGGLE ADD ANIME FORM*/}
-    
-        {user && user.typeOfUser === "admin" && (
-          <button onClick={handleToggle}>Add anime</button>
-          )}
-        {toggle && <AnimeCreate />}
-        <br />
- 
+
+      {user && user.typeOfUser === "admin" && (
+        <button onClick={handleToggle}>Add anime</button>
+      )}
+      {toggle && <AnimeCreate />}
+      <br />
 
       {/*SELECT FOR CATEGORIES, CALLS HANDLE SELECT */}
         <label>Filter by genre:</label>
@@ -175,15 +166,13 @@ let filteredArray;
         </select>
       <br />
 
-
-
-          {/*SEARCH BAR*/}
+      {/*SEARCH BAR*/}
       <input
         type="text"
         placeholder="Search here"
         onChange={(e) => handleChange(e)}
         value={input}
-        />
+      />
       <br />
 
       {/*RENDER FILTERED AND SEARCHED ANIME + ADD TO LIST + DETAILS PAGE*/}
