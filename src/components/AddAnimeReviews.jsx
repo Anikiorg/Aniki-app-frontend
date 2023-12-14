@@ -1,7 +1,6 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useState } from "react";
 import { useParams } from "react-router-dom"
-import { AuthContext } from "../context/auth.context"
 
 
 function AddAnimeReviews () { 

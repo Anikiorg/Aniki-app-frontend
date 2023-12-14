@@ -1,49 +1,67 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState } from "react"
+import axios from "axios"
 
-function AnimeCreate() {
-  const [nameJP, setNameJP] = useState("");
-  const [nameEN, setNameEN] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageURL, setImageURL] = useState("");
-  const [episodes, setEpisodes] = useState("");
-  const [genre, setGenre] = useState("");
-  const [status, setStatus] = useState("");
-  const [premiered, setPremiered] = useState("");
-  const [studios, setStudios] = useState("");
-  const [ageRating, setAgeRating] = useState("");
-  const name = { nameJP, nameEN };
-  const storedToken = localStorage.getItem("authToken");
+import service from "../../services/file-upload.service"
 
-  const createdAnime = {
-    name,
-    description,
-    imageURL,
-    episodes,
-    genre,
-    status,
-    premiered,
-    studios,
-    ageRating,
-  };
+function AnimeCreate () {
 
-  const handleSubmit = () => {
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then(() => {
-        console.log(createdAnime);
-        console.log("Anime created");
-      })
-      .catch((err) => console.log(err));
-  };
+    const [nameJP, setNameJP] = useState("")
+    const [nameEN, setNameEN] = useState("")
+    const [description, setDescription] = useState("")
+    const [imageURL, setImageURL] = useState("")
+    const [episodes, setEpisodes] = useState("")
+    const [genre, setGenre] = useState("")
+    const [status, setStatus] = useState("")
+    const [premiered, setPremiered] = useState("")
+    const [studios, setStudios] = useState("")
+    const [ageRating, setAgeRating] = useState("")
+    const name = {nameJP, nameEN}
+    const storedToken = localStorage.getItem("authToken");
+        
+    const handleFileUpload = async (e) => {
+        e.preventDefault()
+      // console.log("The file to be uploaded is: ", e.target.files[0]);
+        try {
+            const uploadData = new FormData();
+      
+            // imageUrl => this name has to be the same as in the model since we pass
+            // req.body to .create() method when creating a new movie in '/api/movies' POST route
+            uploadData.append("imageURL", imageURL);
+      
+            const image = await service.uploadImage(uploadData)
+            handleSubmit(image)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleSubmit = (image) => {
+
+        const createdAnime = {
+            name,
+            description,
+            imageURL: image.fileUrl,
+            episodes,
+            genre,
+            status,
+            premiered,
+            studios,
+            ageRating
+        }
+
+        axios.post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime, { headers: { Authorization: `Bearer ${storedToken}` }})
+        .then(() => {
+            console.log(createdAnime)
+            console.log("Anime created")
+        })
+        .catch((err) => console.log(err))
+    }
 
   return (
     <div className="center">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleFileUpload}>
             <div className="label">
               <span className="label-text">Enter Japanese title</span>
             </div>
@@ -89,12 +107,11 @@ function AnimeCreate() {
               <span className="label-text">Add image URL</span>
             </div>
             <input
-              type="text"
+              type="file"
               placeholder="Type here"
               name="imageURL"
-              value={imageURL}
               className="input input-bordered w-full max-w-xs"
-              onChange={(e) => setImageURL(e.target.value)}
+              onChange={(e) => setImageURL(e.target.files[0])}
             />
 
             <br />

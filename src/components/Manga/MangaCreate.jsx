@@ -1,6 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 
+import service from "../../services/file-upload.service"
+
 function MangaCreate () {
 
     const [nameJP, setNameJP] = useState("")
@@ -17,20 +19,37 @@ function MangaCreate () {
     const name = {nameJP, nameEN}
     const storedToken = localStorage.getItem("authToken");
 
-    const createdManga = {
-        name,
-        description,
-        imageURL,
-        volumes,
-        genre,
-        status,
-        published,
-        authors,
-        rating,
-        ageRating
-    }
+    const handleFileUpload = async (e) => {
+        e.preventDefault()
+      // console.log("The file to be uploaded is: ", e.target.files[0]);
+        try {
+            const uploadData = new FormData();
+      
+            // imageUrl => this name has to be the same as in the model since we pass
+            // req.body to .create() method when creating a new movie in '/api/movies' POST route
+            uploadData.append("imageURL", imageURL);
+      
+            const image = await service.uploadImage(uploadData)
+            handleSubmit(image)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleSubmit = (image) => {
         
-    const handleSubmit = () => {
+        const createdManga = {
+            name,
+            description,
+            imageURL: image.fileUrl,
+            volumes,
+            genre,
+            status,
+            published,
+            authors,
+            rating,
+            ageRating
+        }
 
         axios.post(`${process.env.REACT_APP_API_URL}/api/manga`, createdManga, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
@@ -44,7 +63,7 @@ return (
     <div className="center">
     <div className="card w-96 bg-base-100 shadow-xl">
       <div className="card-body">
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleFileUpload}>
     <div className="label">
               <span className="label-text">Enter Japanese title</span>
             </div>
@@ -63,7 +82,7 @@ return (
         <div className="label">
               <span className="label-text">Add image URL</span>
             </div>
-        <input type="text" placeholder="Type here" name="imageURL" value={imageURL} className="input input-bordered w-full max-w-xs"onChange={(e) => setImageURL(e.target.value)}/><br/>
+        <input type="file" placeholder="Type here" name="imageURL" className="input input-bordered w-full max-w-xs"onChange={(e) => setImageURL(e.target.files[0])}/><br/>
       
         <div className="label">
               <span className="label-text">Select genre</span>

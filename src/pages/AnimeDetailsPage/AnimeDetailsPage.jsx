@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
+import axios from "axios";
 
 import AnimeUpdate from "../../components/Anime/AnimeUpdate";
 import AnimeDelete from "../../components/Anime/AnimeDelete";
 import AnimeReviews from "../../components/AnimeReviews";
 import AddAnimeReviews from "../../components/AddAnimeReviews";
 import AddToList from "../../components/Lists/AnimeLists/AddToList";
-import { AuthContext } from "../../context/auth.context";
 
 function AnimeDetailsPage() {
   const [animeDetails, setAnimeDetails] = useState([]);
@@ -28,7 +28,6 @@ function AnimeDetailsPage() {
       .catch((err) => console.log("heeeeeeeeeeeeeeeelp", err));
   }, []);
 
-
   const handleForm = () => {
     setShowForm(!showForm);
   };
@@ -41,7 +40,9 @@ function AnimeDetailsPage() {
         <>
           <h1>{animeDetails.name.nameJP}</h1>
           <h1>{animeDetails.name.nameEN}</h1>
-          <p>{animeDetails.imageURL}</p>
+
+          <img src={animeDetails.imageURL} alt="anime image" />
+
           <p>{animeDetails.genre}</p>
           <p>{animeDetails.rating}</p>
           <p>{animeDetails.episodes}</p>
@@ -49,7 +50,7 @@ function AnimeDetailsPage() {
           <p>{animeDetails.premiered}</p>
           <p>{animeDetails.studios}</p>
           <p>{animeDetails.ageRating}</p>
-          <p>{animeDetails.reviews.author}</p>
+          <p>{animeDetails.reviews.user}</p>
           <p>{animeDetails.reviews.content}</p>
         </>
       )}
