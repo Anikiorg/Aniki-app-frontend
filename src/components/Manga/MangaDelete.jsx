@@ -19,7 +19,7 @@ function MangaDelete () {
     }
 
     return(
-        <button onClick={handleDelete}>Delete</button>
+        <button className="btn" onClick={handleDelete}>Delete</button>
     )
 }
 

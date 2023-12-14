@@ -141,7 +141,7 @@ function AnimeListPage() {
       {/*TOGGLE ADD ANIME FORM*/}
 
       {user && user.typeOfUser === "admin" && (
-        <button onClick={handleToggle}>Add anime</button>
+        <button className="btn" onClick={handleToggle}>Add anime</button>
       )}
       {toggle && <AnimeCreate />}
       <br />
@@ -190,7 +190,7 @@ function AnimeListPage() {
 
               <Link to={`/animes/${anime._id}`}>
                 {" "}
-                <button>See more</button>{" "}
+                <button className="btn">See more</button>{" "}
               </Link>
               {user && <AddToList id={anime._id} />}
               <hr />

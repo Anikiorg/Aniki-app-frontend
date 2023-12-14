@@ -141,7 +141,7 @@ function MangaListPage() {
       {/*TOGGLE ADD MANGA FORM*/}
 
       {user && user.typeOfUser === "admin" && (
-        <button onClick={handleToggle}>Add manga</button>
+        <button className="btn" onClick={handleToggle}>Add manga</button>
       )}
       {toggle && <MangaCreate />}
       <br />
@@ -190,7 +190,7 @@ function MangaListPage() {
 
               <Link to={`/manga/${manga._id}`}>
                 {" "}
-                <button>See more</button>{" "}
+                <button className="btn">See more</button>{" "}
               </Link>
               {user && <AddToList id={manga._id} />}
               <hr />

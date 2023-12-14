@@ -55,7 +55,7 @@ function MangaDetailsPage() {
 
       {/* toggle state variable to show form */}
       {user && user.typeOfUser === "admin" && (
-        <button onClick={handleForm}>Update</button>
+        <button className="btn" onClick={handleForm}>Update</button>
       )}
       {user && user.typeOfUser === "admin" && <MangaDelete mangaId={mangaId} />}
 

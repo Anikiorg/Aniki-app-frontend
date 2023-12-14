@@ -25,7 +25,7 @@ function AddAnimeReviews () {
     return (
     <form onSubmit={handleSubmit}>
         <input type="text" name="content" placeholder="Write your thoughts" value={content} onChange={(e)=> setContent(e.target.value)} />
-        <button type="submit">Submit</button>
+        <button className="btn" type="submit">Submit</button>
     </form>
 )
 }
