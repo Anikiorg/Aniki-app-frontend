@@ -23,9 +23,9 @@ function AnimeReviews () {
         console.log("this is the elm", elm);
         console.log(elm.user.userName);
         return (
-        <div key={elm._id}>
-        <p>{elm.user.userName} says: "{elm.content}"</p>
-        </div>
+            <div key={elm._id}>
+                <p>{elm.user.userName} says: "{elm.content}"</p>
+            </div>
         )
     })}
 

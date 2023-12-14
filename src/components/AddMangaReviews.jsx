@@ -1,7 +1,6 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useState } from "react";
 import { useParams } from "react-router-dom"
-import { AuthContext } from "../context/auth.context"
 
 
 function AddMangaReviews () { 
@@ -12,7 +11,8 @@ function AddMangaReviews () {
     const {mangaId} = useParams()
     
     const handleSubmit = (e) => {
-        axios.put(`${process.env.REACT_APP_API_URL}/api/animes/${mangaId}`, {content}, { headers: { Authorization: `Bearer ${storedToken}` }})
+
+        axios.put(`${process.env.REACT_APP_API_URL}/api/manga/${mangaId}`, {content}, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
             console.log("handled submit")
             setContent("")

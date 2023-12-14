@@ -75,7 +75,7 @@ return (
         <br/>
         
         <label>ImageURL: </label>
-        <input type="file" placeholder="Add imageURGL" name="imageURL" onChange={(e) => setImageURL(e.target.files[0])}/>
+        <input type="file" placeholder="Add imageURL" name="imageURL" onChange={(e) => setImageURL(e.target.files[0])}/>
         
         <br/>
         

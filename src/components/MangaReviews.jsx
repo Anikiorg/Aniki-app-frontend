@@ -4,31 +4,28 @@ import { useParams } from "react-router-dom"
 
 
 function MangaReviews () { 
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState(null)
     const {mangaId} = useParams()
 
     useEffect(()=> {
         axios.get(`${process.env.REACT_APP_API_URL}/api/manga/${mangaId}`)
         .then((response)=> {
-           setReviews(response.data.reviews) 
+           setReviews(response.data.reviews.reverse()) 
            console.log(reviews)
         })  
         .catch((err) => err)
         
     },[])
 
-    let array = [];
-    for (let i = reviews.length - 1; i >= 0; i--) {
-      array.push(reviews[i]);
-    }
-
     return (
     <>
-    {array.map((elm)=> {
+    {reviews && reviews.map((elm)=> {
+        console.log("this is the elm", elm);
+        console.log(elm.user.userName);
         return (
-        <div key={elm._id}>
-        <p>{elm.user} says: "{elm.content}"</p>
-        </div>
+            <div key={elm._id}>
+                <p>{elm.user.userName} says: "{elm.content}"</p>
+            </div>
         )
     })}
 

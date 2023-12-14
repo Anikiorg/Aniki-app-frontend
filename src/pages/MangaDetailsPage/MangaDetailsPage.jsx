@@ -13,8 +13,8 @@ function MangaDetailsPage() {
   const [mangaDetails, setMangaDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const { user } = useContext(AuthContext);
   const { mangaId } = useParams();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -40,7 +40,9 @@ function MangaDetailsPage() {
         <>
           <h1>{mangaDetails.name.nameJP}</h1>
           <h1>{mangaDetails.name.nameEN}</h1>
-          <p>{mangaDetails.imageURL}</p>
+          
+          <img src={mangaDetails.imageURL} alt="anime image" />
+
           <p>{mangaDetails.genre}</p>
           <p>{mangaDetails.rating}</p>
           <p>{mangaDetails.volumes}</p>
@@ -48,7 +50,7 @@ function MangaDetailsPage() {
           <p>{mangaDetails.published}</p>
           <p>{mangaDetails.authors}</p>
           <p>{mangaDetails.ageRating}</p>
-          <p>{mangaDetails.reviews.author}</p>
+          <p>{mangaDetails.reviews.user}</p>
           <p>{mangaDetails.reviews.content}</p>
         </>
       )}
@@ -60,7 +62,7 @@ function MangaDetailsPage() {
       {user && user.typeOfUser === "admin" && <MangaDelete mangaId={mangaId} />}
 
       {showForm && <MangaUpdate mangaDetails={mangaDetails} />}
-      <AddToList id={mangaDetails._id} />
+      {user && <AddToList id={mangaDetails._id} />}
       {user && <AddMangaReviews />}
 
       <MangaReviews />

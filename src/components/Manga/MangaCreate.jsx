@@ -1,6 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 
+import service from "../../services/file-upload.service"
+
 function MangaCreate () {
 
     const [nameJP, setNameJP] = useState("")
@@ -17,20 +19,37 @@ function MangaCreate () {
     const name = {nameJP, nameEN}
     const storedToken = localStorage.getItem("authToken");
 
-    const createdManga = {
-        name,
-        description,
-        imageURL,
-        volumes,
-        genre,
-        status,
-        published,
-        authors,
-        rating,
-        ageRating
-    }
+    const handleFileUpload = async (e) => {
+        e.preventDefault()
+      // console.log("The file to be uploaded is: ", e.target.files[0]);
+        try {
+            const uploadData = new FormData();
+      
+            // imageUrl => this name has to be the same as in the model since we pass
+            // req.body to .create() method when creating a new movie in '/api/movies' POST route
+            uploadData.append("imageURL", imageURL);
+      
+            const image = await service.uploadImage(uploadData)
+            handleSubmit(image)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleSubmit = (image) => {
         
-    const handleSubmit = () => {
+        const createdManga = {
+            name,
+            description,
+            imageURL: image.fileUrl,
+            volumes,
+            genre,
+            status,
+            published,
+            authors,
+            rating,
+            ageRating
+        }
 
         axios.post(`${process.env.REACT_APP_API_URL}/api/manga`, createdManga, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
@@ -41,7 +60,7 @@ function MangaCreate () {
     }
 
 return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleFileUpload}>
         <label>Japanese name: </label>
         <input type="text" placeholder="Enter japanese title" name="nameJP" value={nameJP} onChange={(e) => setNameJP(e.target.value)}/><br/>
         
@@ -52,7 +71,7 @@ return (
         <textarea placeholder="Enter description" name="description" value={description} onChange={(e)=> setDescription(e.target.value)}/><br/>
         
         <label>ImageURL: </label>
-        <input type="text" placeholder="Add imageURGL" name="imageURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)}/><br/>
+        <input type="file" placeholder="Add imageURL" name="imageURL" onChange={(e) =>  setImageURL(e.target.files[0])}/><br/>
         
         <label>Volumes: </label>
         <input type="number" placeholder="Enter number of volumes" mame="volumes" value={volumes} onChange={(e) => setVolumes(e.target.value)}/><br/>
@@ -86,8 +105,6 @@ return (
 
         {/* CHANGE RATING BRUH */}
 
-        <label>Rating: </label>
-        <input type="number" placeholder="Add rating" name="rating" value={rating}onChange={(e) => setRating(e.target.value)}/><br/>
         <select name="ageRating" value={ageRating} onChange={(e)=> setAgeRating(e.target.value)}>
         <option>-- Add age rating --</option>
         <option>E - Everyone / A - All Ages</option>
