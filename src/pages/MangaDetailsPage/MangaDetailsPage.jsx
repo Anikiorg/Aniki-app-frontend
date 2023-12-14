@@ -60,7 +60,7 @@ function MangaDetailsPage() {
       {user && user.typeOfUser === "admin" && <MangaDelete mangaId={mangaId} />}
 
       {showForm && <MangaUpdate mangaDetails={mangaDetails} />}
-      <AddToList id={mangaDetails._id} />
+      {user && <AddToList id={mangaDetails._id} />}
       {user && <AddMangaReviews />}
 
       <MangaReviews />

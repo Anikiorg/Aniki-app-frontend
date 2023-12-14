@@ -62,7 +62,7 @@ function AnimeDetailsPage() {
 
       {showForm && <AnimeUpdate animeDetails={animeDetails} />}
       {user && <AddToList id={animeDetails._id} />}
-      {user && <AddReviews />}
+      {user && <AddAnimeReviews />}
 
       <AnimeReviews />
     </>
