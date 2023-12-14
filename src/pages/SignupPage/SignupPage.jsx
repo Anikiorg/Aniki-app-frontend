@@ -44,32 +44,42 @@ function SignupPage() {
       });
   };
 
+
+
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="center">
 
+    <div className="card w-96 bg-base-100 shadow-xl">
+ <div className="card-body">
+ <h2 className="card-title">Sign up</h2>
       <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+<input type="email" name="email" value={email} onChange={handleEmail} placeholder="Type email" className="input input-bordered w-full max-w-xs" />
+<br/>
 
-        <label>Password:</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
-        />
+          placeholder="Type password"
+          className="input input-bordered w-full max-w-xs"
+          />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={userName} onChange={handleUserName} />
+          <br/>
+        <input type="text" name="name" value={userName} onChange={handleUserName} placeholder="Type username" className="input input-bordered w-full max-w-xs"/>
 
-        <button className="btn" type="submit">Sign Up</button>
+          <br/>
+          <div className="card-actions justify-end">
+        <button className="btn" style={{marginTop: "15px"}} type="submit">Sign Up</button>
+        </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <Link to={"/login"} style={{color:"blue"}}> Login</Link>
+          </div>
+          </div>
     </div>
   );
 }

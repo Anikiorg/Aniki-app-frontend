@@ -41,55 +41,86 @@ function MangaCreate () {
     }
 
 return (
+    <div className="center">
+    <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card-body">
     <form onSubmit={handleSubmit}>
-        <label>Japanese name: </label>
-        <input type="text" placeholder="Enter japanese title" name="nameJP" value={nameJP} onChange={(e) => setNameJP(e.target.value)}/><br/>
+    <div className="label">
+              <span className="label-text">Enter Japanese title</span>
+            </div>
+        <input type="text" placeholder="Type here" name="nameJP" value={nameJP} className="input input-bordered w-full max-w-xs"onChange={(e) => setNameJP(e.target.value)}/><br/>
         
-        <label>English name: </label>
-        <input type="text" placeholder="Enter english title" name="nameEN" value={nameEN} onChange={(e) => setNameEN(e.target.value)}/><br/>
+        <div className="label">
+              <span className="label-text">Enter english title</span>
+            </div>
+        <input type="text" placeholder="Type here" name="nameEN" value={nameEN} className="input input-bordered w-full max-w-xs"onChange={(e) => setNameEN(e.target.value)}/><br/>
         
-        <label>Description: </label>
-        <textarea placeholder="Enter description" name="description" value={description} onChange={(e)=> setDescription(e.target.value)}/><br/>
+        <div className="label">
+              <span className="label-text">Enter description</span>
+            </div>
+        <textarea placeholder="Type here" name="description" value={description} className="input input-bordered w-full max-w-xs"onChange={(e)=> setDescription(e.target.value)}/><br/>
         
-        <label>ImageURL: </label>
-        <input type="text" placeholder="Add imageURGL" name="imageURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)}/><br/>
-        
-        <label>Volumes: </label>
-        <input type="number" placeholder="Enter number of volumes" mame="volumes" value={volumes} onChange={(e) => setVolumes(e.target.value)}/><br/>
-        
-        <label>Genre: </label>
-        <select name="genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
-            <option>-- Select genre --</option>
-            <option>Comedy</option>
-            <option>Slice of life</option>
-            <option>Shounen</option>
+        <div className="label">
+              <span className="label-text">Add image URL</span>
+            </div>
+        <input type="text" placeholder="Type here" name="imageURL" value={imageURL} className="input input-bordered w-full max-w-xs"onChange={(e) => setImageURL(e.target.value)}/><br/>
+      
+        <div className="label">
+              <span className="label-text">Select genre</span>
+            </div>
+        <select name="genre" value={genre} className="input input-bordered w-full max-w-xs"onChange={(e) => setGenre(e.target.value)}>
+
+            <option>--</option>
+              <option>All Anime</option>
+              <option>Action</option>
+              <option>Comedy</option>
+              <option>Adventure</option>
+              <option>Drama</option>
+              <option>Horror</option>
+              <option>Fantasy</option>
+              <option>Mystery</option>
+              <option>Romance</option>
+              <option>Sci-Fi</option>
+              <option>Sports</option>
+              <option>Supernatural</option>
+              <option>Suspense</option>
+              <option>Gore</option>
         </select>
         
         <br/>
         
-        <label>Status: </label>
-        <select name="status" value={status} onChange={(e)=> setStatus(e.target.value)}>
-            <option>-- Select status --</option>
+        <div className="label">
+              <span className="label-text">Enter number of volumes</span>
+            </div>
+        <input type="number" placeholder="Type here" mame="volumes" value={volumes}className="input input-bordered w-full max-w-xs" onChange={(e) => setVolumes(e.target.value)}/><br/>
+        
+        
+        <div className="label">
+              <span className="label-text">Select status</span>
+            </div>
+        <select name="status" value={status} className="input input-bordered w-full max-w-xs" onChange={(e)=> setStatus(e.target.value)}>
+            <option>--</option>
             <option>Publishing</option>
             <option>Finished publishing</option>
             <option>Upcoming</option>
         </select>
         
         <br/>
+        <div className="label">
+              <span className="label-text">Add date of publishing</span>
+            </div>
+        <input type="text" name="published" value={published} placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={(e)=> setPublished(e.target.value)} /><br/>
         
-        <label>Published: </label>
-        <input type="text" name="published" value={published} onChange={(e)=> setPublished(e.target.value)} /><br/>
+        <div className="label">
+              <span className="label-text">Add authors</span>
+            </div>
+        <input type="text" placeholder="Type here" name="authors" value={authors} className="input input-bordered w-full max-w-xs" onChange={(e)=> setAuthors(e.target.value)}/>
         
-        <label>Authors: </label> 
-        <input type="text" placeholder="Add authors" name="authors" value={authors} onChange={(e)=> setAuthors(e.target.value)}/><br/>
-        
-
-        {/* CHANGE RATING BRUH */}
-
-        <label>Rating: </label>
-        <input type="number" placeholder="Add rating" name="rating" value={rating}onChange={(e) => setRating(e.target.value)}/><br/>
-        <select name="ageRating" value={ageRating} onChange={(e)=> setAgeRating(e.target.value)}>
-        <option>-- Add age rating --</option>
+        <div className="label">
+              <span className="label-text">Select age rating</span>
+            </div>
+        <select name="ageRating" value={ageRating}  className="input input-bordered w-full max-w-xs" onChange={(e)=> setAgeRating(e.target.value)}>
+        <option>--</option>
         <option>E - Everyone / A - All Ages</option>
         <option>T - Teens, Age 13+</option>
         <option>OT - Older Teens, Age 16+</option>
@@ -98,8 +129,12 @@ return (
         
         <br/>
         
-        <button className="btn" type="submit">Submit</button>
+        <button className="btn" style={{marginTop: "15px"}} type="submit">Submit</button>
     </form>
+    </div>
+    </div>
+    </div>
+    
 )
 
 }
