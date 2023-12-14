@@ -55,39 +55,43 @@ function AddToList(props) {
   return (
     <>
       <button
+      style={{margin:"1px"}}
         className="btn"
         onClick={() => {
           handleAdd("FavoritesList");
         }}
       >
-        Add to Favorites
+        Favorites
       </button>
 
       <button
+      style={{margin:"1px"}}
         className="btn"
         onClick={() => {
           handleAdd("CompletedList");
         }}
       >
-        Add to Completed
+       Completed
       </button>
 
       <button
+      style={{margin:"1px"}}
         className="btn"
         onClick={() => {
           handleAdd("CurrentlyWatchingList");
         }}
       >
-        Add to Currently Watching
+        Currently Watching
       </button>
 
       <button
+      style={{margin:"1px"}}
         className="btn"
         onClick={() => {
           handleAdd("PlanToWatchList");
         }}
       >
-        Add to Plan To Watch
+        Plan To Watch
       </button>
     </>
   );

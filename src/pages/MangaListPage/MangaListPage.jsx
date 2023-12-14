@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import MangaCreate from "../../components/Manga/MangaCreate";
 import AddToList from "../../components/Lists/MangaLists/AddToList";
 import { AuthContext } from "../../context/auth.context";
+import "./MangaListPage.css";
 
 function MangaListPage() {
   const [mangaList, setMangaList] = useState([]);
@@ -92,6 +93,12 @@ function MangaListPage() {
         });
         setMangaList(filteredArray);
         break;
+      case "Slice of Life":
+        filteredArray = mangaBackup.filter((manga) => {
+          return manga.genre.includes("Slice of Life");
+        });
+        setMangaList(filteredArray);
+        break;
       case "Sports":
         filteredArray = mangaBackup.filter((manga) => {
           return manga.genre.includes("Sports");
@@ -148,9 +155,9 @@ function MangaListPage() {
 
       {/*SELECT FOR CATEGORIES, CALLS HANDLE SELECT */}
       <div className="flex center">
-        <label class="form-control w-full max-w-xs">
-          <div class="label">
-            <span class="label-text">Search:</span>
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Search:</span>
           </div>
           <input
             type="text"
@@ -162,11 +169,11 @@ function MangaListPage() {
         </label>
      
         <div className="center">
-          <label class="form-control w-full max-w-xs">
-            <div class="label">
-              <span class="label-text">Filter by genre:</span>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Filter by genre:</span>
             </div>
-            <select class="select select-bordered" onChange={handleSelect}>
+            <select className="select select-bordered" onChange={handleSelect}>
               <option value="All Anime">All Anime</option>
               <option value="Action">Action</option>
               <option value="Comedy">Comedy</option>
@@ -177,13 +184,14 @@ function MangaListPage() {
               <option value="Mystery">Mystery</option>
               <option value="Romance">Romance</option>
               <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Sci-Fi">Slice of Life</option>
               <option value="Sports">Sports</option>
               <option value="Supernatural">Supernatural</option>
               <option value="Suspense">Suspense</option>
               <option value="Gore">Gore</option>
             </select>
 
-            <div class="label"></div>
+            <div className="label"></div>
           </label>
         </div>
       </div>
@@ -193,19 +201,42 @@ function MangaListPage() {
         {searchedList.map((manga) => {
           return (
             <div key={manga._id}>
-              <h1>Manga</h1>
+               <div className="card card-margin lg:card-side bg-base-100 shadow-xl">
+                <figure>
+                  <img src={manga.imageURL} alt="animeImg" />
+                </figure>
 
-              <h1>{manga.name.nameJP}</h1>
-
-              <p>{manga.imageURL}</p>
-              <p>{manga.genre}</p>
-              <p>{manga.rating}</p>
+                <div className="card-body">
+                  <h2 className="card-title">{manga.name.nameEN}</h2>
+                  {manga.name.nameEN !== manga.name.nameJP &&
+                  <h2 className="card-title">{manga.name.nameJP}</h2>}
+      
+              <p>Genre: {manga.genre}</p>
+              <p>Volumes: {manga.volumes}</p>
+              <p>Status: {manga.status}</p>
+              <p>Age rating: {manga.ageRating}</p>
 
               <Link to={`/manga/${manga._id}`}>
                 {" "}
                 <button className="btn">See more</button>{" "}
               </Link>
-              {user && <AddToList id={manga._id} />}
+              <div className="card-actions justify-end">
+              {user && <div className="dropdown dropdown-left dropdown-end">
+                      <div tabIndex={0} role="button" className="btn m-1">
+                        Add
+                      </div>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                      >
+              <li>
+                <AddToList id={manga._id} />
+                </li>
+                </ul>
+                    </div>}
+                  </div>
+                </div>
+              </div>
               <hr />
             </div>
           );

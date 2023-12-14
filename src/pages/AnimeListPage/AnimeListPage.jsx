@@ -5,6 +5,7 @@ import AnimeCreate from "../../components/Anime/AnimeCreate";
 import AddToList from "../../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../../context/auth.context";
 import "./AnimeListPage.css";
+
 function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
   const [animeBackup, setAnimeBackup] = useState([]);
@@ -86,13 +87,19 @@ function AnimeListPage() {
         });
         setAnimeList(filteredArray);
         break;
-      case "Sci-Fi":
-        filteredArray = animeBackup.filter((anime) => {
-          return anime.genre.includes("Sci-Fi");
-        });
-        setAnimeList(filteredArray);
-        break;
-      case "Sports":
+        case "Sci-Fi":
+          filteredArray = animeBackup.filter((anime) => {
+            return anime.genre.includes("Sci-Fi");
+          });
+          setAnimeList(filteredArray);
+          break;
+        case "Slice of Life":
+          filteredArray = animeBackup.filter((anime) => {
+            return anime.genre.includes("Slice of Life");
+          });
+          setAnimeList(filteredArray);
+          break;
+        case "Sports":
         filteredArray = animeBackup.filter((anime) => {
           return anime.genre.includes("Sports");
         });
@@ -146,9 +153,9 @@ function AnimeListPage() {
       {toggle && <AnimeCreate />}
       {/*SEARCH BAR*/}
       <div className="flex center">
-        <label class="form-control w-full max-w-xs">
-          <div class="label">
-            <span class="label-text">Search:</span>
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Search:</span>
           </div>
           <input
             type="text"
@@ -158,13 +165,13 @@ function AnimeListPage() {
             value={input}
           />
         </label>
-     
+
         <div className="center">
-          <label class="form-control w-full max-w-xs">
-            <div class="label">
-              <span class="label-text">Filter by genre:</span>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Filter by genre:</span>
             </div>
-            <select class="select select-bordered" onChange={handleSelect}>
+            <select className="select select-bordered" onChange={handleSelect}>
               <option value="All Anime">All Anime</option>
               <option value="Action">Action</option>
               <option value="Comedy">Comedy</option>
@@ -175,13 +182,14 @@ function AnimeListPage() {
               <option value="Mystery">Mystery</option>
               <option value="Romance">Romance</option>
               <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Sci-Fi">Slice of Life</option>
               <option value="Sports">Sports</option>
               <option value="Supernatural">Supernatural</option>
               <option value="Suspense">Suspense</option>
               <option value="Gore">Gore</option>
             </select>
 
-            <div class="label"></div>
+            <div className="label"></div>
           </label>
         </div>
       </div>
@@ -191,20 +199,39 @@ function AnimeListPage() {
         {searchedList.map((anime) => {
           return (
             <div key={anime._id}>
-              <h1>Anime</h1>
+              <div className="card card-margin lg:card-side bg-base-100 shadow-xl">
+                <figure>
+                  <img src={anime.imageURL} alt="animeImg" />
+                </figure>
 
-              <h1>{anime.name.nameJP}</h1>
-
-              <p>{anime.imageURL}</p>
-              <p>{anime.genre}</p>
-              <p>{anime.rating}</p>
-
-              <Link to={`/animes/${anime._id}`}>
-                {" "}
-                <button className="btn">See more</button>{" "}
-              </Link>
-              {user && <AddToList id={anime._id} />}
-              <hr />
+                <div className="card-body">
+                  <h2 className="card-title">{anime.name.nameEN}</h2>
+                  {anime.name.nameEN !== anime.name.nameJP &&
+                  <h2 className="card-title">{anime.name.nameJP}</h2>
+                  }
+                  <p>Genre: {anime.genre}</p>
+                  <p>Episodes: {anime.episodes}</p>
+                  <p>Status: {anime.status}</p>
+                  <p>Age rating: {anime.ageRating}</p>
+                  <Link to={`/animes/${anime._id}`}>
+                    {" "}
+                    <button className="btn">See more</button>{" "}
+                  </Link>
+                  {user && <div className="card-actions justify-end">
+                    <div className="dropdown dropdown-left dropdown-end">
+                      <div tabIndex={0} role="button" className="btn m-1">
+                        Add
+                      </div>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                      >
+                        <li><AddToList id={anime._id} /></li>
+                      </ul>
+                    </div>
+                  </div>}
+                </div>
+              </div>
             </div>
           );
         })}

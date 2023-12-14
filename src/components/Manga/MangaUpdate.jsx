@@ -113,6 +113,7 @@ function MangaUpdate(props) {
               <option>Mystery</option>
               <option>Romance</option>
               <option>Sci-Fi</option>
+              <option>Slice of Life</option>
               <option>Sports</option>
               <option>Supernatural</option>
               <option>Suspense</option>

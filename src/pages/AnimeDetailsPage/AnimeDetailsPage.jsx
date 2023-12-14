@@ -8,14 +8,14 @@ import AnimeDelete from "../../components/Anime/AnimeDelete";
 import AnimeReviews from "../../components/AnimeReviews";
 import AddAnimeReviews from "../../components/AddAnimeReviews";
 import AddToList from "../../components/Lists/AnimeLists/AddToList";
-
+import "./AnimeDetailsPage.css"
 function AnimeDetailsPage() {
   const [animeDetails, setAnimeDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const { animeId } = useParams();
   const { user } = useContext(AuthContext);
-  
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/animes/${animeId}`)
@@ -38,31 +38,51 @@ function AnimeDetailsPage() {
         <p>"loading.."</p>
       ) : (
         <>
-          <h1>{animeDetails.name.nameJP}</h1>
-          <h1>{animeDetails.name.nameEN}</h1>
+              <div className="card lg:card-side bg-base-100 shadow-xl">
+                <figure>
+              <img src={animeDetails.imageURL} alt="anime image" />
+            </figure>
+            <div className="card-body">
+              <div className="container">
+              <div>
+              <h1>{animeDetails.name.nameEN}</h1>
+              {animeDetails.name.nameEN !== animeDetails.name.nameJP &&
+              <h1>{animeDetails.name.nameJP}</h1>
+              }
+              <p>Genre: {animeDetails.genre}</p>
+              <p>Episodes: {animeDetails.episodes}</p>
+              <p>Status:{animeDetails.status}</p>
+              <p>Premiered: {animeDetails.premiered}</p>
+              <p>Studios: {animeDetails.studios}</p>
+              <p>Age Rating: {animeDetails.ageRating}</p>
+              </div>
+              <div>
+              <label className="form-control">
+  <p className="description break-normal ...">{animeDetails.description}</p>
+</label>
+              </div>
+              </div>
+              <div className="card-actions justify-end">
+                {user && <AddToList id={animeDetails._id} />}
+              </div>
+            </div>
+          </div>
+          {user && user.typeOfUser === "admin" && (
+            <button className="btn" onClick={handleForm}>
+              Update
+            </button>
+          )}
 
-          <img src={animeDetails.imageURL} alt="anime image" />
-
-          <p>{animeDetails.genre}</p>
-          <p>{animeDetails.rating}</p>
-          <p>{animeDetails.episodes}</p>
-          <p>{animeDetails.status}</p>
-          <p>{animeDetails.premiered}</p>
-          <p>{animeDetails.studios}</p>
-          <p>{animeDetails.ageRating}</p>
-          <p>{animeDetails.reviews.user}</p>
-          <p>{animeDetails.reviews.content}</p>
+          {user && user.typeOfUser === "admin" && (
+            <AnimeDelete animeId={animeId} />
+          )}
         </>
       )}
 
       {/* toggle state variable to show form */}
-      {(user && user.typeOfUser === "admin") && <button className="btn" onClick={handleForm}>Update</button>}
-
-      {(user && user.typeOfUser === "admin") && <AnimeDelete animeId={animeId} />}
-
 
       {showForm && <AnimeUpdate animeDetails={animeDetails} />}
-      {user && <AddToList id={animeDetails._id} />}
+
       {user && <AddAnimeReviews />}
 
       <AnimeReviews />

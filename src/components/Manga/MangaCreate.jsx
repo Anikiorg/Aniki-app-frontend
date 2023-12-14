@@ -82,7 +82,7 @@ return (
         <div className="label">
               <span className="label-text">Add image URL</span>
             </div>
-        <input type="file" placeholder="Type here" name="imageURL" className="input input-bordered w-full max-w-xs"onChange={(e) => setImageURL(e.target.files[0])}/><br/>
+        <input type="file" placeholder="Type here" name="imageURL"  className="file-input w-full max-w-xs" onChange={(e) => setImageURL(e.target.files[0])}/><br/>
       
         <div className="label">
               <span className="label-text">Select genre</span>
@@ -100,6 +100,7 @@ return (
               <option>Mystery</option>
               <option>Romance</option>
               <option>Sci-Fi</option>
+              <option>Slice of Life</option>
               <option>Sports</option>
               <option>Supernatural</option>
               <option>Suspense</option>

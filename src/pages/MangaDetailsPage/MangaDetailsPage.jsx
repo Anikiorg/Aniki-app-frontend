@@ -8,7 +8,7 @@ import MangaUpdate from "../../components/Manga/MangaUpdate";
 import MangaReviews from "../../components/MangaReviews";
 import AddMangaReviews from "../../components/AddMangaReviews";
 import AddToList from "../../components/Lists/MangaLists/AddToList";
-
+import "./MangaDetailsPage.css"
 function MangaDetailsPage() {
   const [mangaDetails, setMangaDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,32 +38,43 @@ function MangaDetailsPage() {
         <p>"loading.."</p>
       ) : (
         <>
-          <h1>{mangaDetails.name.nameJP}</h1>
+        <div className="card lg:card-side bg-base-100 shadow-xl">
+        <figure>
+              <img src={mangaDetails.imageURL} alt="manga image" />
+            </figure>
+            <div className="card-body">
+              <div className="container">
+              <div>
           <h1>{mangaDetails.name.nameEN}</h1>
+          {mangaDetails.name.nameEN !== mangaDetails.name.nameJP &&
+          <h1>{mangaDetails.name.nameJP}</h1>}
           
-          <img src={mangaDetails.imageURL} alt="anime image" />
-
-          <p>{mangaDetails.genre}</p>
-          <p>{mangaDetails.rating}</p>
-          <p>{mangaDetails.volumes}</p>
-          <p>{mangaDetails.status}</p>
-          <p>{mangaDetails.published}</p>
-          <p>{mangaDetails.authors}</p>
-          <p>{mangaDetails.ageRating}</p>
-          <p>{mangaDetails.reviews.user}</p>
-          <p>{mangaDetails.reviews.content}</p>
+          <p>Genre: {mangaDetails.genre}</p>
+          <p>Volumes: {mangaDetails.volumes}</p>
+          <p>Status: {mangaDetails.status}</p>
+          <p>Published: {mangaDetails.published}</p>
+          <p>Authors: {mangaDetails.authors}</p>
+          <p>Age rating: {mangaDetails.ageRating}</p>
+</div>
+<div>
+              <label className="form-control">
+  <p className="description break-normal ...">{mangaDetails.description}</p>
+</label>
+              </div>
+              </div>
+              <div className="card-actions justify-end">
+      {user && <AddToList id={mangaDetails._id} />}
+      </div>
+      </div>
+        </div>
         </>
       )}
-
-      {/* toggle state variable to show form */}
       {user && user.typeOfUser === "admin" && (
         <button className="btn" onClick={handleForm}>Update</button>
-      )}
+        )}
       {user && user.typeOfUser === "admin" && <MangaDelete mangaId={mangaId} />}
-
       {showForm && <MangaUpdate mangaDetails={mangaDetails} />}
-      {user && <AddToList id={mangaDetails._id} />}
-      {user && <AddMangaReviews />}
+        {user && <AddMangaReviews />}
 
       <MangaReviews />
     </>

@@ -60,7 +60,7 @@ function AddToList(props) {
           handleAdd("FavoritesList");
         }}
       >
-        Add to Favorites
+        Favorites
       </button>
 
       <button
@@ -69,7 +69,7 @@ function AddToList(props) {
           handleAdd("CompletedList");
         }}
       >
-        Add to Completed
+        Completed
       </button>
 
       <button
@@ -78,7 +78,7 @@ function AddToList(props) {
           handleAdd("CurrentlyReadingList");
         }}
       >
-        Add to Currently Watching
+        Currently Watching
       </button>
 
       <button
@@ -87,7 +87,7 @@ function AddToList(props) {
           handleAdd("PlanToReadList");
         }}
       >
-        Add to Plan To Watch
+        Plan To Watch
       </button>
     </>
   );
