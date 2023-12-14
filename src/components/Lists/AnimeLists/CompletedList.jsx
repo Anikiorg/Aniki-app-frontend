@@ -36,7 +36,7 @@ function CompletedAnimeList() {
                <p>{elm.genre}</p>
                <p>{elm.rating}</p>
             </div>
-             <DeleteFromList case="completed" showList={showList}/>
+             <DeleteFromList animeId={elm._id} case="completed" showList={showList}/>
                <hr/>
               </div>
                ) 

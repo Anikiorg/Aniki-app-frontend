@@ -36,8 +36,8 @@ function FavoriteAnimeList () {
                <p>{elm.genre}</p>
                <p>{elm.rating}</p>
             </div>
-            <DeleteFromList case="favorites" showList={showList}/>
-               <hr/>
+            <DeleteFromList animeId={elm._id} case="favorites" showList={showList}/>
+               <hr/> 
             </div>
                ) 
         })}

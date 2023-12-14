@@ -147,23 +147,23 @@ function AnimeListPage() {
       <br />
 
       {/*SELECT FOR CATEGORIES, CALLS HANDLE SELECT */}
-      <label>Filter by genre:</label>
-      <select onChange={handleSelect}>
-        <option value="All Anime">All Anime</option>
-        <option value="Action">Action</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Adventure">Comedy</option>
-        <option value="Drama">Drama</option>
-        <option value="Horror">Horror</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="Mystery">Mystery</option>
-        <option value="Romance">Romance</option>
-        <option value="Sci-Fi">Sci-Fi</option>
-        <option value="Sports">Sports</option>
-        <option value="Supernatural">Supernatural</option>
-        <option value="Suspense">Suspense</option>
-        <option value="Gore">Gore</option>
-      </select>
+        <label>Filter by genre:</label>
+        <select onChange={handleSelect}>
+          <option value="All Anime">All Anime</option>
+          <option value="Action">Action</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Adventure">Comedy</option>
+          <option value="Drama">Drama</option>
+          <option value="Horror">Horror</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Romance">Romance</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Sports">Sports</option>
+          <option value="Supernatural">Supernatural</option>
+          <option value="Suspense">Suspense</option>
+          <option value="Gore">Gore</option>
+        </select>
       <br />
 
       {/*SEARCH BAR*/}
