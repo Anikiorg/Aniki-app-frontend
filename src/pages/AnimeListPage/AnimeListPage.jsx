@@ -152,7 +152,7 @@ function AnimeListPage() {
           <option value="All Anime">All Anime</option>
           <option value="Action">Action</option>
           <option value="Comedy">Comedy</option>
-          <option value="Adventure">Comedy</option>
+          <option value="Adventure">Adventure</option>
           <option value="Drama">Drama</option>
           <option value="Horror">Horror</option>
           <option value="Fantasy">Fantasy</option>
@@ -192,7 +192,7 @@ function AnimeListPage() {
                 {" "}
                 <button className="btn">See more</button>{" "}
               </Link>
-              <AddToList id={anime._id} />
+              {user && <AddToList id={anime._id} />}
               <hr />
             </div>
           );
