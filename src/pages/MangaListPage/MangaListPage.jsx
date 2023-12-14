@@ -192,7 +192,7 @@ function MangaListPage() {
                 {" "}
                 <button className="btn">See more</button>{" "}
               </Link>
-              <AddToList id={manga._id} />
+              {user && <AddToList id={manga._id} />}
               <hr />
             </div>
           );

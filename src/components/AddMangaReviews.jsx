@@ -23,11 +23,18 @@ function AddMangaReviews () {
 
 
     return (
-    <form onSubmit={handleSubmit}>
-        <input type="text" name="content" placeholder="Write your thoughts" value={content} onChange={(e)=> setContent(e.target.value)} />
-        <button className="btn" type="submit">Submit</button>
-    </form>
+        <div className="center review">
+        <div className="card w-96 bg-base-100 shadow-xl">
+         <div className="card-body">
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="content" placeholder="Write your thoughts" className="review" value={content} onChange={(e)=> setContent(e.target.value)} />
+                <button className="btn"style={{ marginTop: "15px" }} type="submit">Submit</button>
+            </form>
+            </div>
+            </div>
+            </div>
 )
+
 }
 
 export default AddMangaReviews

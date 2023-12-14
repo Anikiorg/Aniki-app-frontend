@@ -45,27 +45,30 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
-
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
+    <div className="LoginPage center">
+<div className="card w-96 bg-base-100 shadow-xl">
+ <div className="card-body">
+ <h2 className="card-title">Log in</h2>
+      <form onSubmit={handleLoginSubmit} >
+        <input type="email" name="email" value={email} onChange={handleEmail} placeholder="Type email" className="input input-bordered w-full max-w-xs"/>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
+          placeholder="Type password"
+          className="input input-bordered w-full max-w-xs"
         />
-
-        <button className="btn" type="submit">Login</button>
+      
+        <button className="btn" style={{marginTop: "15px"}} type="submit">Login</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      
+      <span>Don't have an account yet?</span>
+      <Link to={"/signup"} style={{color:"blue"}}> Sign Up</Link>
+      
+    </div>
+    </div>
     </div>
   );
 }

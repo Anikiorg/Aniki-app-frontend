@@ -43,9 +43,14 @@ function MangaUpdate(props) {
   };
 
   return (
-    /* retain original info */
+    /* retain original info */  
+    <div className="center">
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
         <form onSubmit={handleSubmit}>
-          <label>Japanese name: </label>
+        <div className="label">
+              <span className="label-text">Enter Japanese title</span>
+            </div>
           <input
             type="text"
             name="nameJP"
@@ -54,8 +59,9 @@ function MangaUpdate(props) {
           />
 
           <br />
-
-          <label>English name: </label>
+          <div className="label">
+              <span className="label-text">Enter english title</span>
+            </div>
           <input
             type="text"
             name="nameEN"
@@ -65,7 +71,9 @@ function MangaUpdate(props) {
 
           <br />
 
-          <label>Description: </label>
+          <div className="label">
+              <span className="label-text">Enter description</span>
+            </div>
           <input
             type="text"
             name="description"
@@ -74,8 +82,9 @@ function MangaUpdate(props) {
           />
 
           <br />
-
-          <label>Image URL: </label>
+          <div className="label">
+              <span className="label-text">Add image URL</span>
+            </div>
           <input
             type="text"
             name="imgURL"
@@ -84,18 +93,36 @@ function MangaUpdate(props) {
           />
 
           <br />
-
-          <label>Genre: </label>
-          <input
-            type="text"
-            name="genre"
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-          />
-
+          <div className="label">
+              <span className="label-text">Select genre</span>
+            </div>
+          <select
+              name="genre"
+              value={genre}
+              className="input input-bordered w-full max-w-xs"
+              onChange={(e) => setGenre(e.target.value)}
+            >
+                        <option>--</option>
+              <option>All Anime</option>
+              <option>Action</option>
+              <option>Comedy</option>
+              <option>Adventure</option>
+              <option>Drama</option>
+              <option>Horror</option>
+              <option>Fantasy</option>
+              <option>Mystery</option>
+              <option>Romance</option>
+              <option>Sci-Fi</option>
+              <option>Sports</option>
+              <option>Supernatural</option>
+              <option>Suspense</option>
+              <option>Gore</option>
+              </select>
           <br />
 
-          <label>Volumes: </label>
+          <div className="label">
+              <span className="label-text">Enter number of Volumes</span>
+            </div>
           <input
             type="number"
             name="volumes"
@@ -104,14 +131,16 @@ function MangaUpdate(props) {
           />
 
           <br />
-
+          <div className="label">
+              <span className="label-text">Select status</span>
+            </div>
           <label>Status: </label>
           <select
             name="status"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
-            <option>-- Select status --</option>
+            <option>--</option>
             <option>Publishing</option>
             <option>Finished publishing</option>
             <option>Upcoming</option>
@@ -120,7 +149,9 @@ function MangaUpdate(props) {
           <br />
 
           {/* maybe 2 (type: list) >> season + year */}
-          <label>Published: </label>
+          <div className="label">
+              <span className="label-text">Add date of publishing</span>
+            </div>
           <input
             type="text"
             name="published"
@@ -130,13 +161,16 @@ function MangaUpdate(props) {
 
           <br />
 
-          <label>Age rating: </label>
+         
+          <div className="label">
+              <span className="label-text">Select age rating</span>
+            </div>
           <select
             name="ageRating"
             value={ageRating}
             onChange={(e) => setAgeRating(e.target.value)}
           >
-            <option>-- Add age rating --</option>
+            <option>--</option>
             <option>E - Everyone / A - All Ages</option>
             <option>T - Teens, Age 13+</option>
             <option>OT - Older Teens, Age 16+</option>
@@ -145,7 +179,9 @@ function MangaUpdate(props) {
 
           <br />
 
-          <label>Authors: </label>
+          <div className="label">
+              <span className="label-text">Add authors</span>
+            </div>
           <input
             type="text"
             name="authors"
@@ -155,8 +191,11 @@ function MangaUpdate(props) {
 
           <br />
 
-          <button className="btn" type="submit">Save</button>
+          <button className="btn" style={{ marginTop: "15px" }} type="submit">Save</button>
         </form>
+</div>
+</div>
+</div>
   );
 }
 
