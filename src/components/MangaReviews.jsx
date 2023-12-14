@@ -28,7 +28,7 @@ function MangaReviews () {
              <div className="card-body">
                     <div key={elm._id}>
                     <div className="label">
-                          <span className="label-text">{elm.userName} says: </span>
+                          <span className="label-text">{elm.user.userName} says: </span>
                         </div>
                     <p className="input input-bordered w-full max-w-xs">"{elm.content}"</p>
                     </div>
