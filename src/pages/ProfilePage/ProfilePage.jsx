@@ -61,24 +61,24 @@ function ProfilePage() {
         <p>{user.email}</p>
       </div>
       
-      <button onClick={() => {handleContentType()}}>{isAnime ? <p>Anime</p> : <p>Manga</p>}</button>
+      <button className="btn" onClick={() => {handleContentType()}}>{isAnime ? <p>Anime</p> : <p>Manga</p>}</button>
       <br />
       
       {isAnime ? <p>anime</p> : <p>manga</p>}
       <>
-        <button onClick={() => {handleToggle("FavoriteList")}}>
+        <button className="btn" onClick={() => {handleToggle("FavoriteList")}}>
           Favorites
         </button>
 
-        <button onClick={() => {handleToggle("CompletedList")}}>
+        <button className="btn" onClick={() => {handleToggle("CompletedList")}}>
           Completed
         </button>
         
-        <button onClick={() => {handleToggle("CurrentlyWatchingList")}}>
+        <button className="btn" onClick={() => {handleToggle("CurrentlyWatchingList")}}>
         {isAnime ? <p>Currently watching</p> : <p>Currently reading</p>}
         </button>
         
-        <button onClick={() => {handleToggle("PlanToWatchList")}}>
+        <button className="btn" onClick={() => {handleToggle("PlanToWatchList")}}>
         {isAnime ? <p>Plan to watch</p> : <p>Plan to read</p>}
         </button>
 

@@ -9,11 +9,11 @@ function HomePage() {
     </div>
     
     <Link to="/animes" >
-      <button>All Anime</button>
+      <button className="btn">All Anime</button>
     </Link>
     
     <Link to="/manga" >
-      <button>All Manga</button>
+      <button className="btn">All Manga</button>
     </Link>
     </>
   );

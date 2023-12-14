@@ -156,7 +156,7 @@ function AnimeUpdate(props) {
 
           <br />
 
-          <button type="submit">Save</button>
+          <button className="btn" type="submit">Save</button>
         </form>
   );
 }

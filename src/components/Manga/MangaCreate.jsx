@@ -98,7 +98,7 @@ return (
         
         <br/>
         
-        <button type="submit">Submit</button>
+        <button className="btn" type="submit">Submit</button>
     </form>
 )
 

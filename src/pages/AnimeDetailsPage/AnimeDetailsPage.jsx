@@ -55,7 +55,7 @@ function AnimeDetailsPage() {
       )}
 
       {/* toggle state variable to show form */}
-      {(user && user.typeOfUser === "admin") && <button onClick={handleForm}>Update</button>}
+      {(user && user.typeOfUser === "admin") && <button className="btn" onClick={handleForm}>Update</button>}
 
       {(user && user.typeOfUser === "admin") && <AnimeDelete animeId={animeId} />}
 

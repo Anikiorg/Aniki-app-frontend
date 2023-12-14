@@ -19,7 +19,7 @@ function DeleteFromList(props) {
 
 return (
 
-    <button onClick={handleDelete}>Delete from list</button>
+    <button className="btn" onClick={handleDelete}>Delete from list</button>
 )
 }
 
