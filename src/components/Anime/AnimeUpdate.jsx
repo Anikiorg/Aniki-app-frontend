@@ -12,9 +12,9 @@ function AnimeUpdate(props) {
   const [status, setStatus] = useState(props.animeDetails.status);
   const [premiered, setPremiered] = useState(props.animeDetails.premiered);
   const [studios, setStudios] = useState(props.animeDetails.studios);
-  const [rating, setRating] = useState(props.animeDetails.rating);
   const [ageRating, setAgeRating] = useState(props.animeDetails.ageRating);
   const name = { nameEN, nameJP };
+  
   const storedToken = localStorage.getItem("authToken");
 
 
@@ -27,7 +27,6 @@ function AnimeUpdate(props) {
     status,
     premiered,
     studios,
-    rating,
     ageRating,
   };
 
