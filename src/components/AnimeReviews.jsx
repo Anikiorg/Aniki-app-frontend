@@ -35,7 +35,7 @@ function AnimeReviews () {
         <div className="label">
               <span className="label-text">{elm.user} says: </span>
             </div>
-        <p className="input input-bordered w-full max-w-xs">"{elm.content}"</p>
+        <p className="input input-bordered w-full max-w-xs break-normal ...">"{elm.content}"</p>
         </div>
 </div>
 </div>

@@ -147,33 +147,46 @@ function MangaListPage() {
       <br />
 
       {/*SELECT FOR CATEGORIES, CALLS HANDLE SELECT */}
-      <label>Filter by genre:</label>
-      <select onChange={handleSelect}>
-        <option value="All Manga">All Manga</option>
-        <option value="Action">Action</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Adventure">Comedy</option>
-        <option value="Drama">Drama</option>
-        <option value="Horror">Horror</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="Mystery">Mystery</option>
-        <option value="Romance">Romance</option>
-        <option value="Sci-Fi">Sci-Fi</option>
-        <option value="Sports">Sports</option>
-        <option value="Supernatural">Supernatural</option>
-        <option value="Suspense">Suspense</option>
-        <option value="Gore">Gore</option>
-      </select>
-      <br />
+      <div className="flex center">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Search:</span>
+          </div>
+          <input
+            type="text"
+            placeholder="Type here"
+            onChange={(e) => handleChange(e)}
+            className="input input-bordered w-full max-w-xs"
+            value={input}
+          />
+        </label>
+     
+        <div className="center">
+          <label class="form-control w-full max-w-xs">
+            <div class="label">
+              <span class="label-text">Filter by genre:</span>
+            </div>
+            <select class="select select-bordered" onChange={handleSelect}>
+              <option value="All Anime">All Anime</option>
+              <option value="Action">Action</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Drama">Drama</option>
+              <option value="Horror">Horror</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Romance">Romance</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Sports">Sports</option>
+              <option value="Supernatural">Supernatural</option>
+              <option value="Suspense">Suspense</option>
+              <option value="Gore">Gore</option>
+            </select>
 
-      {/*SEARCH BAR*/}
-      <input
-        type="text"
-        placeholder="Search here"
-        onChange={(e) => handleChange(e)}
-        value={input}
-      />
-      <br />
+            <div class="label"></div>
+          </label>
+        </div>
+      </div>
 
       {/*RENDER FILTERED AND SEARCHED MANGA + ADD TO LIST + DETAILS PAGE*/}
       <>
