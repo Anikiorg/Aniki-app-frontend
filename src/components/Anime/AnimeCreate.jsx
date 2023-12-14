@@ -1,6 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 
+import service from "../../services/file-upload.service"
+
 function AnimeCreate () {
 
     const [nameJP, setNameJP] = useState("")
@@ -15,20 +17,37 @@ function AnimeCreate () {
     const [ageRating, setAgeRating] = useState("")
     const name = {nameJP, nameEN}
     const storedToken = localStorage.getItem("authToken");
-    
-    const createdAnime = {
-        name,
-        description,
-        imageURL,
-        episodes,
-        genre,
-        status,
-        premiered,
-        studios,
-        ageRating
-    }
         
-    const handleSubmit = () => {
+    const handleFileUpload = async (e) => {
+        e.preventDefault()
+      // console.log("The file to be uploaded is: ", e.target.files[0]);
+        try {
+            const uploadData = new FormData();
+      
+            // imageUrl => this name has to be the same as in the model since we pass
+            // req.body to .create() method when creating a new movie in '/api/movies' POST route
+            uploadData.append("imageURL", imageURL);
+      
+            const image = await service.uploadImage(uploadData)
+            handleSubmit(image)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleSubmit = (image) => {
+
+        const createdAnime = {
+            name,
+            description,
+            imageURL: image.fileUrl,
+            episodes,
+            genre,
+            status,
+            premiered,
+            studios,
+            ageRating
+        }
 
         axios.post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime, { headers: { Authorization: `Bearer ${storedToken}` }})
         .then(() => {
@@ -39,7 +58,7 @@ function AnimeCreate () {
     }
 
 return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleFileUpload}>
         <label>Japanese name: </label>
         <input type="text" placeholder="Enter japanese title" name="nameJP" value={nameJP} onChange={(e) => setNameJP(e.target.value)}/>
         
@@ -56,7 +75,7 @@ return (
         <br/>
         
         <label>ImageURL: </label>
-        <input type="text" placeholder="Add imageURGL" name="imageURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)}/>
+        <input type="file" placeholder="Add imageURGL" name="imageURL" onChange={(e) => setImageURL(e.target.files[0])}/>
         
         <br/>
         

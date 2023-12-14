@@ -41,7 +41,9 @@ function AnimeDetailsPage() {
         <>
           <h1>{animeDetails.name.nameJP}</h1>
           <h1>{animeDetails.name.nameEN}</h1>
-          <p>{animeDetails.imageURL}</p>
+
+          <img src={animeDetails.imageURL} alt="anime image" />
+
           <p>{animeDetails.genre}</p>
           <p>{animeDetails.rating}</p>
           <p>{animeDetails.episodes}</p>
@@ -62,7 +64,7 @@ function AnimeDetailsPage() {
 
       {showForm && <AnimeUpdate animeDetails={animeDetails} />}
       {user && <AddToList id={animeDetails._id} />}
-      {user && <AddReviews />}
+      {user && <AddAnimeReviews />}
 
       <AnimeReviews />
     </>
