@@ -40,7 +40,7 @@ function Navbar() {
         : (
           <>
         <li><a><Link to="/login">{" "}<button className="">Login</button>{" "}</Link></a></li>
-        <li><a><Link to="/signup">{" "}<button className="">Sign Upped</button>{" "}</Link></a></li>
+        <li><a><Link to="/signup">{" "}<button className="">Sign Up</button>{" "}</Link></a></li>
           </>
         )}
 
