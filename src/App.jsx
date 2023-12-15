@@ -13,6 +13,8 @@ import MangaDetailsPage from "./pages/MangaDetailsPage/MangaDetailsPage";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import Footer from "./components/Footer/Footer";
+import BrowsePage from "./pages/BrowsePage/BrowsePage";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/browse" element={<BrowsePage />} />
         <Route path="/profile" element={<IsPrivate> <ProfilePage /> </IsPrivate>} />
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
@@ -30,6 +33,8 @@ function App() {
         <Route path="/manga/:mangaId" element={<MangaDetailsPage/>} />
         <Route path="/users/:userName"/>
       </Routes>
+
+      <Footer />
     </div>
   );
 }
