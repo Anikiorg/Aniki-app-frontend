@@ -19,8 +19,7 @@ function ProfilePage() {
 
   const [toggleFavoritesList, setToggleFavoritesList] = useState(true);
   const [toggleCompletedList, setToggleCompletedList] = useState(false);
-  const [toggleCurrentlyWatchingList, setToggleCurrentlyWatchingList] =
-    useState(false);
+  const [toggleCurrentlyWatchingList, setToggleCurrentlyWatchingList] = useState(false);
   const [togglePlanToWatchList, setTogglePlanToWatchList] = useState(false);
 
   const handleContentType = () => {
@@ -61,7 +60,7 @@ function ProfilePage() {
             width="max"
             height="74"
             viewBox="0 0 24 24"
-            fill="all"
+            fill="none"
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
