@@ -1,3 +1,5 @@
+import "./Footer.css"
+
 import AnikiLogo from "../../assets/AnikiLogo.png"
 
 function Footer () {
