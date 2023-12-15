@@ -53,7 +53,7 @@ function ProfilePage() {
 
   return (
     <>
-      <div>
+{/*       <div>
         <div className="collapse bg-base-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +79,7 @@ function ProfilePage() {
             
           </div>
         </div>
-      </div>
+      </div> */}
 
       <button
         className="btn"
