@@ -13,8 +13,10 @@ To run this app on your computer:
     - npm install -D tailwindcss postcss autoprefixer,
     - npx tailwindcss init -p, 
     - npm i -D daisyui@latest
+    - npm install
 - create an .env file in the root and add an environment variable: REACT_APP_API_URL=http://localhost:5005 
 - in the server terminal type npm run dev; in the client terminal type npm start
+- enjoy
 
 # Demo
 
