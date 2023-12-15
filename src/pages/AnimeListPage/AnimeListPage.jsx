@@ -147,33 +147,43 @@ function AnimeListPage() {
   return (
     <>
       {user && user.typeOfUser === "admin" && (
-        <button className="btn" onClick={handleToggle}>
-          Add anime
-        </button>
+
+<>
+<button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+
+  Add anime
+  </button>
+<dialog id="my_modal_3" className="modal">
+  <div className="modal-box">
+    <form method="dialog">
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <AnimeCreate />
+  </div>
+</dialog>
+</>
       )}
+
+
       {toggle && <AnimeCreate />}
+
+
+
       {/*SEARCH BAR*/}
       <div className="flex center">
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text">Search:</span>
-          </div>
-          <input
-            type="text"
-            placeholder="Type here"
-            onChange={(e) => handleChange(e)}
-            className="input input-bordered w-full max-w-xs"
-            value={input}
-          />
-        </label>
 
-        <div className="center">
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Filter by genre:</span>
+        <div className="join">
+          <div>
+            <div>
+              <input type="text" onChange={(e) => handleChange(e)} className="input input-bordered join-item" placeholder="Search" value={input}/>
             </div>
-            <select className="select select-bordered" onChange={handleSelect}>
-              <option value="All Anime">All Anime</option>
+          </div>
+          <select onChange={handleSelect} className="select select-bordered join-item">
+            <option disabled selected>
+              Filter
+            </option>
+            <option value="All Anime">All Anime</option>
               <option value="Action">Action</option>
               <option value="Comedy">Comedy</option>
               <option value="Adventure">Adventure</option>
@@ -188,11 +198,12 @@ function AnimeListPage() {
               <option value="Supernatural">Supernatural</option>
               <option value="Suspense">Suspense</option>
               <option value="Gore">Gore</option>
-            </select>
-
-            <div className="label"></div>
-          </label>
+          </select>
+          <div className="indicator">
+            <button className="btn join-item">Search</button>
+          </div>
         </div>
+
       </div>
 
       {/*RENDER FILTERED AND SEARCHED ANIME + ADD TO LIST + DETAILS PAGE*/}
@@ -207,9 +218,9 @@ function AnimeListPage() {
 
                 <div className="card-body">
                   <h2 className="card-title">{anime.name.nameEN}</h2>
-                  {anime.name.nameEN !== anime.name.nameJP &&
-                  <h2 className="card-title">{anime.name.nameJP}</h2>
-                  }
+                  {anime.name.nameEN !== anime.name.nameJP && (
+                    <h2 className="card-title">{anime.name.nameJP}</h2>
+                  )}
                   <p>Genre: {anime.genre}</p>
                   <p>Episodes: {anime.episodes}</p>
                   <p>Status: {anime.status}</p>
@@ -218,19 +229,24 @@ function AnimeListPage() {
                     {" "}
                     <button className="btn">See more</button>{" "}
                   </Link>
-                  {user && <div className="card-actions justify-end">
-                    <div className="dropdown dropdown-left dropdown-end">
-                      <div tabIndex={0} role="button" className="btn m-1">
-                        Add
+                  {user && (
+                    <div className="card-actions justify-end">
+                      <div className="dropdown dropdown-left dropdown-end">
+                        <div tabIndex={0} role="button" className="btn m-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+
+                        </div>
+                        <ul
+                          tabIndex={0}
+                          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                        >
+                          <li>
+                            <AddToList id={anime._id} />
+                          </li>
+                        </ul>
                       </div>
-                      <ul
-                        tabIndex={0}
-                        className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                      >
-                        <li><AddToList id={anime._id} /></li>
-                      </ul>
                     </div>
-                  </div>}
+                  )}
                 </div>
               </div>
             </div>

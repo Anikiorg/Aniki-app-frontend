@@ -148,33 +148,36 @@ function MangaListPage() {
       {/*TOGGLE ADD MANGA FORM*/}
 
       {user && user.typeOfUser === "admin" && (
-        <button className="btn" onClick={handleToggle}>Add manga</button>
+        <>
+<button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+
+  Add manga
+  </button>
+<dialog id="my_modal_3" className="modal">
+  <div className="modal-box">
+    <form method="dialog">
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <MangaCreate />
+  </div>
+</dialog>
+</>
       )}
       {toggle && <MangaCreate />}
       <br />
 
-      {/*SELECT FOR CATEGORIES, CALLS HANDLE SELECT */}
-      <div className="flex center">
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text">Search:</span>
-          </div>
-          <input
-            type="text"
-            placeholder="Type here"
-            onChange={(e) => handleChange(e)}
-            className="input input-bordered w-full max-w-xs"
-            value={input}
-          />
-        </label>
-     
-        <div className="center">
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Filter by genre:</span>
+      <div className="join">
+          <div>
+            <div>
+              <input type="text" onChange={(e) => handleChange(e)} className="input input-bordered join-item" placeholder="Search" value={input}/>
             </div>
-            <select className="select select-bordered" onChange={handleSelect}>
-              <option value="All Manga">All Manga</option>
+          </div>
+          <select onChange={handleSelect} className="select select-bordered join-item">
+            <option disabled selected>
+              Filter
+            </option>
+            <option value="All Manga">All Manga</option>
               <option value="Action">Action</option>
               <option value="Comedy">Comedy</option>
               <option value="Adventure">Adventure</option>
@@ -189,12 +192,11 @@ function MangaListPage() {
               <option value="Supernatural">Supernatural</option>
               <option value="Suspense">Suspense</option>
               <option value="Gore">Gore</option>
-            </select>
-
-            <div className="label"></div>
-          </label>
+          </select>
+          <div className="indicator">
+            <button className="btn join-item">Search</button>
+          </div>
         </div>
-      </div>
 
       {/*RENDER FILTERED AND SEARCHED MANGA + ADD TO LIST + DETAILS PAGE*/}
       <>
@@ -223,7 +225,7 @@ function MangaListPage() {
               <div className="card-actions justify-end">
               {user && <div className="dropdown dropdown-left dropdown-end">
                       <div tabIndex={0} role="button" className="btn m-1">
-                        Add
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
                       </div>
                       <ul
                         tabIndex={0}

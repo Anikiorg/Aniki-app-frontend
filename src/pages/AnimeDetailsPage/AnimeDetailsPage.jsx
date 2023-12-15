@@ -38,29 +38,31 @@ function AnimeDetailsPage() {
         <p>"loading.."</p>
       ) : (
         <>
-              <div className="card lg:card-side bg-base-100 shadow-xl cards">
-                <figure>
+          <div className="card lg:card-side bg-base-100 shadow-xl cards">
+            <figure>
               <img src={animeDetails.imageURL} alt="anime image" />
             </figure>
             <div className="card-body">
               <div className="container">
-              <div>
-              <h1>{animeDetails.name.nameEN}</h1>
-              {animeDetails.name.nameEN !== animeDetails.name.nameJP &&
-              <h1>{animeDetails.name.nameJP}</h1>
-              }
-              <p>Genre: {animeDetails.genre}</p>
-              <p>Episodes: {animeDetails.episodes}</p>
-              <p>Status:{animeDetails.status}</p>
-              <p>Premiered: {animeDetails.premiered}</p>
-              <p>Studios: {animeDetails.studios}</p>
-              <p>Age Rating: {animeDetails.ageRating}</p>
-              </div>
-              <div>
-              <label className="form-control">
-  <p className="description break-normal ...">{animeDetails.description}</p>
-</label>
-              </div>
+                <div>
+                  <h1>{animeDetails.name.nameEN}</h1>
+                  {animeDetails.name.nameEN !== animeDetails.name.nameJP && (
+                    <h1>{animeDetails.name.nameJP}</h1>
+                  )}
+                  <p>Genre: {animeDetails.genre}</p>
+                  <p>Episodes: {animeDetails.episodes}</p>
+                  <p>Status:{animeDetails.status}</p>
+                  <p>Premiered: {animeDetails.premiered}</p>
+                  <p>Studios: {animeDetails.studios}</p>
+                  <p>Age Rating: {animeDetails.ageRating}</p>
+                </div>
+                <div>
+                  <label className="form-control">
+                    <p className="description break-normal ...">
+                      {animeDetails.description}
+                    </p>
+                  </label>
+                </div>
               </div>
               <div className="card-actions justify-end">
                 {user && <AddToList id={animeDetails._id} />}

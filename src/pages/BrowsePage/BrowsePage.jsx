@@ -12,7 +12,7 @@ function BrowsePage() {
 
   return (
     <div>
-    <button className="btn" onClick={() => {handleContentType()}}>{isAnime ? <p>Anime</p> : <p>Manga</p>}</button>
+    <button className="btn" onClick={() => {handleContentType()}}>{isAnime ? <p>Anime</p> : <p>Manga</p>}</button> <br />
 
     {isAnime && <AnimeListPage/> || !isAnime && <MangaListPage/>}
     </div>
