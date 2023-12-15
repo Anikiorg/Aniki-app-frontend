@@ -174,7 +174,7 @@ function MangaListPage() {
               <span className="label-text">Filter by genre:</span>
             </div>
             <select className="select select-bordered" onChange={handleSelect}>
-              <option value="All Anime">All Anime</option>
+              <option value="All Manga">All Manga</option>
               <option value="Action">Action</option>
               <option value="Comedy">Comedy</option>
               <option value="Adventure">Adventure</option>
@@ -201,7 +201,7 @@ function MangaListPage() {
         {searchedList.map((manga) => {
           return (
             <div key={manga._id}>
-               <div className="card card-margin lg:card-side bg-base-100 shadow-xl">
+               <div className="card card-margin lg:card-side bg-base-100 shadow-xl cards">
                 <figure>
                   <img src={manga.imageURL} alt="animeImg" />
                 </figure>

@@ -13,6 +13,7 @@ import MangaDetailsPage from "./pages/MangaDetailsPage/MangaDetailsPage";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/manga/:mangaId" element={<MangaDetailsPage/>} />
         <Route path="/users/:userName"/>
       </Routes>
+
+      <Footer className="sticky"/>
     </div>
   );
 }
