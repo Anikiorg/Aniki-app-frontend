@@ -26,7 +26,8 @@ function AnimeListPage() {
       .then((response) => {
         setAnimeList(response.data);
         setAnimeBackup(response.data);
-        console.log(animeList);
+        console.log(user);
+
       })
       .catch((error) => console.log(error));
   }, []);
@@ -199,7 +200,7 @@ function AnimeListPage() {
         {searchedList.map((anime) => {
           return (
             <div key={anime._id}>
-              <div className="card card-margin lg:card-side bg-base-100 shadow-xl">
+              <div className="card card-margin lg:card-side bg-base-100 shadow-xl cards">
                 <figure>
                   <img src={anime.imageURL} alt="animeImg" />
                 </figure>

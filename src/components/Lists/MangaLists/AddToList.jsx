@@ -27,7 +27,7 @@ function AddToList(props) {
           .catch((err) => err);
       break;
 
-      case "CurrentlyWatchingList":
+      case "CurrentlyReadingList":
         axios
           .put(
             `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/mangaadd`, {id: props.id, listType: "currently reading"}, { headers: { Authorization: `Bearer ${storedToken}` }})
@@ -37,7 +37,7 @@ function AddToList(props) {
           .catch((err) => err);
       break;
 
-      case "PlanToWatchList":
+      case "PlanToReadList":
         axios
           .put(
             `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/mangaadd`, {id: props.id, listType: "plan to read"},{ headers: { Authorization: `Bearer ${storedToken}` }})
@@ -78,7 +78,7 @@ function AddToList(props) {
           handleAdd("CurrentlyReadingList");
         }}
       >
-        Currently Watching
+        Currently Reading
       </button>
 
       <button
@@ -87,7 +87,7 @@ function AddToList(props) {
           handleAdd("PlanToReadList");
         }}
       >
-        Plan To Watch
+        Plan To Read
       </button>
     </>
   );

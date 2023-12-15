@@ -1,3 +1,17 @@
 .App {
   text-align: center;
 }
+
+.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    bottom: 0;
+}
+
+body {
+  background-color: rgb(57, 56, 56);
+}
+
+.cards {
+  background-color: rgb(155, 155, 155);
+}

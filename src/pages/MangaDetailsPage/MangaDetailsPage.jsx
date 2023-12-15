@@ -38,7 +38,7 @@ function MangaDetailsPage() {
         <p>"loading.."</p>
       ) : (
         <>
-        <div className="card lg:card-side bg-base-100 shadow-xl">
+        <div className="card lg:card-side bg-base-100 shadow-xl cards">
         <figure>
               <img src={mangaDetails.imageURL} alt="manga image" />
             </figure>
