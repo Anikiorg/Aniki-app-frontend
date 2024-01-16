@@ -1,5 +1,62 @@
-.navbar {
-    background-color: #1f1f1f;
-    color: white;
-    
+.dropdown-icon {
+    justify-content: center;
+    height: fit-content;
+}
+
+@media (max-width: 786px) {  
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:center;
+        color: white;
+        padding: 2%; 
+        box-shadow: 5px 5px 5px black;
+    }  
+    .home-logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-left: 1%;
+        align-items: center;
+       }
+}
+
+@media (min-width: 768px) and (max-width: 1440px) {
+    .nav {
+        font-size: 1.5em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:center;
+        color: white;
+        padding: 1%; 
+        box-shadow: 5px 5px 5px black;
+    }  
+    .home-logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-left: 1%;
+        align-items:end;
+       
+    }
+}
+
+@media (min-width: 1440px) {
+    .nav {
+        font-size: 1.5em;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items:end;
+        color: white;
+        padding: 0.5% 5%; 
+        box-shadow: 5px 5px 5px black;
+    }  
+    .home-logo {
+        display: flex;
+        flex-direction: row;
+        align-items:end;
+       }
 }
