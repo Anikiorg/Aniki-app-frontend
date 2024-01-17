@@ -8,7 +8,7 @@ import spy from "../../assets/spy.jpg"
 
 function HomePage() {
   return (
-    <div className="">
+    <div className="home-page">
 
       <Link to="/browse">
         <button className="btn text-xl">

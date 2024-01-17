@@ -41,46 +41,58 @@ function SignupPage() {
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
         console.log(error)
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
       });
   };
 
 
 
   return (
-    <div className="center">
 
-    <div className="card w-96 bg-base-100 shadow-xl">
- <div className="card-body">
- <h2 className="card-title">Sign up</h2>
+    <div className="log-in">
+    <h1 className="title">Sign up</h1>
       <form onSubmit={handleSignupSubmit}>
-<input type="email" name="email" value={email} onChange={handleEmail} placeholder="Type email" className="input input-bordered w-full max-w-xs" />
-<br/>
+      <div className="input">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmail}
+              placeholder="Type email"
+            />
+          </div>
+          <br/>
 
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-          placeholder="Type password"
-          className="input input-bordered w-full max-w-xs"
-          />
+          <div className="input">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+              placeholder="Type password"
+            />
+          </div>
 
           <br/>
-        <input type="text" name="name" value={userName} onChange={handleUserName} placeholder="Type username" className="input input-bordered w-full max-w-xs"/>
+          <div className="input">
+<label>Username</label>
+        <input type="text" name="name" value={userName} onChange={handleUserName} placeholder="Type username"/>
+          </div>
 
           <br/>
-          <div className="card-actions justify-end">
-        <button className="btn" style={{marginTop: "15px"}} type="submit">Sign Up</button>
-        </div>
+          
+        <button className="btn button" type="submit">Sign Up</button>
+      
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Already have account?</p>
-      <Link to={"/login"} style={{color:"blue"}}> Login</Link>
+      <Link to={"/login"} className="link" > Login</Link>
           </div>
-          </div>
-    </div>
   );
 }
 
