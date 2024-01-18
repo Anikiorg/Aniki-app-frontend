@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AnimeListPage from "../AnimeListPage/AnimeListPage";
 import MangaListPage from "../MangaListPage/MangaListPage";
-import BrowsePage from "./BrowsePage.css"
+import "./BrowsePage.css"
 function BrowsePage() {
   const [isAnime, setIsAnime] = useState(true);
   
