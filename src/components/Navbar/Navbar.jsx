@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
@@ -7,6 +7,12 @@ function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const handleLogOut = () => {
+    logOutUser()
+    navigate("/")
+
+  }
 
   return (
     <div className="nav">
@@ -53,7 +59,7 @@ function Navbar() {
                   </Link>
               </li>
               <li>
-                  <button onClick={logOutUser}>Logout</button>
+                  <button onClick={handleLogOut}>Logout</button>
             
               </li>
             </>

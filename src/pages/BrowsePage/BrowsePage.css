@@ -1,0 +1,14 @@
+
+  @media (min-width: 786px) {
+   .button{
+      width: 20%;
+      margin-top: 5%
+    }
+  }
+  
+  @media (min-width: 1440px) {
+   .button{
+      width: 15%;
+      margin-top: 5%
+    }
+  }

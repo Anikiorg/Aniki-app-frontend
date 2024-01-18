@@ -27,7 +27,6 @@ function AnimeListPage() {
         setAnimeList(response.data);
         setAnimeBackup(response.data);
         console.log(user);
-
       })
       .catch((error) => console.log(error));
   }, []);
@@ -88,19 +87,19 @@ function AnimeListPage() {
         });
         setAnimeList(filteredArray);
         break;
-        case "Sci-Fi":
-          filteredArray = animeBackup.filter((anime) => {
-            return anime.genre.includes("Sci-Fi");
-          });
-          setAnimeList(filteredArray);
-          break;
-        case "Slice of Life":
-          filteredArray = animeBackup.filter((anime) => {
-            return anime.genre.includes("Slice of Life");
-          });
-          setAnimeList(filteredArray);
-          break;
-        case "Sports":
+      case "Sci-Fi":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Sci-Fi");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Slice of Life":
+        filteredArray = animeBackup.filter((anime) => {
+          return anime.genre.includes("Slice of Life");
+        });
+        setAnimeList(filteredArray);
+        break;
+      case "Sports":
         filteredArray = animeBackup.filter((anime) => {
           return anime.genre.includes("Sports");
         });
@@ -146,72 +145,92 @@ function AnimeListPage() {
 
   return (
     <>
+    <div className="switch">
       {user && user.typeOfUser === "admin" && (
+        <>
+          <button
+            className="btn"
+            onClick={() => document.getElementById("my_modal_3").showModal()}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-plus-circle"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 12h8" />
+              <path d="M12 8v8" />
+            </svg>
+            Add anime
+          </button>
 
-<>
-<button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-
-  Add anime
-  </button>
-<dialog id="my_modal_3" className="modal">
-  <div className="modal-box">
-    <form method="dialog">
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
-    <AnimeCreate />
-  </div>
-</dialog>
-</>
+          
+          <dialog id="my_modal_3" className="modal">
+            <div className="modal-box">
+              <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <AnimeCreate />
+            </div>
+          </dialog>
+        </>
       )}
 
-
       {toggle && <AnimeCreate />}
-
-
+    
+      </div>
 
       {/*SEARCH BAR*/}
-      <div className="flex center">
-
-        <div className="join">
-          <div>
-            <div>
-              <input type="text" onChange={(e) => handleChange(e)} className="input input-bordered join-item" placeholder="Search" value={input}/>
-            </div>
-          </div>
-          <select onChange={handleSelect} className="select select-bordered join-item">
+        <div className="search">
+              <input
+                type="text"
+                onChange={(e) => handleChange(e)}
+                className="input"
+                placeholder="Search"
+                value={input}
+              />
+          <select
+            onChange={handleSelect}
+            className="select select-bordered join-item"
+          >
             <option disabled selected>
               Filter
             </option>
             <option value="All Anime">All Anime</option>
-              <option value="Action">Action</option>
-              <option value="Comedy">Comedy</option>
-              <option value="Adventure">Adventure</option>
-              <option value="Drama">Drama</option>
-              <option value="Horror">Horror</option>
-              <option value="Fantasy">Fantasy</option>
-              <option value="Mystery">Mystery</option>
-              <option value="Romance">Romance</option>
-              <option value="Sci-Fi">Sci-Fi</option>
-              <option value="Sci-Fi">Slice of Life</option>
-              <option value="Sports">Sports</option>
-              <option value="Supernatural">Supernatural</option>
-              <option value="Suspense">Suspense</option>
-              <option value="Gore">Gore</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Drama">Drama</option>
+            <option value="Horror">Horror</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Sci-Fi">Slice of Life</option>
+            <option value="Sports">Sports</option>
+            <option value="Supernatural">Supernatural</option>
+            <option value="Suspense">Suspense</option>
+            <option value="Gore">Gore</option>
           </select>
-          <div className="indicator">
-            <button className="btn join-item">Search</button>
-          </div>
+            <button className="btn">Search</button>
+          
         </div>
-
-      </div>
 
       {/*RENDER FILTERED AND SEARCHED ANIME + ADD TO LIST + DETAILS PAGE*/}
       <>
         {searchedList.map((anime) => {
           return (
             <div key={anime._id}>
-              <div className="card card-margin lg:card-side bg-base-100 shadow-xl cards">
+              <div className="card border cards">
                 <figure>
                   <img src={anime.imageURL} alt="animeImg" />
                 </figure>
@@ -233,8 +252,20 @@ function AnimeListPage() {
                     <div className="card-actions justify-end">
                       <div className="dropdown dropdown-left dropdown-end">
                         <div tabIndex={0} role="button" className="btn m-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#000000"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-bookmark"
+                          >
+                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+                          </svg>
                         </div>
                         <ul
                           tabIndex={0}

@@ -147,6 +147,7 @@ function MangaListPage() {
     <>
       {/*TOGGLE ADD MANGA FORM*/}
 
+      <div className="switch">
       {user && user.typeOfUser === "admin" && (
         <>
 <button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>
@@ -165,12 +166,12 @@ function MangaListPage() {
 </>
       )}
       {toggle && <MangaCreate />}
-      <br />
+      </div>
 
-      <div className="join">
+      <div className="search">
           <div>
             <div>
-              <input type="text" onChange={(e) => handleChange(e)} className="input input-bordered join-item" placeholder="Search" value={input}/>
+              <input type="text" onChange={(e) => handleChange(e)} className="input" placeholder="Search" value={input}/>
             </div>
           </div>
           <select onChange={handleSelect} className="select select-bordered join-item">
@@ -194,7 +195,7 @@ function MangaListPage() {
               <option value="Gore">Gore</option>
           </select>
           <div className="indicator">
-            <button className="btn join-item">Search</button>
+            <button className="btn">Search</button>
           </div>
         </div>
 
@@ -203,8 +204,8 @@ function MangaListPage() {
         {searchedList.map((manga) => {
           return (
             <div key={manga._id}>
-               <div className="card card-margin lg:card-side bg-base-100 shadow-xl cards">
-                <figure>
+            <div className="card border cards">      
+            <figure>
                   <img src={manga.imageURL} alt="animeImg" />
                 </figure>
 
@@ -239,7 +240,6 @@ function MangaListPage() {
                   </div>
                 </div>
               </div>
-              <hr />
             </div>
           );
         })}

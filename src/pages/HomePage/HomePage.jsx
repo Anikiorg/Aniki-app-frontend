@@ -8,18 +8,8 @@ import spy from "../../assets/spy.jpg"
 
 function HomePage() {
   return (
-    <div className="home-page">
-
-      <Link to="/browse">
-        <button className="btn text-xl">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          Browse
-          </button>
-      </Link>
-      <br />
-
-      <div className="carousel w-4/6">
-        
+      <div className="home-page">
+      <div className="carousel w-4/6"> 
         <div id="slide1" className="carousel-item relative w-full">
         <img src={chainsaw} viewBox="0 0 24 24" alt="logo" className="w-full"/>
           {/* <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" className="w-full"/> */}
@@ -36,7 +26,6 @@ function HomePage() {
         </div>
 
         <div id="slide2" className="carousel-item relative w-full">
-
         <img src={spy} viewBox="0 0 24 24" alt="logo" className=""/>
           {/* <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" className="w-full"/> */}
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -82,8 +71,14 @@ function HomePage() {
         </div>
       </div>
 
+      <Link to="/browse">
+        <button className="btn text-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Browse
+          </button>
+      </Link>
 
-    </div>
+      </div>
   );
 }
 
