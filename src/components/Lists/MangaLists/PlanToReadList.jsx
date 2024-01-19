@@ -3,6 +3,8 @@ import axios from "axios";
 import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
+import "./Lists.css"
+
 
 function PlanToReadMangaList() {
   const [planToRead, setPlanToRead] = useState([]);
@@ -30,7 +32,7 @@ function PlanToReadMangaList() {
       {planToRead.map((manga) => {
         return (
           <div key={manga._id}>
-          <div className="card cards card-margin lg:card-side bg-base-100 shadow-xl">
+          <div className="card border cards">
          <figure>
            <img src={manga.imageURL} alt="mangaImg" />
          </figure>
@@ -48,7 +50,7 @@ function PlanToReadMangaList() {
              <button className="btn">See more</button>{" "}
            </Link>
      </div>
-     {user && <DeleteFromList animeId={manga._id} case="completed" showList={showList}/>}
+     {user && <DeleteFromList animeId={manga._id} showList={showList}/>}
         <hr/>
        </div>
        </div>

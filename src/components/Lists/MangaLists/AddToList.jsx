@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../context/auth.context";
 import axios from "axios";
+import "./Lists.css"
+
 function AddToList(props) {
   const { user } = useContext(AuthContext);
 
@@ -53,7 +55,7 @@ function AddToList(props) {
   }
 
   return (
-    <>
+    <div id="list">
       <button
         className="btn"
         onClick={() => {
@@ -89,7 +91,7 @@ function AddToList(props) {
       >
         Plan To Read
       </button>
-    </>
+    </div>
   );
 }
 export default AddToList;

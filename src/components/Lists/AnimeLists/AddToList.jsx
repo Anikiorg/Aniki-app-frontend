@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../context/auth.context";
 import axios from "axios";
-import "./AddToList.css"
+import "./Lists.css"
 function AddToList(props) {
   const { user } = useContext(AuthContext);
 
@@ -54,7 +54,7 @@ function AddToList(props) {
   }
 
   return (
-    <div className="list">
+    <div id="list">
       <button
         className="btn"
         onClick={() => {
