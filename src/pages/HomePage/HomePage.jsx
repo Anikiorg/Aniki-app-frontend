@@ -9,6 +9,7 @@ import spy from "../../assets/spy.jpg"
 function HomePage() {
   return (
       <div className="home-page">
+        
       <div className="carousel w-4/6"> 
         <div id="slide1" className="carousel-item relative w-full">
         <img src={chainsaw} viewBox="0 0 24 24" alt="logo" className="w-full"/>
