@@ -3,8 +3,10 @@ import axios from "axios"
 
 import service from "../../services/file-upload.service"
 
-function MangaCreate () {
+import { useNavigate } from "react-router-dom"
 
+function MangaCreate () {
+    const navigate = useNavigate()
     const [nameJP, setNameJP] = useState("")
     const [nameEN, setNameEN] = useState("")
     const [description, setDescription] = useState("")
@@ -55,6 +57,7 @@ function MangaCreate () {
         .then(() => {
             console.log(createdManga)
             console.log("Manga created")
+            navigate("/")
         })
         .catch((err) => console.log(err))
     }
@@ -149,7 +152,7 @@ return (
         
         <br/>
         
-        <button className="btn" style={{marginTop: "15px"}} type="submit">Submit</button>
+        <button className="btn" style={{marginTop: "15px"}} onClick={handleSubmit} type="submit">Submit</button>
     </form>
     </div>
     </div>

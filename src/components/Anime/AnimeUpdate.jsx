@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom"
 function AnimeUpdate(props) {
   /* form state vars */
   const [nameJP, setNameJP] = useState(props.animeDetails.name.nameJP);
@@ -18,6 +19,8 @@ function AnimeUpdate(props) {
   const name = { nameEN, nameJP };
 
   const storedToken = localStorage.getItem("authToken");
+  
+  const navigate = useNavigate()
 
   const updatedAnime = {
     name,
@@ -40,6 +43,8 @@ function AnimeUpdate(props) {
       )
       .then(() => {
         console.log("anime updated");
+        
+        navigate(`/anime/${props.animeDetails._id}`)
       })
       .catch((err) => console.log(err));
   };
@@ -205,7 +210,7 @@ function AnimeUpdate(props) {
 
             <br />
 
-            <button className="btn" style={{ marginTop: "15px" }} type="submit">
+            <button className="btn" style={{ marginTop: "15px" }} onClick={handleSubmit} type="submit">
               Save
             </button>
           </form>

@@ -2,8 +2,10 @@ import { useState } from "react"
 import axios from "axios"
 
 import service from "../../services/file-upload.service"
+import { useNavigate } from "react-router-dom"
 
 function AnimeCreate () {
+  const navigate = useNavigate()
 
     const [nameJP, setNameJP] = useState("")
     const [nameEN, setNameEN] = useState("")
@@ -53,6 +55,8 @@ function AnimeCreate () {
         .then(() => {
             console.log(createdAnime)
             console.log("Anime created")
+            navigate("/")
+
         })
         .catch((err) => console.log(err))
     }
@@ -217,7 +221,7 @@ function AnimeCreate () {
 
             <br />
 
-            <button className="btn" style={{ marginTop: "15px" }} type="submit">
+            <button className="btn" style={{ marginTop: "15px" }} onClick={handleSubmit} type="submit">
               Submit
             </button>
           </form>

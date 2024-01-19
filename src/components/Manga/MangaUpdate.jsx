@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 
 function MangaUpdate(props) {
   /* form state vars */
+  const navigate = useNavigate()
   const [nameJP, setNameJP] = useState(props.mangaDetails.name.nameJP);
   const [nameEN, setNameEN] = useState(props.mangaDetails.name.nameEN);
   const [description, setDescription] = useState(props.mangaDetails.description);
@@ -38,6 +40,7 @@ function MangaUpdate(props) {
       )
       .then(() => {
         console.log("manga updated");
+        navigate(`/manga/${props.mangaDetails._id}`)
       })
       .catch((err) => console.log(err));
   };
@@ -192,7 +195,7 @@ function MangaUpdate(props) {
 
           <br />
 
-          <button className="btn" style={{ marginTop: "15px" }} type="submit">Save</button>
+          <button className="btn" style={{ marginTop: "15px" }} onClick={handleSubmit} type="submit">Save</button>
         </form>
 </div>
 </div>
