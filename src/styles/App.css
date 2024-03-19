@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    font-family:Impact
+}
+
+a, Link {
+    text-decoration: none;
+}
+
+a:hover,  Link:hover {
+    color: rgb(214, 56, 56);
+} 

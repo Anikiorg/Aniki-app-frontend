@@ -3,8 +3,8 @@ import axios from "axios";
 import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
-import "./Lists.css"
 
+import "../../../styles/components/Lists.css"
 function CompletedMangaList() {
   const [completedManga, setCompletedManga] = useState([]);
   const { user } = useContext(AuthContext)

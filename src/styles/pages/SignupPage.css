@@ -1,0 +1,25 @@
+.signup-page, login-page {
+    align-items: center;
+    
+}
+
+.signup-page h1, .login-page h1 {
+    color: white;
+    font-size: 30px;
+}
+
+.signup-page button, .login-page button {
+    margin: 2% 0;
+}
+
+@media (max-width: 1000px) {
+    .signup-page form, .login-page form {
+        margin: 5% 10%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .signup-page form, .login-page form {
+        margin: 10% 30%;
+    }
+}
