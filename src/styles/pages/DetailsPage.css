@@ -13,6 +13,9 @@
   font-size: 40px;
 }
 
+
+@media (prefers-color-scheme: dark) {
+
 .card {
   color: white;
   border: 2px solid white;
@@ -20,7 +23,43 @@
   margin: 1% 0%;
 }
 
-.card .btn {
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 4%;
+  width: 80vw;
+  color: white;
+}
+
+}
+
+
+
+@media (prefers-color-scheme: light) {
+
+  .card {
+    color: white;
+    border: 2px solid white;
+    padding: 0 10%;
+    margin: 1% 0%;
+  }
+
+  
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 4%;
+  width: 80vw;
+  color: white;
+}
+
+}
+  .card .btn {
   margin-top: 3%;
 }
 
@@ -68,14 +107,4 @@
     padding: 10px;
   }
 
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin: 4%;
-  width: 80vw;
-  color: white;
 }

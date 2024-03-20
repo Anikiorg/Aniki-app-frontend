@@ -2,7 +2,23 @@ body {
     min-height: 100vh;
 }
 
+@media (prefers-color-scheme: dark) {
 
+    button, select, input, a {
+        background-color: white;
+        color: black;
+    }
+
+}
+
+
+@media (prefers-color-scheme: light) {
+
+    button, select, input {
+        background-color: white;
+        color: black
+    }
+}
 
 @tailwind base;
 @tailwind components;

@@ -4,9 +4,22 @@
     
 }
 
+
+@media (prefers-color-scheme: dark) {
+
 .signup-page h1, .login-page h1 {
     color: white;
     font-size: 30px;
+}
+}
+
+
+@media (prefers-color-scheme: light) {
+
+    .signup-page h1, .login-page h1 {
+        color: white;
+        font-size: 30px;
+    }
 }
 
 .signup-page button, .login-page button {

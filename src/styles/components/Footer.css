@@ -2,6 +2,18 @@
     width: 60px;
 }
 
+
+@media (prefers-color-scheme: dark) {
+    
 footer {
     background-color: black !important;
 }
+}
+
+
+@media (prefers-color-scheme: light) {
+    
+    footer {
+        background-color: black !important;
+    }
+    }

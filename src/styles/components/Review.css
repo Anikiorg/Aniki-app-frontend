@@ -1,4 +1,21 @@
 
+@media (prefers-color-scheme: dark) {
+    
+.review {
+  background-color: white;
+  margin: 1%;
+  padding: 1%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+  }
+
+
+  @media (prefers-color-scheme: light) {
+
 .review {
     background-color: white;
     margin: 1%;
@@ -8,7 +25,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+}
   .review-body {
     display: flex;
     flex-direction: column;
