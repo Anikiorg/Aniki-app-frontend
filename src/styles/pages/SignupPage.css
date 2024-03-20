@@ -1,5 +1,6 @@
 .signup-page, login-page {
     align-items: center;
+    min-height: 100vh
     
 }
 

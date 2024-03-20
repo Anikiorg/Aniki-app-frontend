@@ -1,0 +1,15 @@
+
+.profile-page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-lists {
+    width: 80%;    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

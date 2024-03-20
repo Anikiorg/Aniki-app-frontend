@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/auth.context";
 import axios from "axios";
 
-import "../../../styles/components/Lists.css"
+import "../../../styles/pages/ListPage.css"
 function AddToList(props) {
   const { user } = useContext(AuthContext);
 

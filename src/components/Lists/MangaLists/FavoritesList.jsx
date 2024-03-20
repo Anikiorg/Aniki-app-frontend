@@ -4,7 +4,8 @@ import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 
-import "../../../styles/components/Lists.css"
+
+import "../../../styles/pages/ListPage.css"
 function FavoriteMangaList () {
   const [favoriteManga, setFavoriteManga] = useState([]);
   const { user } = useContext(AuthContext)
@@ -30,29 +31,26 @@ function FavoriteMangaList () {
     <>
         {favoriteManga.map((manga) => {
            return(
-            <div key={manga._id}>
-            <div className="card border cards">
-           <figure>
-             <img src={manga.imageURL} alt="mangaImg" />
-           </figure>
-           <div className="card-body">
-             <h2 className="card-title">{manga.name.nameEN}</h2>
-             {manga.name.nameEN !== manga.name.nameJP &&
-             <h2 className="card-title">{manga.name.nameJP}</h2>
-             }
-          <p>Genre: {manga.genre}</p>
-             <p>Episodes: {manga.episodes}</p>
-             <p>Status: {manga.status}</p>
-             <p>Age rating: {manga.ageRating}</p>
-             <Link to={`/manga/${manga._id}`}>
-               {" "}
-               <button className="btn">See more</button>{" "}
-             </Link>
-       </div>
-       {user && <DeleteFromList animeId={manga._id} showList={showList}/>}
-          <hr/>
-         </div>
-         </div>
+            <div key={manga._id} className="card">
+            <img src={manga.imageURL} alt="mangaImg" />
+         
+          <div className="card-content">
+            <h2>{manga.name.nameEN}</h2>
+            {manga.name.nameEN !== manga.name.nameJP &&
+            <h2>{manga.name.nameJP}</h2>
+            }
+         <p>Genre: {manga.genre}</p>
+            <p>Episodes: {manga.episodes}</p>
+            <p>Status: {manga.status}</p>
+            <p>Age rating: {manga.ageRating}</p>
+            <Link to={`/manga/${manga._id}`}>
+              {" "}
+              <button className="btn">See more</button>{" "}
+            </Link>
+      {user && <DeleteFromList animeId={manga._id} showList={showList}/>}
+   
+        </div>
+        </div>
                ) 
         })}
     </>

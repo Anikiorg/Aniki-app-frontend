@@ -1,0 +1,50 @@
+
+.review {
+    background-color: white;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .review-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .review p {
+    font-size: small;
+    color: rgb(110, 110, 110);
+  }
+  
+  .review form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+
+  
+@media (min-width: 650px) and (max-width: 800px) {
+    
+  .review {
+    width: 70%;
+    height: 15vh;
+  }
+}
+
+
+@media (min-width: 800px) {
+    
+  .review {
+    width: 500px;
+    height: 15vh;
+  }
+}

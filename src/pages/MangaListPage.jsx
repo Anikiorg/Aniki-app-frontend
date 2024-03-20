@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import MangaCreate from "../components/Manga/MangaCreate";
 import AddToList from "../components/Lists/MangaLists/AddToList";
 import { AuthContext } from "../context/auth.context";
-import "../styles/pages/MangaListPage.css";
+import "../styles/pages/ListPage.css";
 
 function MangaListPage() {
   const [mangaList, setMangaList] = useState([]);
@@ -224,19 +224,17 @@ function MangaListPage() {
       </div>
 
       {/*RENDER FILTERED AND SEARCHED MANGA + ADD TO LIST + DETAILS PAGE*/}
-      <>
+      <div className="manga-page">
         {searchedList.map((manga) => {
           return (
-            <div key={manga._id}>
-              <div className="card border cards">
-                <figure>
+              <div key={manga._id} className="card">
                   <img src={manga.imageURL} alt="animeImg" />
-                </figure>
+       
 
-                <div className="card-body">
-                  <h2 className="card-title">{manga.name.nameEN}</h2>
+                <div className="card-content">
+                  <h2>{manga.name.nameEN}</h2>
                   {manga.name.nameEN !== manga.name.nameJP && (
-                    <h2 className="card-title">{manga.name.nameJP}</h2>
+                    <h2>{manga.name.nameJP}</h2>
                   )}
 
                   <p>Genre: {manga.genre}</p>
@@ -250,40 +248,46 @@ function MangaListPage() {
                   </Link>
                   <div className="card-actions justify-end">
                     {user && (
-                      <div className="dropdown dropdown-left dropdown-end">
-                        <div tabIndex={0} role="button" className="btn m-1">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="#000000"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="lucide lucide-bookmark"
-                          >
-                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
-                          </svg>
-                        </div>
-                        <ul
-                          tabIndex={0}
-                          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-50"
-                        >
-                          <li>
-                            <AddToList id={manga._id} />
-                          </li>
-                        </ul>
-                      </div>
+                       <div className="card-actions justify-end">
+                       <button
+                         className="btn"
+                         onClick={() =>
+                           document.getElementById("my_modal_4").showModal()
+                         }
+                       >
+                         {" "}
+                         <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           width="24"
+                           height="24"
+                           viewBox="0 0 24 24"
+                           fill="none"
+                           stroke="#000000"
+                           stroke-width="2"
+                           stroke-linecap="round"
+                           stroke-linejoin="round"
+                           class="lucide lucide-bookmark"
+                         >
+                           <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+                         </svg>
+                       </button>
+   
+                       <dialog id="my_modal_4" className="modal">
+                         <div className="modal-box">
+                           <AddToList id={manga._id} />
+                         </div>
+                         <form method="dialog" className="modal-backdrop">
+                           <button>close</button>
+                         </form>
+                       </dialog>
+                     </div>
                     )}
                   </div>
                 </div>
               </div>
-            </div>
           );
         })}
-      </>
+      </div>
     </>
   );
 }

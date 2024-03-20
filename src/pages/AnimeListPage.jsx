@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AnimeCreate from "../components/Anime/AnimeCreate";
 import AddToList from "../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../context/auth.context";
-import "../styles/pages/AnimeListPage.css";
+import "../styles/pages/ListPage.css";
 
 function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
@@ -223,64 +223,65 @@ function AnimeListPage() {
       </div>
 
       {/*RENDER FILTERED AND SEARCHED ANIME + ADD TO LIST + DETAILS PAGE*/}
-      <>
+      <div className="anime-page">
         {searchedList.map((anime) => {
           return (
-            <div key={anime._id}>
-              <div className="card border cards">
-                <figure>
-                  <img src={anime.imageURL} alt="animeImg" />
-                </figure>
+            <div key={anime._id} className="card">
+              <img src={anime.imageURL} alt="animeImg" />
 
-                <div className="card-body">
-                  <h2 className="card-title">{anime.name.nameEN}</h2>
-                  {anime.name.nameEN !== anime.name.nameJP && (
-                    <h2 className="card-title">{anime.name.nameJP}</h2>
-                  )}
-                  <p>Genre: {anime.genre}</p>
-                  <p>Episodes: {anime.episodes}</p>
-                  <p>Status: {anime.status}</p>
-                  <p>Age rating: {anime.ageRating}</p>
-                  <Link to={`/animes/${anime._id}`}>
-                    {" "}
-                    <button className="btn">See more</button>{" "}
-                  </Link>
-                  {user && (
-                    <div className="card-actions justify-end">
-                      <div className="dropdown dropdown-left dropdown-end">
-                        <div tabIndex={0} role="button" className="btn m-1">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="#000000"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="lucide lucide-bookmark"
-                          >
-                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
-                          </svg>
-                        </div>
-                        <ul
-                          tabIndex={0}
-                          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-50"
-                        >
-                          <li>
-                            <AddToList id={anime._id} />
-                          </li>
-                        </ul>
+              <div className="card-content">
+                <h2>{anime.name.nameEN}</h2>
+                {anime.name.nameEN !== anime.name.nameJP && (
+                  <h2>{anime.name.nameJP}</h2>
+                )}
+                <p>Genre: {anime.genre}</p>
+                <p>Episodes: {anime.episodes}</p>
+                <p>Status: {anime.status}</p>
+                <p>Age rating: {anime.ageRating}</p>
+                <Link to={`/animes/${anime._id}`}>
+                  {" "}
+                  <button className="btn">See more</button>{" "}
+                </Link>
+                {user && (
+                  <div className="card-actions justify-end">
+                    <button
+                      className="btn"
+                      onClick={() =>
+                        document.getElementById("my_modal_4").showModal()
+                      }
+                    >
+                      {" "}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#000000"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-bookmark"
+                      >
+                        <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+                      </svg>
+                    </button>
+
+                    <dialog id="my_modal_4" className="modal">
+                      <div className="modal-box">
+                        <AddToList id={anime._id} />
                       </div>
-                    </div>
-                  )}
-                </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
+                  </div>
+                )}
               </div>
             </div>
           );
         })}
-      </>
+      </div>
     </>
   );
 }

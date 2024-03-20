@@ -52,7 +52,7 @@ function ProfilePage() {
   }
 
   return (
-    <>
+    <div className="profile-page">
 {/*       <div>
         <div className="collapse bg-base-200">
           <svg
@@ -82,17 +82,16 @@ function ProfilePage() {
       </div> */}
 
       <button
-        className="btn"
-        style={{margin:"5px"}}
+        className="toggle-content"
         onClick={() => {
           handleContentType();
         }}
       >
-        {isAnime ? <p>Anime</p> : <p>Manga</p>}
+        {isAnime ? <p>Anime?</p> : <p>Manga?</p>}
       </button>
-      <br />
 
-      <>
+      <div>
+
         <button
           className="btn"
           onClick={() => {
@@ -128,6 +127,9 @@ function ProfilePage() {
         >
           {isAnime ? <p>Plan to watch</p> : <p>Plan to read</p>}
         </button>
+        </div>
+
+<div className="profile-lists">
 
         {(isAnime && toggleFavoritesList && <FavoriteAnimeList />) ||
           (!isAnime && toggleFavoritesList && <FavoriteMangaList />)}
@@ -137,15 +139,16 @@ function ProfilePage() {
 
         {(isAnime && toggleCurrentlyWatchingList && (
           <CurrentlyWatchingAnimeList />
-        )) ||
+          )) ||
           (!isAnime && toggleCurrentlyWatchingList && (
             <CurrentlyReadingMangaList />
-          ))}
+            ))}
 
         {(isAnime && togglePlanToWatchList && <PlanToWatchAnimeList />) ||
           (!isAnime && togglePlanToWatchList && <PlanToReadMangaList />)}
-      </>
-    </>
+   
+            </div>
+    </div>
   );
 }
 

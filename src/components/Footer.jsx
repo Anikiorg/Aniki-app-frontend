@@ -4,15 +4,14 @@ import AnikiLogo from "../assets/AnikiLogo.png";
 
 function Footer() {
   return (
-    <footer>
-      <div>
-        <img className="logo-img" src={AnikiLogo} alt="logo" />
-      </div>
-
-      <p className="copy-right">Copyright © 2023</p>
-   
-      <div>
-        <a
+<footer className="footer items-center p-4 bg-neutral text-neutral-content">
+  <aside className="items-center grid-flow-col">
+    
+  <img className="logo-img" src={AnikiLogo} alt="logo" />
+    <p>Copyright © 2023 - All right reserved</p>
+  </aside> 
+  <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+  <a
         className="linkedIn"
           href="https://www.linkedin.com/in/gusfonte99/"
         >
@@ -53,9 +52,15 @@ function Footer() {
             <circle cx="4" cy="4" r="2" />
           </svg>
           <p className="name">Zohra</p>
-        </a>
-      </div>
-    </footer>
+        </a>  </nav>
+</footer>
+
+
+
+
+
+
+
   );
 }
 

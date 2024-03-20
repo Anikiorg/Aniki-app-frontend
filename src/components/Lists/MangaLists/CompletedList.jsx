@@ -4,7 +4,8 @@ import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 
-import "../../../styles/components/Lists.css"
+
+import "../../../styles/pages/ListPage.css"
 function CompletedMangaList() {
   const [completedManga, setCompletedManga] = useState([]);
   const { user } = useContext(AuthContext)
@@ -29,15 +30,13 @@ function CompletedMangaList() {
     <>
         {completedManga.map((manga) => {
            return(
-            <div key={manga._id}>
-            <div className="card border cards">
-           <figure>
+            <div key={manga._id} className="card">
              <img src={manga.imageURL} alt="mangaImg" />
-           </figure>
-           <div className="card-body">
-             <h2 className="card-title">{manga.name.nameEN}</h2>
+          
+           <div className="card-content">
+             <h2>{manga.name.nameEN}</h2>
              {manga.name.nameEN !== manga.name.nameJP &&
-             <h2 className="card-title">{manga.name.nameJP}</h2>
+             <h2>{manga.name.nameJP}</h2>
              }
           <p>Genre: {manga.genre}</p>
              <p>Episodes: {manga.episodes}</p>
@@ -47,9 +46,8 @@ function CompletedMangaList() {
                {" "}
                <button className="btn">See more</button>{" "}
              </Link>
-       </div>
        {user && <DeleteFromList animeId={manga._id} showList={showList}/>}
-          <hr/>
+    
          </div>
          </div>
                ) 

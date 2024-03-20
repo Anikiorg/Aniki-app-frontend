@@ -1,0 +1,125 @@
+/*search*/
+
+@media (max-width: 450px) {
+  .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2%;
+  }
+}
+
+@media (min-width: 450px) {
+  .search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2%;
+  }
+}
+
+/*card*/
+
+@media (max-width: 650px) {
+  
+.card h2 {
+  font-size: 40px;
+  margin: 1%;
+}
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 800px) {
+  
+.card h2 {
+  font-size: 40px;
+  margin: 1%;
+}
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1100px) {
+  
+.card h2 {
+  font-size: 40px;
+  margin: 1%;
+}
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    justify-content: space-around;
+    padding: 0 !important;
+  }
+
+  .card img {
+    width: 40vw;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+@media (min-width: 1100px) {
+  .anime-page, .manga-page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card {
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+    height: 50vh;
+    justify-content: space-around;
+    padding: 0 !important;
+  }
+
+  .card img {
+    width: 20vw;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: small;
+    padding: 2%;
+  }
+  
+.card h2 {
+  font-size: 22px;
+}
+}
+
+.card {
+  color: white;
+  border: 2px solid white;
+  padding: 0 10%;
+  margin: 1% 0%;
+}
+
+
+
+.card .btn {
+  margin-top: 3%;
+}
+
+.card img {
+  border-radius: 5px;
+}

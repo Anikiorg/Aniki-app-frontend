@@ -1,0 +1,81 @@
+.anime-details-page,
+.manga-details-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+}
+
+.anime-details-page .card h2,
+.manga-details-page .card h2 {
+  font-size: 40px;
+}
+
+.card {
+  color: white;
+  border: 2px solid white;
+  padding: 0 10%;
+  margin: 1% 0%;
+}
+
+.card .btn {
+  margin-top: 3%;
+}
+
+.card img {
+  border-radius: 15px;
+}
+
+@media (max-width: 650px) {
+  .review {
+    width: 90%;
+    height: 15vh;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 800px) {
+  .anime-details-page .card,
+  .manga-details-page .card {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  }
+}
+
+@media (min-width: 800px) {
+  .anime-details-page .card,
+  .manga-details-page .card {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    height: 50%;
+    justify-content: space-around;
+    padding: 0 !important;
+  }
+
+  .anime-details-page .card img,
+  .manga-details-page .card img {
+    width: 20vw;
+  }
+
+  .anime-details-page .card-content,
+  .manga-details-page .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 4%;
+  width: 80vw;
+  color: white;
+}

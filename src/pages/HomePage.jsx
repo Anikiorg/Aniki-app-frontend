@@ -14,7 +14,7 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <p>
+      <p className="blurb">
         Discover your next anime obsession with our comprehensive anime list
         site. Dive into a vast ocean of genres, from pulse-pounding action to
         heartwarming romance, meticulously curated for every anime aficionado.
@@ -26,17 +26,16 @@ function HomePage() {
         embark on a limitless adventure through our expansive catalog, where
         every click unveils a new realm of imagination and wonder.
       </p>
-      <div>
+      <div className="toggle-content">
         <button
-          className="toggle-content"
           onClick={() => {
             handleContentType();
           }}
         >
           {isAnime ? <p>Anime?</p> : <p>Manga?</p>}
         </button>{" "}
-        {(isAnime && <AnimeListPage />) || (!isAnime && <MangaListPage />)}
       </div>
+        {(isAnime && <AnimeListPage />) || (!isAnime && <MangaListPage />)}
     </div>
   );
 }

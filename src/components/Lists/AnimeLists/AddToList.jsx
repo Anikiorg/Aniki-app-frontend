@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/auth.context";
 import axios from "axios";
 
-import "../../../styles/components/Lists.css"
+import "../../../styles/pages/ListPage.css"
 
 function AddToList(props) {
   const { user } = useContext(AuthContext);
@@ -65,6 +65,14 @@ function AddToList(props) {
       >
         Favorites
       </button>
+      <button
+        className="btn"
+        onClick={() => {
+          handleAdd("CurrentlyWatchingList");
+        }}
+      >
+        Currently Watching
+      </button>
 
       <button
         className="btn"
@@ -75,14 +83,7 @@ function AddToList(props) {
        Completed
       </button>
 
-      <button
-        className="btn"
-        onClick={() => {
-          handleAdd("CurrentlyWatchingList");
-        }}
-      >
-        Currently Watching
-      </button>
+     
 
       <button
         className="btn"

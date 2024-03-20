@@ -31,7 +31,7 @@ function App() {
         <Route path="/manga/:mangaId" element={<MangaDetailsPage/>} />
         <Route path="/users/:userName"/>
       </Routes>
-      
+      <Footer/>
      
     </div>
   );
