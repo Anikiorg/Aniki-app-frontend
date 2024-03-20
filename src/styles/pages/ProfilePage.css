@@ -13,3 +13,19 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+
+
+@media (prefers-color-scheme: dark) {
+    .profile-page button {
+        background-color: white;
+        color: black;
+    }
+}
+    @media (prefers-color-scheme: light) {
+        
+    .profile-page button {
+        background-color: white;
+        color: black;
+    }
+    }

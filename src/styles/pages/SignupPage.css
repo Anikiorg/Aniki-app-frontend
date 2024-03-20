@@ -11,6 +11,14 @@
     color: white;
     font-size: 30px;
 }
+
+
+.signup-page button, .login-page button {
+    margin: 2% 0;
+    background: white;
+    color: black;
+}
+
 }
 
 
@@ -20,11 +28,21 @@
         color: white;
         font-size: 30px;
     }
-}
+    
 
 .signup-page button, .login-page button {
     margin: 2% 0;
+    background: white;
+    color: black;
 }
+
+.signup-page input, .login-page input {
+    
+    background: white;
+    color: black;
+}
+}
+
 
 @media (max-width: 1000px) {
     .signup-page form, .login-page form {
@@ -36,4 +54,10 @@
     .signup-page form, .login-page form {
         margin: 10% 30%;
     }
+    
+.signup-page input, .login-page input {
+    
+    background: white;
+    color: rgb(0, 0, 0);
+}
 }

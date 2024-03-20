@@ -10,6 +10,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.review form textarea, .review form button {
+  background-color: white;
+  color: black;
+}
+
+.review-body span, .review-body .input {
+  background: white;
+  color: black;
+}
  
   }
 
@@ -25,6 +35,18 @@
     justify-content: center;
     align-items: center;
   }
+
+  
+.review form textarea, .review form button {
+  background-color: white;
+  color: black;
+}
+
+.review-body span, .review-body .input {
+  background: white;
+  color: black;
+}
+
 }
   .review-body {
     display: flex;

@@ -1,4 +1,21 @@
 /*search*/
+@media (prefers-color-scheme: dark) {
+  .search button,
+  .search select,
+  .search input {
+    background-color: white;
+    color: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .search button,
+  .search select,
+  .search input {
+    background-color: white;
+    color: black;
+  }
+}
 
 @media (max-width: 450px) {
   .search {
@@ -18,14 +35,14 @@
   }
 }
 
-/*card*/
 
+
+/*card*/
 @media (max-width: 650px) {
-  
-.card h2 {
-  font-size: 40px;
-  margin: 1%;
-}
+  .card h2 {
+    font-size: 40px;
+    margin: 1%;
+  }
 
   .card {
     display: flex;
@@ -35,11 +52,10 @@
 }
 
 @media (min-width: 650px) and (max-width: 800px) {
-  
-.card h2 {
-  font-size: 40px;
-  margin: 1%;
-}
+  .card h2 {
+    font-size: 40px;
+    margin: 1%;
+  }
 
   .card {
     display: flex;
@@ -49,11 +65,10 @@
 }
 
 @media (min-width: 800px) and (max-width: 1100px) {
-  
-.card h2 {
-  font-size: 40px;
-  margin: 1%;
-}
+  .card h2 {
+    font-size: 40px;
+    margin: 1%;
+  }
 
   .card {
     display: flex;
@@ -75,7 +90,8 @@
 }
 
 @media (min-width: 1100px) {
-  .anime-page, .manga-page {
+  .anime-page,
+  .manga-page {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -101,33 +117,38 @@
     font-size: small;
     padding: 2%;
   }
-  
-.card h2 {
-  font-size: 22px;
-}
-}
 
+  .card h2 {
+    font-size: 22px;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
-
-
-.card {
-  color: white;
-  border: 2px solid white;
-  padding: 0 10%;
-  margin: 1% 0%;
-}
-
-}
-
-@media (prefers-color-scheme: light) {
-
   .card {
     color: white;
     border: 2px solid white;
     padding: 0 10%;
     margin: 1% 0%;
   }
+  
+.card .btn {
+  background-color: white;
+ color: black
+}
+}
+
+@media (prefers-color-scheme: light) {
+  .card {
+    color: white;
+    border: 2px solid white;
+    padding: 0 10%;
+    margin: 1% 0%;
+  }
+  
+.card .btn {
+  background-color: white;
+ color: black
+}
 }
 
 .card .btn {
