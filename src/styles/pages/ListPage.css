@@ -1,19 +1,23 @@
 /*search*/
 @media (prefers-color-scheme: dark) {
-  .search button,
   .search select,
   .search input {
     background-color: white;
     color: black;
   }
+  .modal-box {
+    background-color: white;
+  } 
 }
 
 @media (prefers-color-scheme: light) {
-  .search button,
   .search select,
   .search input {
     background-color: white;
     color: black;
+  }
+  .modal-box {
+    background-color: white;
   }
 }
 

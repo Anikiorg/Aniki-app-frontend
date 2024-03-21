@@ -1,17 +1,17 @@
-
 @media (prefers-color-scheme: dark) {
-    .navbar, .navbar Link, .navbar button {
-        background-color: white;
+    .navbar, .navbar button {
+        background-color: rgb(255, 255, 255);
         color: black;
     }
-
+    
 }
 
 
 @media (prefers-color-scheme: light) {
-    .navbar, .navbar Link, .navbar button {
-        background-color: white;
+    .navbar, .navbar ul{
+        background-color: rgb(255, 255, 255);
         color: black;
     }
+  
 }
 

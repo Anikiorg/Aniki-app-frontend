@@ -1,31 +1,39 @@
-
 .profile-page {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-lists {
-    width: 80%;    
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-
-
 
 @media (prefers-color-scheme: dark) {
-    .profile-page button {
-        background-color: white;
-        color: black;
-    }
+  .profile-page .btn {
+    background-color: white;
+    color: black;
+  }
+
+  .toggle-content {
+    color: white;
+    margin-top: 4%;
+    text-align: center;
+  }
 }
-    @media (prefers-color-scheme: light) {
-        
-    .profile-page button {
-        background-color: white;
-        color: black;
-    }
-    }
+@media (prefers-color-scheme: light) {
+  .profile-page .btn {
+    background-color: white;
+    color: black;
+  }
+
+  .toggle-content {
+    color: white;
+    margin-top: 4%;
+    text-align: center;
+  }
+}

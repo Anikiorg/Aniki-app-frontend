@@ -6,6 +6,8 @@ import AddToList from "../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../context/auth.context";
 import "../styles/pages/ListPage.css";
 
+
+import Loading from "../components/Loading";
 function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
   const [animeBackup, setAnimeBackup] = useState([]);
@@ -14,6 +16,7 @@ function AnimeListPage() {
   const [input, setInput] = useState("");
   const { user } = useContext(AuthContext);
 
+  const [loading, setLoading] = useState(true);
   //TOGGLE FOR ADD ANIME
   const handleToggle = () => {
     setToggle(!toggle);
@@ -26,7 +29,8 @@ function AnimeListPage() {
       .then((response) => {
         setAnimeList(response.data);
         setAnimeBackup(response.data);
-        console.log(user);
+       
+        setLoading(false);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -159,10 +163,10 @@ function AnimeListPage() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#000000"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-plus-circle"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-plus-circle"
               >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M8 12h8" />
@@ -219,10 +223,17 @@ function AnimeListPage() {
           <option value="Suspense">Suspense</option>
           <option value="Gore">Gore</option>
         </select>
-        <button className="btn">Search</button>
       </div>
 
       {/*RENDER FILTERED AND SEARCHED ANIME + ADD TO LIST + DETAILS PAGE*/}
+
+
+      
+          {loading ? (
+            <Loading/>
+          ) :(
+
+         
       <div className="anime-page">
         {searchedList.map((anime) => {
           return (
@@ -247,7 +258,7 @@ function AnimeListPage() {
                     <button
                       className="btn"
                       onClick={() =>
-                        document.getElementById("my_modal_4").showModal()
+                        document.getElementById(anime._id).showModal()
                       }
                     >
                       {" "}
@@ -258,16 +269,16 @@ function AnimeListPage() {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="#000000"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-bookmark"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-bookmark"
                       >
                         <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
                       </svg>
                     </button>
 
-                    <dialog id="my_modal_4" className="modal">
+                    <dialog id={anime._id} className="modal">
                       <div className="modal-box">
                         <AddToList id={anime._id} />
                       </div>
@@ -282,6 +293,8 @@ function AnimeListPage() {
           );
         })}
       </div>
+       )
+      }
     </>
   );
 }

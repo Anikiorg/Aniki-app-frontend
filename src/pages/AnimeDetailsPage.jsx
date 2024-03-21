@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 
+import Loading from "../components/Loading";
 import AnimeUpdate from "../components/Anime/AnimeUpdate";
 import AnimeDelete from "../components/Anime/AnimeDelete";
 import AnimeReviews from "../components/Anime/AnimeReviews";
@@ -37,7 +38,7 @@ function AnimeDetailsPage() {
   return (
     <div className="anime-details-page">
       {loading ? (
-        <p>"loading.."</p>
+        <Loading/>
       ) : (
         <>
           <div className="card">
@@ -74,8 +75,8 @@ function AnimeDetailsPage() {
                       stroke="#000000"
                       stroke-width="2"
                       stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-bookmark"
+                      strokeLinejoin="round"
+                      className="lucide lucide-bookmark"
                     >
                       <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
                     </svg>
@@ -105,8 +106,6 @@ function AnimeDetailsPage() {
               <AnimeDelete animeId={animeId} />
             )}
           </div>
-        </>
-      )}
 
 
       {showForm && <AnimeUpdate animeDetails={animeDetails} />}
@@ -115,6 +114,8 @@ function AnimeDetailsPage() {
 
       <AnimeReviews />
       
+        </>
+      )}
     </div>
   );
 }
