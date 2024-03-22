@@ -9,13 +9,11 @@ function FavoriteAnimeList () {
   const [favoriteAnime, setFavoriteAnime] = useState([]);
   const { user } = useContext(AuthContext)
   const userName = user.userName
-  console.log(user.userName)
 
   function showList() {
     axios
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
-      console.log("sent request to get favorites list");
       setFavoriteAnime(response.data.animeLists.favorites);
     })
     .catch((err) => err);
@@ -24,7 +22,6 @@ function FavoriteAnimeList () {
   useEffect(() => {
     showList()
   }, []);
-    console.log(favoriteAnime)
 
   return (
     <>
@@ -48,7 +45,7 @@ function FavoriteAnimeList () {
               <button className="btn bottom-button">See more</button>{" "}
             </Link>
           {user && (
-            <DeleteFromList animeId={anime._id} showList={showList} />
+            <DeleteFromList animeId={anime._id} showList={showList} case={"favorites"}/>
           )}
         </div>
         </div>

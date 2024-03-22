@@ -9,14 +9,12 @@ function CurrentlyWatchingAnimeList() {
     const [currentlyWatchingAnime, setCurrentlyWatchingAnime] = useState([]);
     const { user } = useContext(AuthContext)
     const userName = user.userName
-    console.log(user.userName)
   
     function showList() {
 
     axios
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
-      console.log("sent request to get currently watching list");
       setCurrentlyWatchingAnime(response.data.animeLists.watching);
     })
     .catch((err) => err);
@@ -25,7 +23,6 @@ function CurrentlyWatchingAnimeList() {
   useEffect(() => {
   showList() 
   }, []);
-    console.log(currentlyWatchingAnime)
     
   return (
     <>
@@ -49,7 +46,7 @@ function CurrentlyWatchingAnimeList() {
               <button className="btn bottom-button">See more</button>{" "}
             </Link>
           {user && (
-            <DeleteFromList animeId={anime._id} showList={showList} />
+            <DeleteFromList animeId={anime._id} showList={showList} case={"currentlyWatching"}/>
           )}
         </div>
         </div>

@@ -10,14 +10,12 @@ function CurrentlyReadingMangaList() {
     const [currentlyReading, setCurrentlyReading] = useState([]);
     const { user } = useContext(AuthContext)
     const userName = user.userName
-    console.log(user.userName)
     
     function showList() {
     
       axios
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
-      console.log("sent request to get currently reading list");
       setCurrentlyReading(response.data.mangaLists.reading);
     })
     .catch((err) => err);
@@ -26,7 +24,6 @@ function CurrentlyReadingMangaList() {
   useEffect(() => {
   showList() 
   }, []);
-    console.log(currentlyReading)
     
   return (
     <>
@@ -50,7 +47,7 @@ function CurrentlyReadingMangaList() {
               {" "}
               <button className="btn bottom-button">See more</button>{" "}
             </Link>
-      {user && <DeleteFromList animeId={manga._id} showList={showList}/>}
+      {user && <DeleteFromList mangaId={manga._id} showList={showList} case={"currentlyReading"}/>}
    
         </div>
         </div>

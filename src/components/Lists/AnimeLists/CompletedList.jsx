@@ -9,13 +9,11 @@ function CompletedAnimeList() {
   const [completedAnime, setCompletedAnime] = useState([]);
   const { user } = useContext(AuthContext);
   const userName = user.userName;
-  console.log(user.userName);
 
   function showList() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
       .then((response) => {
-        console.log("sent request to get completed list");
         setCompletedAnime(response.data.animeLists.completed);
       })
       .catch((err) => err);
@@ -24,8 +22,7 @@ function CompletedAnimeList() {
   useEffect(() => {
     showList();
   }, []);
-  console.log(completedAnime);
-
+  
   return (
     <>
       {completedAnime.map((anime) => {
@@ -47,7 +44,7 @@ function CompletedAnimeList() {
                   <button className="btn bottom-button">See more</button>{" "}
                 </Link>
               {user && (
-                <DeleteFromList animeId={anime._id} showList={showList} />
+                <DeleteFromList animeId={anime._id} showList={showList} case={"completed"}/>
                 )}
                 </div>
             </div>
