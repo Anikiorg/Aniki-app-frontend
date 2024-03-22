@@ -42,12 +42,15 @@ function CompletedMangaList() {
              <p>Episodes: {manga.episodes}</p>
              <p>Status: {manga.status}</p>
              <p>Age rating: {manga.ageRating}</p>
+             
+             <div className="card-bottom">
              <Link to={`/manga/${manga._id}`}>
                {" "}
-               <button className="btn">See more</button>{" "}
+               <button className="btn bottom-button">See more</button>{" "}
              </Link>
        {user && <DeleteFromList animeId={manga._id} showList={showList}/>}
     
+         </div>
          </div>
          </div>
                ) 

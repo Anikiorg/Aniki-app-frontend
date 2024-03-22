@@ -1,6 +1,7 @@
 body {
     background-color: black;
-    font-family:Impact
+    font-family: Impact, Verdana, Tahoma, 'Segoe UI';
+    line-height: 30px;
 }
 
 a, Link {

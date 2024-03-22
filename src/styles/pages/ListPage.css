@@ -53,6 +53,12 @@
     flex-direction: column;
     width: 100vw;
   }
+  
+.modal-box #list{
+  display: flex; 
+  flex-direction: column ;
+  justify-content: center;
+}
 }
 
 @media (min-width: 650px) and (max-width: 800px) {
@@ -66,6 +72,12 @@
     flex-direction: column;
     width: 80vw;
   }
+  
+.modal-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 }
 
 @media (min-width: 800px) and (max-width: 1100px) {
@@ -91,6 +103,13 @@
     flex-direction: column;
     justify-content: space-around;
   }
+
+  
+.modal-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 }
 
 @media (min-width: 1100px) {
@@ -125,6 +144,14 @@
   .card h2 {
     font-size: 22px;
   }
+  
+.modal-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -161,4 +188,9 @@
 
 .card img {
   border-radius: 5px;
+}
+
+
+.modal-box .btn {
+  margin-top: 0 !important;
 }

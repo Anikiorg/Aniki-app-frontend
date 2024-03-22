@@ -41,13 +41,15 @@ function CompletedAnimeList() {
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
                 <p>Age rating: {anime.ageRating}</p>
+                <div className="card-bottom">
                 <Link to={`/animes/${anime._id}`}>
                   {" "}
-                  <button className="btn">See more</button>{" "}
+                  <button className="btn bottom-button">See more</button>{" "}
                 </Link>
               {user && (
                 <DeleteFromList animeId={anime._id} showList={showList} />
-              )}
+                )}
+                </div>
             </div>
           </div>
         );
