@@ -5,7 +5,10 @@ import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 import "../../../styles/pages/ListPage.css"
 
+import Loading from "../../Loading";
 function PlanToReadMangaList() {
+  
+  const [loading, setLoading] = useState(true);
   const [planToRead, setPlanToRead] = useState([]);
   const { user } = useContext(AuthContext);
   const userName = user.userName;
@@ -15,6 +18,7 @@ function PlanToReadMangaList() {
       .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
       .then((response) => {
         setPlanToRead(response.data.mangaLists.planToRead);
+        setLoading(false);
       })
       .catch((err) => err);
   }
@@ -25,6 +29,13 @@ function PlanToReadMangaList() {
 
   return (
     <>
+    {loading ? (
+            <Loading/>
+          ) :(
+            planToRead.length == 0
+            ? <a className="empty-list" href="/">List empty. Add some anime?</a>
+            :
+            <>
       {planToRead.map((manga) => {
         return (
           <div key={manga._id} className="card">
@@ -51,10 +62,12 @@ function PlanToReadMangaList() {
             </div>
             </div>
           </div>
-        );
-      })}
-    </>
-  );
-}
+         );
+        })}</>
+            )}
+      </>
+    );
+  }
+  
 
 export default PlanToReadMangaList;

@@ -5,7 +5,10 @@ import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 import "../../../styles/pages/ListPage.css";
 
+import Loading from "../../Loading";
 function PlanToWatchAnimeList() {
+  
+  const [loading, setLoading] = useState(true);
   const [planToWatchAnime, setPlanToWatchAnime] = useState([]);
   const { user } = useContext(AuthContext);
   const userName = user.userName;
@@ -15,6 +18,7 @@ function PlanToWatchAnimeList() {
       .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
       .then((response) => {
         setPlanToWatchAnime(response.data.animeLists.planToWatch);
+        setLoading(false);
       })
       .catch((err) => err);
   }
@@ -25,6 +29,13 @@ function PlanToWatchAnimeList() {
 
   return (
     <>
+     {loading ? (
+            <Loading/>
+          ) :(
+            planToWatchAnime.length == 0
+            ? <a className="empty-list" href="/">List empty. Add some anime?</a>
+            :
+            <>
       {planToWatchAnime.map((anime) => {
         return (
           <div key={anime._id} className="card">
@@ -52,7 +63,9 @@ function PlanToWatchAnimeList() {
           </div>
         );
       })}
-    </>
+    </>)
+}
+</>
   );
 }
 

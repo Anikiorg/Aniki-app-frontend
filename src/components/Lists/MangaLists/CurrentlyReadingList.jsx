@@ -4,9 +4,12 @@ import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 
+import Loading from "../../Loading";
 
 import "../../../styles/pages/ListPage.css"
 function CurrentlyReadingMangaList() {  
+  
+  const [loading, setLoading] = useState(true);
     const [currentlyReading, setCurrentlyReading] = useState([]);
     const { user } = useContext(AuthContext)
     const userName = user.userName
@@ -17,6 +20,7 @@ function CurrentlyReadingMangaList() {
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
       setCurrentlyReading(response.data.mangaLists.reading);
+      setLoading(false);
     })
     .catch((err) => err);
   }
@@ -27,6 +31,12 @@ function CurrentlyReadingMangaList() {
     
   return (
     <>
+    {loading ? (
+            <Loading/>
+          ) :(
+            currentlyReading.length == 0 
+            ? <a className="empty-list" href="/">List empty. Add some anime?</a>
+            : <>
         {currentlyReading.map((manga) => {
           return(
             <div key={manga._id} className="card">
@@ -52,10 +62,11 @@ function CurrentlyReadingMangaList() {
         </div>
         </div>
         </div>
-           ) 
-        })}
+       );
+      })}</>
+          )}
     </>
   );
-
 }
+
 export default CurrentlyReadingMangaList

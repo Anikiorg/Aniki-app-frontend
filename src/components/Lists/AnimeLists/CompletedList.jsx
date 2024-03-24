@@ -4,8 +4,11 @@ import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 
+import Loading from "../../Loading";
 import "../../../styles/pages/ListPage.css"
+
 function CompletedAnimeList() {
+  const [loading, setLoading] = useState(true);
   const [completedAnime, setCompletedAnime] = useState([]);
   const { user } = useContext(AuthContext);
   const userName = user.userName;
@@ -15,6 +18,7 @@ function CompletedAnimeList() {
       .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
       .then((response) => {
         setCompletedAnime(response.data.animeLists.completed);
+        setLoading(false);
       })
       .catch((err) => err);
   }
@@ -25,6 +29,13 @@ function CompletedAnimeList() {
   
   return (
     <>
+    {loading ? (
+            <Loading/>
+          ) :(
+            completedAnime.length == 0 
+            ? <a className="empty-list" href="/">List empty. Add some anime?</a>
+            :
+            <>
       {completedAnime.map((anime) => {
         return (
           <div key={anime._id} className="card">
@@ -51,6 +62,10 @@ function CompletedAnimeList() {
           </div>
         );
       })}
+      </>
+          
+          
+          )}
     </>
   );
 }

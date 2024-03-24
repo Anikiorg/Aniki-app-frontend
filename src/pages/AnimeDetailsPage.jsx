@@ -28,7 +28,7 @@ function AnimeDetailsPage() {
       .then(() => {
         setLoading(false);
       })
-      .catch((err) => console.log("heeeeeeeeeeeeeeeelp", err));
+      .catch((err) => err);
   }, []);
 
   const handleForm = () => {

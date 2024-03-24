@@ -4,8 +4,11 @@ import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 
+import Loading from "../../Loading";
 import "../../../styles/pages/ListPage.css"
 function CurrentlyWatchingAnimeList() {  
+  
+  const [loading, setLoading] = useState(true);
     const [currentlyWatchingAnime, setCurrentlyWatchingAnime] = useState([]);
     const { user } = useContext(AuthContext)
     const userName = user.userName
@@ -16,6 +19,7 @@ function CurrentlyWatchingAnimeList() {
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
       setCurrentlyWatchingAnime(response.data.animeLists.watching);
+      setLoading(false);
     })
     .catch((err) => err);
   }
@@ -26,6 +30,13 @@ function CurrentlyWatchingAnimeList() {
     
   return (
     <>
+     {loading ? (
+            <Loading/>
+          ) :(
+            currentlyWatchingAnime.length == 0 
+            ? <a className="empty-list" href="/">List empty. Add some anime?</a>
+            :
+            <>
         {currentlyWatchingAnime.map((anime) => {
           return(
             <div key={anime._id} className="card">
@@ -51,10 +62,11 @@ function CurrentlyWatchingAnimeList() {
         </div>
         </div>
       </div>
-           ) 
-        })}
-    </>
+        );
+      })}
+    </>)
+}
+</>
   );
-
 }
 export default CurrentlyWatchingAnimeList

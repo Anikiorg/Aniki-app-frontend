@@ -5,8 +5,11 @@ import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 
 
+import Loading from "../../Loading";
 import "../../../styles/pages/ListPage.css"
 function FavoriteMangaList () {
+  
+  const [loading, setLoading] = useState(true);
   const [favoriteManga, setFavoriteManga] = useState([]);
   const { user } = useContext(AuthContext)
   const userName = user.userName
@@ -16,6 +19,7 @@ function FavoriteMangaList () {
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
       setFavoriteManga(response.data.mangaLists.favorites);
+      setLoading(false);
     })
     .catch((err) => err);
   }
@@ -26,6 +30,12 @@ function FavoriteMangaList () {
 
   return (
     <>
+    {loading ? (
+            <Loading/>
+          ) :(
+            favoriteManga.length == 0
+            ?<a className="empty-list" href="/">List empty. Add some anime?</a>
+            : <>
         {favoriteManga.map((manga) => {
            return(
             <div key={manga._id} className="card">
@@ -51,10 +61,12 @@ function FavoriteMangaList () {
         </div>
         </div>
         </div>
-               ) 
-        })}
-    </>
-  );
+     );
+    })}</>
+        )}
+  </>
+);
 }
+
 
 export default FavoriteMangaList

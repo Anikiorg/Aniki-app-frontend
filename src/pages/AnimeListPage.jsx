@@ -29,7 +29,7 @@ function AnimeListPage() {
       .then((response) => {
         setAnimeList(response.data);
         setAnimeBackup(response.data);
-       
+       console.log(user)
         setLoading(false);
       })
       .catch((error) => console.log(error));

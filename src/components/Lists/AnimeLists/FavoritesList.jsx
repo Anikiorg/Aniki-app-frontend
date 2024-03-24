@@ -4,8 +4,11 @@ import { AuthContext } from "../../../context/auth.context";
 import DeleteFromList from "./DeleteFromList";
 import { Link } from "react-router-dom";
 
+import Loading from "../../Loading";
 import "../../../styles/pages/ListPage.css"
 function FavoriteAnimeList () {
+  
+  const [loading, setLoading] = useState(true);
   const [favoriteAnime, setFavoriteAnime] = useState([]);
   const { user } = useContext(AuthContext)
   const userName = user.userName
@@ -15,6 +18,7 @@ function FavoriteAnimeList () {
     .get(`${process.env.REACT_APP_API_URL}/api/users/${userName}`)
     .then((response) => {
       setFavoriteAnime(response.data.animeLists.favorites);
+      setLoading(false);
     })
     .catch((err) => err);
   }
@@ -25,6 +29,13 @@ function FavoriteAnimeList () {
 
   return (
     <>
+    {loading ? (
+           <Loading/>
+         ) :(
+          favoriteAnime.length == 0 
+          ? <a className="empty-list" href="/">List empty. Add some anime?</a>
+          :
+           <>
         {favoriteAnime.map((anime) => {
            return(
             <div key={anime._id} className="card">
@@ -50,9 +61,11 @@ function FavoriteAnimeList () {
         </div>
         </div>
       </div>
-               ) 
-        })}
-    </>
+        );
+      })}
+    </>)
+}
+</>
   );
 }
 
