@@ -90,8 +90,8 @@ function ProfilePage() {
         {isAnime ? <p>Anime?</p> : <p>Manga?</p>}
       </button>
 
-      <div>
-
+      <div className="list-menu">
+        
         <button
           className="btn"
           onClick={() => {

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import "../../styles/components/Modals.css";
 
 import { useNavigate } from "react-router-dom"
 function AnimeUpdate(props) {
@@ -50,7 +51,7 @@ function AnimeUpdate(props) {
   };
 
   return (
-    <div className="center">
+    <div className="updated-anime center">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <form onSubmit={handleSubmit}>

@@ -29,6 +29,15 @@
     margin-top: 4%;
     text-align: center;
   }
+  .list-name {
+    
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 50px;
+    
+    line-height: 50px;
+  }
 }
 @media (prefers-color-scheme: light) {
   .profile-page .btn {
@@ -40,6 +49,27 @@
     color: white;
     margin-top: 4%;
     text-align: center;
+  }
+  
+  .list-name {
+    width: 100%;
+    text-align: left;
+    color: white;
+    font-size: 50px;
+    line-height: 50px;
+    margin: 5%;
+  }
+}
+
+@media (max-width: 450px) {
+  .list-menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .list-name {
+  text-align: center;
+  margin: 10%;
   }
 }
 

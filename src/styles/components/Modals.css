@@ -1,0 +1,50 @@
+@media (max-width: 650px) {
+    .updated-anime .card{
+        width: 90vw !important;
+    }
+}
+
+@media (min-width: 650px) {
+    
+    .updated-anime .card{
+        width: 60vw !important;
+    }
+}
+
+
+.updated-anime form {
+    width: 100%;
+}
+.updated-anime .card form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    
+    .new-anime .card, .updated-anime .card  {
+        width: 100%;
+        color: black
+    }
+
+    .updated-anime {
+        background-color: white;
+        color: black;
+    }
+    }
+
+    @media (prefers-color-scheme: light) {
+       
+        .new-anime .card, .updated-anime .card {
+            width: 100%;
+            color: black
+        }
+        .updated-anime {
+            background-color: white;
+            color: black;
+        }
+    }
+.modal-box {
+    height: 70%;
+}

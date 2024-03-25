@@ -1,120 +1,172 @@
-import { useContext, useState } from "react";
+import "../../../styles/pages/ListPage.css";
+
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/auth.context";
 import axios from "axios";
 
-import "../../../styles/pages/ListPage.css"
-
 function AddToList(props) {
   const { user } = useContext(AuthContext);
-  const [favoritesList, setFavoritesList] = useState(null)
-  const [completedList, setCompletedList] = useState(null)
-  const [currentlyWatchingList, setCurrentlyWatchingList] = useState(null)
-  const [planToWatchList, setPlanToWatchList] = useState(null)
+  const [favoritesList, setFavoritesList] = useState([]);
+  const [completedList, setCompletedList] = useState([]);
+  const [currentlyWatchingList, setCurrentlyWatchingList] = useState([]);
+  const [planToWatchList, setPlanToWatchList] = useState([]);
+  const [toggleFav, setToggleFav] = useState(false);
+  const [toggleCompleted, setToggleCompleted] = useState(false);
+  const [togglePlanToWatch, setTogglePlanToWatch] = useState(false);
+  const [toggleWatching, setToggleWatching] = useState(false);
   const storedToken = localStorage.getItem("authToken");
-  
-  
-  axios
-  .get(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}`)
-      .then((response) => {
-        setFavoritesList(response.data.animeLists.favorites.map((elm) =>elm._id))
-        setCompletedList(response.data.animeLists.completed.map((elm) =>elm._id))
-        setCurrentlyWatchingList(response.data.animeLists.watching.map((elm) =>elm._id))
-        setPlanToWatchList(response.data.animeLists.planToWatch.map((elm) =>elm._id))
-      })
-      .catch(err => err)
 
-      function handleAdd(optionType) {
-    
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}`)
+      .then((response) => {
+        setFavoritesList(
+          response.data.animeLists.favorites.map((elm) => elm._id)
+        );
+        setCompletedList(
+          response.data.animeLists.completed.map((elm) => elm._id)
+        );
+        setCurrentlyWatchingList(
+          response.data.animeLists.watching.map((elm) => elm._id)
+        );
+        setPlanToWatchList(
+          response.data.animeLists.planToWatch.map((elm) => elm._id)
+        );
+      })
+      .catch((err) => err);
+  }, [user]);
+
+  function handleAdd(optionType) {
     switch (optionType) {
       case "FavoritesList":
         favoritesList.includes(props.id)
-        ? console.log("already in list")
-        : axios
-          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`, {id: props.id, listType: "favorites"}, { headers: { Authorization: `Bearer ${storedToken}` }})
-          .then((response) => {
-            console.log("added")
-          })
-          .catch((err) => err);
-          break;
+          ? setToggleFav(true) && console.log("Already in list")
+          : axios
+              .put(
+                `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`,
+                { id: props.id, listType: "favorites" },
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+              )
+              .then((response) => {
+                setToggleFav(true);
+                console.log("Added");
+              })
+              .catch((err) => err);
+        break;
 
       case "CompletedList":
-      completedList.includes(props.id)  
-      ? console.log("already in list")
-      : axios
-          .put(`${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`, {id: props.id, listType: "completed"}, { headers: { Authorization: `Bearer ${storedToken}` }})
-          .then((response) => {
-            console.log("added")
-          })
-          .catch((err) => err);
-      break;
+        completedList.includes(props.id)
+          ? setToggleCompleted(true) && console.log("Already in list")
+          : axios
+              .put(
+                `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`,
+                { id: props.id, listType: "completed" },
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+              )
+              .then((response) => {
+                setToggleCompleted(true);
+                console.log("Added");
+              })
+              .catch((err) => err);
+        break;
 
       case "CurrentlyWatchingList":
         currentlyWatchingList.includes(props.id)
-        ? console.log("already in list")
-        : axios
-          .put(
-            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`, {id: props.id, listType: "currentlyWatching"}, { headers: { Authorization: `Bearer ${storedToken}` }})
-          .then((response) => {
-            console.log("added")
-          })
-          .catch((err) => err);
-      break;
+          ? setToggleWatching(true) && console.log("Already in list")
+          : axios
+              .put(
+                `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`,
+                { id: props.id, listType: "currentlyWatching" },
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+              )
+              .then((response) => {
+                setToggleWatching(true);
+                console.log("Added");
+              })
+              .catch((err) => err);
+        break;
 
       case "PlanToWatchList":
         planToWatchList.includes(props.id)
-        ? console.log("already in list")
-        : axios
-          .put(
-            `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`, {id: props.id, listType: "plan to watch"},{ headers: { Authorization: `Bearer ${storedToken}` }})
-          .then((response) => {
-            console.log("added")
-          })
-          .catch((err) => err);
-      break;
+          ? setTogglePlanToWatch(true) && console.log("Already in list")
+          : axios
+              .put(
+                `${process.env.REACT_APP_API_URL}/api/users/${user.userName}/animeadd`,
+                { id: props.id, listType: "plan to watch" },
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+              )
+              .then((response) => {
+                setTogglePlanToWatch(true);
+                console.log("Added");
+              })
+              .catch((err) => err);
+        break;
 
       default:
-      break;
+        break;
     }
   }
 
   return (
     <div id="list">
-      <button
-        className="btn"
-        onClick={() => {
-          handleAdd("FavoritesList");
-        }}
-      >
-        Favorites
-      </button>
-      <button
-        className="btn"
-        onClick={() => {
-          handleAdd("CurrentlyWatchingList");
-        }}
-      >
-        Currently Watching
-      </button>
+      {toggleFav ? (
+        <button disabled className="btn">
+          In favorites
+        </button>
+      ) : (
+        <button
+          className="btn"
+          onClick={() => {
+            handleAdd("FavoritesList");
+          }}
+        >
+          Favorites
+        </button>
+      )}
+      {toggleWatching ? (
+        <button disabled className="btn">
+          In Watching
+        </button>
+      ) : (
+        <button
+          className="btn"
+          onClick={() => {
+            handleAdd("CurrentlyWatchingList");
+          }}
+        >
+          Currently Watching
+        </button>
+      )}
 
-      <button
-        className="btn"
-        onClick={() => {
-          handleAdd("CompletedList");
-        }}
-      >
-       Completed
-      </button>
+      {toggleCompleted ? (
+        <button disabled className="btn">
+          In completed
+        </button>
+      ) : (
+        <button
+          className="btn"
+          onClick={() => {
+            handleAdd("CompletedList");
+          }}
+        >
+          Completed
+        </button>
+      )}
 
-     
-
-      <button
-        className="btn"
-        onClick={() => {
-          handleAdd("PlanToWatchList");
-        }}
-      >
-        Plan To Watch
-      </button>
+      {togglePlanToWatch ? (
+        <button disabled className="btn">
+          In Plan to watch
+        </button>
+      ) : (
+        <button
+          className="btn"
+          onClick={() => {
+            handleAdd("PlanToWatchList");
+          }}
+        >
+          Plan To Watch
+        </button>
+      )}
     </div>
   );
 }

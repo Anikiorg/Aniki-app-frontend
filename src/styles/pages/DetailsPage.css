@@ -1,3 +1,13 @@
+#admin-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20%;
+}
+#admin-button * {
+  width: 150px;
+}
+
 .anime-details-page,
 .manga-details-page {
   min-height: 100vh;
@@ -71,6 +81,12 @@
   .review {
     width: 90%;
     height: 15vh;
+  }
+  #admin-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
   }
 }
 

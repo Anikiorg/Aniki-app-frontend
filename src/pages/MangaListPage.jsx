@@ -11,16 +11,12 @@ function MangaListPage() {
   const [mangaList, setMangaList] = useState([]);
   const [mangaBackup, setMangaBackup] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
-  const [toggle, setToggle] = useState(false);
   const [input, setInput] = useState("");
   const { user } = useContext(AuthContext);
   
   const [loading, setLoading] = useState(true);
 
   //TOGGLE FOR ADD MANGA
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
 
   //SET MANGA LIST AND BACKUP WITH .GET
   useEffect(() => {
@@ -39,7 +35,7 @@ function MangaListPage() {
   const handleSelect = (e) => {
     e.preventDefault();
     switch (e.target.value) {
-      case "All Manga":
+      default:
         setMangaList(mangaBackup);
         break;
       case "Action":
@@ -148,48 +144,6 @@ function MangaListPage() {
 
   return (
     <>
-      {/*TOGGLE ADD MANGA FORM*/}
-
-      <div className="switch">
-        {user && user.typeOfUser === "admin" && (
-          <>
-            <button
-              className="btn"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-plus-circle"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M8 12h8" />
-                <path d="M12 8v8" />
-              </svg>
-              Add manga
-            </button>
-            <dialog id="my_modal_3" className="modal">
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                    ✕
-                  </button>
-                </form>
-                <MangaCreate />
-              </div>
-            </dialog>
-          </>
-        )}
-        {toggle && <MangaCreate />}
-      </div>
-
       <div className="search">
         
             <input
@@ -204,9 +158,6 @@ function MangaListPage() {
           onChange={handleSelect}
           className="select select-bordered join-item"
         >
-          <option disabled selected>
-            Filter
-          </option>
           <option value="All Manga">All Manga</option>
           <option value="Action">Action</option>
           <option value="Comedy">Comedy</option>
@@ -282,8 +233,8 @@ function MangaListPage() {
                            <AddToList id={manga._id} />
                          </div>
                          <form method="dialog" className="modal-backdrop">
-                           <button>close</button>
-                         </form>
+                        <button>close</button>
+                        </form>
                        </dialog>
                      </div>
                     )}
@@ -292,6 +243,46 @@ function MangaListPage() {
               </div>
           );
         })}
+        
+        <div className="add-button">
+        {user && user.typeOfUser === "admin" && (
+          <>
+            <button
+              className="btn"
+              onClick={() => document.getElementById("my_modal_3").showModal()}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-plus-circle"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12h8" />
+                <path d="M12 8v8" />
+              </svg>
+              Add manga
+            </button>
+            <dialog id="my_modal_3" className="modal">
+              <div className="modal-box">
+                <form method="dialog">
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                <MangaCreate />
+              </div>
+            </dialog>
+          </>
+        )}
+      </div>
+
       </div>
           )}
     </>

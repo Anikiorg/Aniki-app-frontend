@@ -29,6 +29,7 @@ function PlanToReadMangaList() {
 
   return (
     <>
+    <h1 className="list-name">Plan to read manga</h1>
     {loading ? (
             <Loading/>
           ) :(

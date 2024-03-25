@@ -29,6 +29,7 @@ function FavoriteAnimeList () {
 
   return (
     <>
+    <h1 className="list-name">Favorite anime</h1>
     {loading ? (
            <Loading/>
          ) :(

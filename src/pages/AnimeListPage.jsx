@@ -5,6 +5,7 @@ import AnimeCreate from "../components/Anime/AnimeCreate";
 import AddToList from "../components/Lists/AnimeLists/AddToList";
 import { AuthContext } from "../context/auth.context";
 import "../styles/pages/ListPage.css";
+import "../styles/components/Modals.css";
 
 
 import Loading from "../components/Loading";
@@ -12,15 +13,10 @@ function AnimeListPage() {
   const [animeList, setAnimeList] = useState([]);
   const [animeBackup, setAnimeBackup] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
-  const [toggle, setToggle] = useState(false);
   const [input, setInput] = useState("");
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(true);
-  //TOGGLE FOR ADD ANIME
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
 
   //SET ANIME LIST AND BACKUP WITH .GET
   useEffect(() => {
@@ -29,7 +25,6 @@ function AnimeListPage() {
       .then((response) => {
         setAnimeList(response.data);
         setAnimeBackup(response.data);
-       console.log(user)
         setLoading(false);
       })
       .catch((error) => console.log(error));
@@ -40,7 +35,7 @@ function AnimeListPage() {
   const handleSelect = (e) => {
     e.preventDefault();
     switch (e.target.value) {
-      case "All Anime":
+      default:
         setAnimeList(animeBackup);
         break;
       case "Action":
@@ -127,6 +122,7 @@ function AnimeListPage() {
         });
         setAnimeList(filteredArray);
         break;
+
     }
   };
 
@@ -149,48 +145,6 @@ function AnimeListPage() {
 
   return (
     <>
-      <div className="switch">
-        {user && user.typeOfUser === "admin" && (
-          <>
-            <button
-              className="btn"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-plus-circle"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M8 12h8" />
-                <path d="M12 8v8" />
-              </svg>
-              Add anime
-            </button>
-
-            <dialog id="my_modal_3" className="modal">
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                    ✕
-                  </button>
-                </form>
-                <AnimeCreate />
-              </div>
-            </dialog>
-          </>
-        )}
-
-        {toggle && <AnimeCreate />}
-      </div>
-
       {/*SEARCH BAR*/}
       <div className="search">
         <input
@@ -204,9 +158,6 @@ function AnimeListPage() {
           onChange={handleSelect}
           className="select select-bordered join-item"
         >
-          <option disabled selected>
-            Filter
-          </option>
           <option value="All Anime">All Anime</option>
           <option value="Action">Action</option>
           <option value="Comedy">Comedy</option>
@@ -227,8 +178,6 @@ function AnimeListPage() {
 
       {/*RENDER FILTERED AND SEARCHED ANIME + ADD TO LIST + DETAILS PAGE*/}
 
-
-      
           {loading ? (
             <Loading/>
           ) :(
@@ -292,6 +241,46 @@ function AnimeListPage() {
             </div>
           );
         })}
+           <div className="add-button">
+        {user && user.typeOfUser === "admin" && (
+          <>
+            <button
+              className="btn"
+              onClick={() => document.getElementById("my_modal_3").showModal()}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-plus-circle"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12h8" />
+                <path d="M12 8v8" />
+              </svg>
+              Add anime
+            </button>
+
+            <dialog id="my_modal_3" className="modal">
+              <div className="modal-box">
+                <form method="dialog">
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                <AnimeCreate />
+              </div>
+            </dialog>
+          </>
+        )}
+
+      </div>
       </div>
        )
       }

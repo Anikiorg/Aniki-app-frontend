@@ -31,6 +31,7 @@ function CurrentlyReadingMangaList() {
     
   return (
     <>
+    <h1 className="list-name">Currently reading manga</h1>
     {loading ? (
             <Loading/>
           ) :(

@@ -35,13 +35,19 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 2%;
+    margin: 1%;
   }
+
 }
 
-
-
 /*card*/
+
+.modal-box #list{
+  display: flex; 
+  flex-direction: column ;
+  justify-content: center;
+}
+
 @media (max-width: 650px) {
   .card h2 {
     font-size: 40px;
@@ -54,11 +60,6 @@
     width: 100vw;
   }
   
-.modal-box #list{
-  display: flex; 
-  flex-direction: column ;
-  justify-content: center;
-}
 }
 
 @media (min-width: 650px) and (max-width: 800px) {
@@ -193,4 +194,10 @@
 
 .modal-box .btn {
   margin-top: 0 !important;
+}
+
+.add-button {
+  width: 100%;
+  display: flex;
+  justify-content: center ;
 }

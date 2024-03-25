@@ -38,63 +38,9 @@ function AnimeDetailsPage() {
   return (
     <div className="anime-details-page">
       {loading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <>
-          <div className="card">
-              <img src={animeDetails.imageURL} alt="anime image" />
-
-              <div className="card-content">
-                <h2>{animeDetails.name.nameEN}</h2>
-                {animeDetails.name.nameEN !== animeDetails.name.nameJP && (
-                  <h2>{animeDetails.name.nameJP}</h2>
-                )}
-                <p>Genre:{animeDetails.genre}</p>
-                <p>Episodes:{animeDetails.episodes}</p>
-                <p>Status:{animeDetails.status}</p>
-                <p>Premiered:{animeDetails.premiered}</p>
-                <p>Studios:{animeDetails.studios}</p>
-                <p>Age Rating:{animeDetails.ageRating}</p>
-              </div>
-              
-              {user && (
-                <div className="card-actions justify-end">
-                  <button
-                    className="btn"
-                    onClick={() =>
-                      document.getElementById("my_modal_4").showModal()
-                    }
-                  >
-                    {" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#000000"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-bookmark"
-                    >
-                      <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
-                    </svg>
-                  </button>
-
-                  <dialog id="my_modal_4" className="modal">
-                    <div className="modal-box">
-                      <AddToList id={animeDetails._id} />
-                    </div>
-                    <form method="dialog" className="modal-backdrop">
-                      <button>close</button>
-                    </form>
-                  </dialog>
-                </div>
-              )}
-          </div>
-          <div className="description">" {animeDetails.description} "</div>
-
           <div id="admin-button">
             {user && user.typeOfUser === "admin" && (
               <button className="btn" onClick={handleForm}>
@@ -106,14 +52,66 @@ function AnimeDetailsPage() {
               <AnimeDelete animeId={animeId} />
             )}
           </div>
+          
+          {showForm && <AnimeUpdate animeDetails={animeDetails} />}
 
+          <div className="card">
+            <img src={animeDetails.imageURL} alt="anime image" />
 
-      {showForm && <AnimeUpdate animeDetails={animeDetails} />}
+            <div className="card-content">
+              <h2>{animeDetails.name.nameEN}</h2>
+              {animeDetails.name.nameEN !== animeDetails.name.nameJP && (
+                <h2>{animeDetails.name.nameJP}</h2>
+              )}
+              <p>Genre:{animeDetails.genre}</p>
+              <p>Episodes:{animeDetails.episodes}</p>
+              <p>Status:{animeDetails.status}</p>
+              <p>Premiered:{animeDetails.premiered}</p>
+              <p>Studios:{animeDetails.studios}</p>
+              <p>Age Rating:{animeDetails.ageRating}</p>
+            </div>
 
-      {user && <AddAnimeReviews />}
+            {user && (
+              <div className="card-actions justify-end">
+                <button
+                  className="btn"
+                  onClick={() =>
+                    document.getElementById("my_modal_4").showModal()
+                  }
+                >
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-bookmark"
+                  >
+                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+                  </svg>
+                </button>
 
-      <AnimeReviews />
-      
+                <dialog id="my_modal_4" className="modal">
+                  <div className="modal-box">
+                    <AddToList id={animeDetails._id} />
+                  </div>
+                  <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                  </form>
+                </dialog>
+              </div>
+            )}
+          </div>
+          <div className="description">" {animeDetails.description} "</div>
+
+          {user && <AddAnimeReviews />}
+
+          <AnimeReviews />
         </>
       )}
     </div>

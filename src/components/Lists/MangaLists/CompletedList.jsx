@@ -30,6 +30,7 @@ function CompletedMangaList() {
 
   return (
     <>
+    <h1 className="list-name">Completed manga</h1>
     {loading ? (
             <Loading/>
           ) :(

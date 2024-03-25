@@ -29,6 +29,7 @@ function PlanToWatchAnimeList() {
 
   return (
     <>
+    <h1 className="list-name">Plan to watch anime</h1>
      {loading ? (
             <Loading/>
           ) :(

@@ -30,6 +30,7 @@ function FavoriteMangaList () {
 
   return (
     <>
+    <h1 className="list-name">Favorite manga</h1>
     {loading ? (
             <Loading/>
           ) :(

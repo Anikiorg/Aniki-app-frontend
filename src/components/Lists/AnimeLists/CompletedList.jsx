@@ -29,6 +29,7 @@ function CompletedAnimeList() {
   
   return (
     <>
+    <h1 className="list-name">Completed anime</h1>
     {loading ? (
             <Loading/>
           ) :(

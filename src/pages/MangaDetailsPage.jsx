@@ -41,6 +41,19 @@ function MangaDetailsPage() {
         <Loading/>
       ) : (
         <>
+          <div id="admin-button">
+            {user && user.typeOfUser === "admin" && (
+              <button className="btn" onClick={handleForm}>
+                Update
+              </button>
+            )}
+
+            {user && user.typeOfUser === "admin" && (
+              <MangaDelete mangaId={mangaId} />
+            )}
+          </div>
+
+      {showForm && <MangaUpdate mangaDetails={mangaDetails} />}
           <div className="card">
                   <img src={mangaDetails.imageURL} alt="manga image" />
                 
@@ -98,19 +111,7 @@ function MangaDetailsPage() {
               <div className="description">
                   " {mangaDetails.description} "
                 </div>
-          <div id="admin-button">
-            {user && user.typeOfUser === "admin" && (
-              <button className="btn" onClick={handleForm}>
-                Update
-              </button>
-            )}
-
-            {user && user.typeOfUser === "admin" && (
-              <MangaDelete mangaId={mangaId} />
-            )}
-          </div>
-
-      {showForm && <MangaUpdate mangaDetails={mangaDetails} />}
+        
       {user && <AddMangaReviews />}
 
       <MangaReviews />

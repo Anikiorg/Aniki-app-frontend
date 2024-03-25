@@ -1,8 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
-
 import service from "../../services/file-upload.service"
 import { useNavigate } from "react-router-dom"
+import "../../styles/components/Modals.css";
 
 function AnimeCreate () {
   const navigate = useNavigate()
@@ -38,7 +38,6 @@ function AnimeCreate () {
     };
 
     const handleSubmit = (image) => {
-
         const createdAnime = {
             name,
             description,
@@ -52,18 +51,18 @@ function AnimeCreate () {
         }
 
         axios.post(`${process.env.REACT_APP_API_URL}/api/animes`, createdAnime, { headers: { Authorization: `Bearer ${storedToken}` }})
-        .then(() => {
-            console.log(createdAnime)
+        .then((response) => {
+            let id = response.data._id
             console.log("Anime created")
-            navigate("/")
+            navigate(`/animes/${id}`)
 
         })
         .catch((err) => console.log(err))
     }
 
   return (
-    <div className="center">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="new-anime center">
+      <div className="card w-96">
         <div className="card-body">
           <form onSubmit={handleFileUpload}>
             <div className="label">

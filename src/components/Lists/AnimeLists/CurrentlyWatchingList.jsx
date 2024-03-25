@@ -30,6 +30,7 @@ function CurrentlyWatchingAnimeList() {
     
   return (
     <>
+    <h1 className="list-name">Currently watching anime</h1>
      {loading ? (
             <Loading/>
           ) :(
