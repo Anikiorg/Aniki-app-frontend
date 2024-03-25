@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "../../styles/components/Review.css";
 
 function MangaReviews() {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const { mangaId } = useParams();
 
   useEffect(() => {
@@ -12,7 +12,6 @@ function MangaReviews() {
       .get(`${process.env.REACT_APP_API_URL}/api/manga/${mangaId}`)
       .then((response) => {
         setReviews(response.data.reviews.reverse());
-        console.log(reviews);
       })
       .catch((err) => err);
   }, []);
@@ -21,8 +20,6 @@ function MangaReviews() {
     <>
       {reviews &&
         reviews.map((elm) => {
-          console.log("this is the elm", elm);
-          console.log(elm.user.userName);
           return (
             <div className="review">
               <div key={elm._id} className="review-body">

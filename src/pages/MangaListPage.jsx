@@ -198,13 +198,13 @@ function MangaListPage() {
                   <p>Status: {manga.status}</p>
                   <p>Age rating: {manga.ageRating}</p>
 
+                  <div className="card-actions justify-end">
                   <Link to={`/manga/${manga._id}`}>
                     {" "}
                     <button className="btn">See more</button>{" "}
                   </Link>
-                  <div className="card-actions justify-end">
                     {user && (
-                       <div className="card-actions justify-end">
+                      <>
                        <button
                          className="btn"
                          onClick={() =>
@@ -236,7 +236,8 @@ function MangaListPage() {
                         <button>close</button>
                         </form>
                        </dialog>
-                     </div>
+                       </>
+                     
                     )}
                   </div>
                 </div>

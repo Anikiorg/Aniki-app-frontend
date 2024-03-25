@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import "../../styles/components/Modals.css";
 
 function MangaUpdate(props) {
   /* form state vars */
@@ -47,7 +48,7 @@ function MangaUpdate(props) {
 
   return (
     /* retain original info */  
-    <div className="center">
+    <div className="updated-manga center">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
         <form onSubmit={handleSubmit}>

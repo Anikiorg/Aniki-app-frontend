@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import "../../styles/components/Modals.css";
 
 import service from "../../services/file-upload.service"
 
@@ -63,8 +64,8 @@ function MangaCreate () {
     }
 
 return (
-    <div className="center">
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="new-manga center">
+    <div className="card w-96">
       <div className="card-body">
     <form onSubmit={handleFileUpload}>
     <div className="label">

@@ -1,21 +1,26 @@
+.updated-anime, .updated-manga {
+    border-radius: 8px;
+    margin: 5%;
+}
+
 @media (max-width: 650px) {
-    .updated-anime .card{
+    .updated-anime .card, .updated-manga .card{
         width: 90vw !important;
     }
 }
 
 @media (min-width: 650px) {
     
-    .updated-anime .card{
-        width: 60vw !important;
+    .updated-anime .card, .updated-manga .card{
+        width: 50vw !important;
     }
 }
 
 
-.updated-anime form {
+.updated-anime form, .updated-manga form {
     width: 100%;
 }
-.updated-anime .card form {
+.updated-anime .card form, .updated-manga .card form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,12 +28,12 @@
 
 @media (prefers-color-scheme: dark) {
     
-    .new-anime .card, .updated-anime .card  {
+    .new-anime .card, .updated-anime .card, .new-manga .card, .updated-manga .card  {
         width: 100%;
         color: black
     }
 
-    .updated-anime {
+    .updated-anime, .updated-manga {
         background-color: white;
         color: black;
     }
@@ -36,11 +41,11 @@
 
     @media (prefers-color-scheme: light) {
        
-        .new-anime .card, .updated-anime .card {
+        .new-anime .card, .updated-anime .card, .new-manga .card, .updated-manga .card {
             width: 100%;
             color: black
         }
-        .updated-anime {
+        .updated-anime, .updated-manga{
             background-color: white;
             color: black;
         }

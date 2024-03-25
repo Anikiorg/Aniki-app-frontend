@@ -112,7 +112,7 @@ function AnimeCreate () {
             <input
               type="file"
               name="imageURL"
-              className="file-input w-full max-w-xs"
+              className="file-input w-full max-w-xs image-input"
               onChange={(e) => setImageURL(e.target.files[0])}
             />
 

@@ -198,12 +198,13 @@ function AnimeListPage() {
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
                 <p>Age rating: {anime.ageRating}</p>
+                <div className="card-actions justify-end">
                 <Link to={`/animes/${anime._id}`}>
                   {" "}
                   <button className="btn">See more</button>{" "}
                 </Link>
                 {user && (
-                  <div className="card-actions justify-end">
+                  <>
                     <button
                       className="btn"
                       onClick={() =>
@@ -235,8 +236,9 @@ function AnimeListPage() {
                         <button>close</button>
                       </form>
                     </dialog>
-                  </div>
+                </>
                 )}
+                </div>
               </div>
             </div>
           );
