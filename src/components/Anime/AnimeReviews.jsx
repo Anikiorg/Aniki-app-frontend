@@ -25,7 +25,7 @@ function AnimeReviews() {
                   <div key={elm._id} className="review">
                     <div className="review-body">
                       <span>
-                        {elm.user.userName} says:{" "}
+                        {elm.user} says:{" "}
                       </span>
                     <p className="input input-bordered w-full max-w-xs break-normal ...">
                       "{elm.content}"

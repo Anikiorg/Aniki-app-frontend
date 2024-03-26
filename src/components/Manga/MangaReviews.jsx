@@ -11,6 +11,7 @@ function MangaReviews() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/manga/${mangaId}`)
       .then((response) => {
+        console.log(response.data.reviews)
         setReviews(response.data.reviews.reverse());
       })
       .catch((err) => err);
@@ -23,7 +24,7 @@ function MangaReviews() {
           return (
             <div className="review">
               <div key={elm._id} className="review-body">
-                <span className="label-text">{elm.user.userName} says: </span>
+                <span className="label-text">{elm.user} says: </span>
 
                 <p className="input input-bordered w-full max-w-xs break-normal ...">
                   "{elm.content}"
